@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    // protected $table = '';
+    protected $table = 'book';
 
      /**
      * Get the book_detail record associated with the book.

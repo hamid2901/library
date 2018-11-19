@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
 
-    // protected $table = '';
+    protected $table = 'article';
    
     /**
      * The categories that belong to the article.

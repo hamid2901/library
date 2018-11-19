@@ -18,7 +18,7 @@ class CreatePersonalDataTable extends Migration {
 			$table->string('first_name', 100)->nullable();
 			$table->string('last_name', 100)->nullable();
 			$table->integer('gender_id')->unsigned()->index('idx_personal_data_gender_id');
-			$table->string('phone', 11)->nullable();
+			$table->string('phone', 20)->nullable();
 			$table->string('profession', 100)->nullable();
 			$table->string('university', 100)->nullable();
 			$table->string('birthday', 30)->nullable();

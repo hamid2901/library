@@ -19,8 +19,8 @@ class CreateArticleTable extends Migration {
 			$table->string('publish_date', 30)->nullable();
 			$table->text('description')->nullable();
 			$table->string('article_filename', 100)->nullable();
-			$table->string('create_at', 30)->nullable();
-			$table->string('update_at', 30)->nullable();
+			$table->string('created_at', 30)->nullable();
+			$table->string('updated_at', 30)->nullable();
 			$table->integer('confirm')->nullable()->default(0);
 		});
 	}

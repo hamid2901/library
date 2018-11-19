@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book_format extends Model
 {
-    // protected $table = '';
+    protected $table = 'book_format';
  
     /**
      * Get the book_details for the book_format.
