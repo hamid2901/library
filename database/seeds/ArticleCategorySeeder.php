@@ -12,16 +12,13 @@ class ArtcileCategorySeeder extends Seeder
      * @return void
      */
     public function run(Faker\Generator $faker)
-    {
-
-        $article_id = Article::pluck('id')->all();
-        $category_id = Category::pluck('id')->all();
-
-        for($i = 0 ; $i < 30  ; $i++ ){
-            DB::table('article_category')->insert([
-                'category_id'=> $faker->randomElement($category_id),
-                'article_id'=> $faker->randomElement($article_id),
-        ]);
-        }   
+    {        
+        $categories = App\Models\Category::all();
+        
+        App\Models\Article::all()->each(function ($article) use ($categories) { 
+            $article->categories()->attach(
+            $categories->random(rand(1, 11))->pluck('id')->toArray()
+        ); 
+    });
     }
 }

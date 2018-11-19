@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Author extends Model
 {
     
-    // protected $table = '';
+    protected $table = 'author';
 
       /**
      * Get the author_role record associated with the author.
@@ -23,7 +23,7 @@ class Author extends Model
      */
     public function books()
     {
-        return $this->belongsToMany('App\Models\Book', 'author_book', 'author_id', 'book_id');
+        return $this->belongsToMany('App\Models\Book', 'book_author', 'author_id', 'book_id');
     }
     
     /**

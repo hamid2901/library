@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToAuthorBookTable extends Migration {
+class AddForeignKeysToBookAuthorTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,10 @@ class AddForeignKeysToAuthorBookTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('author_book', function(Blueprint $table)
+		Schema::table('book_author', function(Blueprint $table)
 		{
-			$table->foreign('author_id', 'fk_author_book_author')->references('id')->on('author')->onUpdate('CASCADE')->onDelete('CASCADE');
 			$table->foreign('book_id', 'fk_author_book_book')->references('id')->on('book')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('author_id', 'fk_author_book_author')->references('id')->on('author')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 
@@ -27,7 +27,7 @@ class AddForeignKeysToAuthorBookTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('author_book', function(Blueprint $table)
+		Schema::table('book_author', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_author_book_author');
 			$table->dropForeign('fk_author_book_book');

@@ -31,10 +31,10 @@ class DatabaseSeeder extends Seeder
         $this->call(NewsSeeder::class);
         $this->call(AddressSeeder::class);
         $this->call(NewsCommentsSeeder::class);
-        $this->call(AuthorArticleSeeder::class);
-        $this->call(AuthorBookSeeder::class);
         $this->call(BookCategorySeeder::class);
         $this->call(ArtcileCategorySeeder::class);
-        $this->call(BookFactorUserSeeder::class);
+        $this->call(ArticleAuthorSeeder::class);
+        $this->call(BookAuthorSeeder::class);
+        // $this->call(BookFactorUserSeeder::class);
     }
 }
