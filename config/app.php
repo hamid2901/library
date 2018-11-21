@@ -166,6 +166,7 @@ return [
          */
             // ...
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
+        LaraCrud\LaraCrudServiceProvider::class,
 
         /*
          * Application Service Providers...

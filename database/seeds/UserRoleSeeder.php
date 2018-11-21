@@ -14,13 +14,13 @@ class UserRoleSeeder extends Seeder
             DB::table('user_role')->insert([
                 
                 [
-                    'role' => 'admin',
+                    'role' => 'مدیر',
                 ],
                 [
-                    'role' => 'user',
+                    'role' => 'کاربر',
                 ],
                 [
-                    'role' => 'employee',
+                    'role' => 'کارمند',
                 ],
         ]);
     }

@@ -25,6 +25,18 @@ $factory->define(App\User::class, function (Faker $faker) {
         'role_id'=> $faker->numberBetween(1,3),
         'status_id'=> $faker->numberBetween(1,3),
         'confirm'=> $faker->numberBetween(0,1),
+        'city'=> $faker->city,
+        'street'=> $faker->streetName,
+        'alley'=> $faker->streetSuffix,
+        'plate'=> $faker->buildingNumber,
+        'postal_code'=> $faker->postcode,
+        'first_name'=> $faker->firstNameMale,
+        'last_name'=> $faker->lastName,
+        'sex'=> $faker->numberBetween(1,2),
+        'phone'=> $faker->e164PhoneNumber,
+        'profession'=> $faker->jobTitle,
+        'university'=> $faker->company,
+        'birthdate'=> $faker->unixTime(),
     ];
 });
 
@@ -34,6 +46,13 @@ $factory->define(App\Models\Book::class, function (Faker $faker) {
         'isbn'=> $faker->isbn13,
         'availability_id'=> $faker->numberBetween(1,4),
         'image_dir'=> $faker->userName,
+        'publisher_id'=> $faker->numberBetween(1,5),
+        'issue_date'=> $faker->unixTime(),
+        'cover'=> $faker->numberBetween(1,10),
+        'format_id'=> $faker->numberBetween(1,6),
+        'pages'=> $faker->numberBetween(30,1500),
+        'weight'=> $faker->numberBetween(500,2500),
+        'price'=> $faker->numberBetween(5000,1000000),
     ];
 });
 

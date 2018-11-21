@@ -18,8 +18,8 @@ class FactorSeeder extends Seeder
                 'quantity'=> $faker->numberBetween(1,5),
                 'reserve_date'=> Carbon::now(),
                 'borrow_date'=> Carbon::now(),
-                'create_at'=> Carbon::now(),
-                'update_at'=> Carbon::now(),
+                'created_at'=> Carbon::now(),
+                'updated_at'=> Carbon::now(),
         ]);
         }   
     }

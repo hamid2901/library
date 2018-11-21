@@ -16,12 +16,10 @@ class BookCommentsSeeder extends Seeder
         $reply_to = BookComment::pluck('id')->all();
         for($i = 0 ; $i < 100 ; $i++ ){
             DB::table('book_comments')->insert([
-                'book_id'=> $faker->numberBetween(1,100),
-                'user_id'=> $faker->numberBetween(1,20),
                 'reply_to'=> $faker->randomElement($reply_to),
                 'content'=> $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
-                'create_at'=> Carbon::now(),
-                'update_at'=> Carbon::now(),
+                'created_at'=> Carbon::now(),
+                'updated_at'=> Carbon::now(),
                 'confirm'=> $faker->numberBetween(1,2),
         ]);
         }  

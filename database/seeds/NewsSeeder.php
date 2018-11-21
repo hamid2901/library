@@ -18,8 +18,8 @@ class NewsSeeder extends Seeder
                 'title'=> $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'content'=> $faker->paragraph($nbSentences = 4, $variableNbSentences = true),
                 'image_dir'=> $faker->userName,
-                'create_at'=> Carbon::now(),
-                'update_at'=> Carbon::now(),
+                'created_at'=> Carbon::now(),
+                'updated_at'=> Carbon::now(),
                 'user_id'=> $faker->numberBetween(1,2),
                 'confirm'=> $faker->numberBetween(0,1),
 
