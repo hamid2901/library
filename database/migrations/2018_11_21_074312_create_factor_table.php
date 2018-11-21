@@ -18,9 +18,10 @@ class CreateFactorTable extends Migration {
 			$table->integer('borrow_status')->nullable();
 			$table->integer('quantity')->nullable();
 			$table->string('borrow_date', 30)->nullable();
-			$table->string('create_at', 30)->nullable();
-			$table->string('update_at', 30)->nullable();
+			$table->string('created_at', 30)->nullable();
+			$table->string('updated_at', 30)->nullable();
 			$table->string('reserve_date', 30)->nullable();
+			$table->string('duration', 30)->nullable();
 		});
 	}
 

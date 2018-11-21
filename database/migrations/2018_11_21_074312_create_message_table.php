@@ -16,7 +16,7 @@ class CreateMessageTable extends Migration {
 		{
 			$table->integer('id', true);
 			$table->integer('user_id')->unsigned()->index('idx_message_user_id');
-			$table->text('content')->nullable();
+			$table->text('content', 65535)->nullable();
 			$table->string('email', 100)->nullable();
 			$table->integer('admin_id')->nullable();
 			$table->string('create_at', 30)->nullable();

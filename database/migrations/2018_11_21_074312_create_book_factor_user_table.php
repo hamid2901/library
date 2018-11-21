@@ -17,8 +17,6 @@ class CreateBookFactorUserTable extends Migration {
 			$table->integer('book_id')->index('idx_book_factor_user_book_id');
 			$table->integer('factor_id')->index('idx_book_factor_user_factor_id');
 			$table->integer('user_id')->unsigned()->index('idx_book_factor_user_user_id');
-			$table->string('duration', 30)->nullable();
-			$table->string('return_date', 30)->nullable();
 			$table->primary(['book_id','factor_id','user_id']);
 		});
 	}

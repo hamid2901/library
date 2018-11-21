@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateArticleTable extends Migration {
+class CreateBookCommentsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,14 @@ class CreateArticleTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('article', function(Blueprint $table)
+		Schema::create('book_comments', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('title', 100)->nullable();
-			$table->string('publish_date', 30)->nullable();
-			$table->text('description')->nullable();
-			$table->string('article_filename', 100)->nullable();
+			$table->integer('reply_to')->nullable()->index('idx_book_comments_reply_to');
+			$table->text('content', 65535)->nullable();
 			$table->string('created_at', 30)->nullable();
 			$table->string('updated_at', 30)->nullable();
-			$table->integer('confirm')->nullable()->default(0);
+			$table->integer('confirm')->default(0);
 		});
 	}
 
@@ -33,7 +31,7 @@ class CreateArticleTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('article');
+		Schema::drop('book_comments');
 	}
 
 }

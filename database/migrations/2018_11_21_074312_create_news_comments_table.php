@@ -15,12 +15,10 @@ class CreateNewsCommentsTable extends Migration {
 		Schema::create('news_comments', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->index('idx_news_comments_user_id');
-			$table->integer('news_id')->index('idx_news_comments_news_id');
 			$table->integer('reply_to')->unsigned()->nullable()->index('idx_news_comments_reply_to');
-			$table->text('content')->nullable();
-			$table->string('create_at', 30)->nullable();
-			$table->string('update_at', 30)->nullable();
+			$table->text('content', 65535)->nullable();
+			$table->string('created_at', 30)->nullable();
+			$table->string('updated_at', 30)->nullable();
 			$table->integer('confirm')->default(0);
 		});
 	}
