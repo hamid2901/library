@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Book_comment;
+use App\Models\BookComment;
 use Carbon\Carbon;
 
 class BookCommentsSeeder extends Seeder
@@ -13,7 +13,7 @@ class BookCommentsSeeder extends Seeder
      */
     public function run(Faker\Generator $faker)
     {
-        $reply_to = Book_comment::pluck('id')->all();
+        $reply_to = BookComment::pluck('id')->all();
         for($i = 0 ; $i < 100 ; $i++ ){
             DB::table('book_comments')->insert([
                 'book_id'=> $faker->numberBetween(1,100),

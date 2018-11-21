@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
-use App\Models\News_comment;
+use App\Models\NewsComment;
 
 class NewsCommentsSeeder extends Seeder
 {
@@ -13,7 +13,7 @@ class NewsCommentsSeeder extends Seeder
      */
     public function run(Faker\Generator $faker)
     {
-        $reply_to = News_comment::pluck('id')->all();
+        $reply_to = NewsComment::pluck('id')->all();
 
         for($i = 0 ; $i < 50 ; $i++ ){
             DB::table('news_comments')->insert([

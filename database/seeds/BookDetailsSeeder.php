@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Book;
 use Carbon\Carbon;
 use App\Models\Publisher;
-use App\Models\Book_format;
+use App\Models\BookFormat;
 
 class BookDetailsSeeder extends Seeder
 {
@@ -17,7 +17,7 @@ class BookDetailsSeeder extends Seeder
     {
         // $book_id = Book::pluck('id')->all();
         $publisher_id = Publisher::pluck('id')->all();
-        $format_id = Book_format::pluck('id')->all();
+        $format_id = BookFormat::pluck('id')->all();
  
         foreach(range(1,100) as $index) {
             DB::table('book_details')->insert([
