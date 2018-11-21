@@ -4,24 +4,32 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property string $type
+ * @property Article[] $articles
+ * @property Book[] $books
+ */
 class Category extends Model
 {
-    // protected $table = '';
-
-     /**
-     * The books that belong to the category.
-     */
-    public function books()
-    {
-        return $this->belongsToMany('App\Models\Book', 'book_category', 'category_id', 'book_id');
-    }
-    
     /**
-     * The articles that belong to the categry.
+     * @var array
+     */
+    protected $fillable = ['type'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function articles()
     {
-        return $this->belongsToMany('App\Models\Article', 'article_category', 'category_id', 'article_id');
+        return $this->belongsToMany('App\Models\Article');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function books()
+    {
+        return $this->belongsToMany('App\Models\Book');
+    }
 }

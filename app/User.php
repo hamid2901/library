@@ -2,113 +2,106 @@
 
 namespace App;
 
-// morteza use follows. 
 use Illuminate\Database\Eloquent\Model;
 
-
-// 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
-class User extends Authenticatable
+/**
+ * @property int $id
+ * @property int $role_id
+ * @property int $status_id
+ * @property string $email
+ * @property string $email_verified_at
+ * @property string $password
+ * @property string $remember_token
+ * @property string $created_at
+ * @property string $updated_at
+ * @property string $image_name
+ * @property int $confirm
+ * @property UserRole $userRole
+ * @property UserStatus $userStatus
+ * @property Address $address
+ * @property BookComment[] $bookComments
+ * @property BookFactorUser[] $bookFactorUsers
+ * @property Message[] $messages
+ * @property News[] $news
+ * @property NewsComment[] $newsComments
+ * @property PersonalData $personalData
+ */
+class User extends Model
 {
-    use Notifiable;
-
     /**
-     * The attributes that are mass assignable.
-     *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['role_id', 'status_id', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at', 'image_name', 'confirm'];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    //morteza write follows.
+    public function userRole()
+    {
+        return $this->belongsTo('App\Models\UserRole', 'role_id');
+    }
 
     /**
-     * Get the personal_data record associated with the user.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function personal_data()
+    public function userStatus()
     {
-        return $this->hasOne('App\Models\Personal_data', 'user_id');
+        return $this->belongsTo('App\Models\UserStatus', 'status_id');
     }
 
-    
     /**
-     * The books that belong to the User.
-     */
-
-    public function books()
-    {
-        return $this->belongsToMany('App\Models\Book','book_factor_user', 'user_id', 'book_id');
-    }
-
-    
-      /**
-     * Get the user_roles record associated with the user.
-     */
-    public function user_roles()
-    {
-        return $this->belongsTo('App\Models\User_role', 'role_id');
-    }
-
-    
-      /**
-     * Get the user_status record associated with the user.
-     */
-    public function user_status()
-    {
-        return $this->belongsTo('App\Models\User_status', 'status_id');
-    }
-
-     /**
-     * Get the messages for the user.
-     */
-    public function messages()
-    {
-        return $this->hasMany('App\Models\Message', 'user_id');
-    }
-
-     /**
-     * Get the book_comments for the user.
-     */
-    public function book_comments()
-    {
-        return $this->hasMany('App\Models\Book_comment', 'user_id');
-    }
-
-     /**
-     * Get the news_comments for the user.
-     */
-    public function news_comments()
-    {
-        return $this->hasMany('App\Models\News_comment', 'user_id');
-    }
-
-     /**
-     * Get the news for the user.
-     */
-    public function news()
-    {
-        return $this->hasMany('App\Models\News', 'user_id');
-    }
-
-       /**
-     * Get the address record associated with the user.
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function address()
     {
         return $this->hasOne('App\Models\Address', 'user_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookComments()
+    {
+        return $this->hasMany('App\Models\BookComment');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookFactorUsers()
+    {
+        return $this->hasMany('App\Models\BookFactorUser');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages()
+    {
+        return $this->hasMany('App\Models\Message');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function news()
+    {
+        return $this->hasMany('App\Models\News');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function newsComments()
+    {
+        return $this->hasMany('App\Models\NewsComment');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function personalData()
+    {
+        return $this->hasOne('App\Models\PersonalData', 'user_id');
+    }
 }

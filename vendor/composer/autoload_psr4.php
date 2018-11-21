@@ -37,6 +37,8 @@ return array(
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'Laravel\\Tinker\\' => array($vendorDir . '/laravel/tinker/src'),
+    'Krlove\\EloquentModelGenerator\\' => array($vendorDir . '/krlove/eloquent-model-generator/src'),
+    'Krlove\\CodeGenerator\\' => array($vendorDir . '/krlove/code-generator/src'),
     'JakubOnderka\\PhpConsoleColor\\' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'Fideloper\\Proxy\\' => array($vendorDir . '/fideloper/proxy/src'),

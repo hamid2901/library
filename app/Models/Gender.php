@@ -4,16 +4,30 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property string $sex
+ * @property PersonalData[] $personalDatas
+ */
 class Gender extends Model
 {
-    // protected $table = '';
-
-     /**
-     * Get the personal_datas for the gender.
+    /**
+     * The table associated with the model.
+     * 
+     * @var string
      */
-    public function personal_datas()
-    {
-        return $this->hasMany('App\Models\Personal_data', 'gender_id');
-    }
+    protected $table = 'gender';
 
+    /**
+     * @var array
+     */
+    protected $fillable = ['sex'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function personalDatas()
+    {
+        return $this->hasMany('App\Models\PersonalData');
+    }
 }

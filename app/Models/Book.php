@@ -4,57 +4,80 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property int $availability_id
+ * @property string $title
+ * @property string $image_dir
+ * @property string $created_at
+ * @property string $updated_at
+ * @property string $isbn
+ * @property BookAvailability $bookAvailability
+ * @property Author[] $authors
+ * @property Category[] $categories
+ * @property BookComment[] $bookComments
+ * @property BookDetail $bookDetail
+ * @property BookFactorUser[] $bookFactorUsers
+ */
 class Book extends Model
 {
+    /**
+     * The table associated with the model.
+     * 
+     * @var string
+     */
     protected $table = 'book';
 
-     /**
-     * Get the book_detail record associated with the book.
+    /**
+     * @var array
      */
-    public function book_detail()
-    {
-        return $this->hasOne('App\Models\Book_detail', 'book_id');
-    }
+    protected $fillable = ['availability_id', 'title', 'image_dir', 'created_at', 'updated_at', 'isbn'];
 
-
-     /**
-     * Get the book_availability record associated with the book.
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Book_availability()
+    public function bookAvailability()
     {
-        return $this->belongsTo('App\Models\Book_availability', 'availability_id');
+        return $this->belongsTo('App\Models\BookAvailability', 'availability_id');
     }
 
     /**
-     * The users that belong to the book.
-     */
-
-    public function users()
-    {
-        return $this->belongsToMany('App\User','book_factor_user', 'book_id', 'user_id');
-    }
-
-     /**
-     * The categories that belong to the book.
-     */
-    public function categories()
-    {
-        return $this->belongsToMany('App\Models\Category', 'book_category', 'book_id', 'category_id');
-    }
-      
-    /**
-     * The authors that belong to the book.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function authors()
     {
-        return $this->belongsToMany('App\Models\Author', 'book_author', 'book_id', 'author_id');
+        return $this->belongsToMany('App\Models\Author', 'book_author');
     }
 
     /**
-     * Get the book_comments for the book.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function book_comments()
+    public function categories()
     {
-        return $this->hasMany('App\Models\Book_comment', 'book_id');
+        return $this->belongsToMany('App\Models\Category');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookComments()
+    {
+        return $this->hasMany('App\Models\BookComment');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function bookDetail()
+    {
+        return $this->hasOne('App\Models\BookDetail', 'book_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookFactorUsers()
+    {
+        return $this->hasMany('App\Models\BookFactorUser');
     }
 }

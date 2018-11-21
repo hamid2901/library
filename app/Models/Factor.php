@@ -4,17 +4,35 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property int $borrow_status
+ * @property int $quantity
+ * @property string $borrow_date
+ * @property string $create_at
+ * @property string $update_at
+ * @property string $reserve_date
+ * @property BookFactorUser[] $bookFactorUsers
+ */
 class Factor extends Model
 {
-    // protected $table = '';
+    /**
+     * The table associated with the model.
+     * 
+     * @var string
+     */
+    protected $table = 'factor';
 
     /**
-     * The book_factor_users that belong to the factor.
+     * @var array
      */
+    protected $fillable = ['borrow_status', 'quantity', 'borrow_date', 'create_at', 'update_at', 'reserve_date'];
 
-    public function book_factor_users()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookFactorUsers()
     {
-        return $this->hasMany('App\Models\Book_factor_user', 'factor_id');
+        return $this->hasMany('App\Models\BookFactorUser');
     }
-
 }

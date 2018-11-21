@@ -4,24 +4,45 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property string $title
+ * @property string $publish_date
+ * @property string $description
+ * @property string $article_filename
+ * @property string $created_at
+ * @property string $updated_at
+ * @property int $confirm
+ * @property Author[] $authors
+ * @property Category[] $categories
+ */
 class Article extends Model
 {
-
-    protected $table = 'article';
-   
     /**
-     * The categories that belong to the article.
+     * The table associated with the model.
+     * 
+     * @var string
      */
-    public function categories()
-    {
-        return $this->belongsToMany('App\Models\Category', 'article_category', 'article_id', 'category_id');
-    }
-     
+    protected $table = 'article';
+
     /**
-     * The authors that belong to the article.
+     * @var array
+     */
+    protected $fillable = ['title', 'publish_date', 'description', 'article_filename', 'created_at', 'updated_at', 'confirm'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function authors()
     {
-        return $this->belongsToMany('App\Models\Author', 'article_author', 'article_id', 'author_id');
+        return $this->belongsToMany('App\Models\Author');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\Category');
     }
 }

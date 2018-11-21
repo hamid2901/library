@@ -4,24 +4,38 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property int $user_id
+ * @property string $title
+ * @property string $content
+ * @property string $image_dir
+ * @property string $create_at
+ * @property string $update_at
+ * @property int $confirm
+ * @property User $user
+ * @property NewsComment[] $newsComments
+ */
 class News extends Model
 {
-    // protected $table = '';
-  
     /**
-     * Get the news_commetns for the news.
+     * @var array
      */
-    public function news_commetns()
-    {
-        return $this->hasMany('App\Models\News_comment', 'news_id');
-    }
+    protected $fillable = ['user_id', 'title', 'content', 'image_dir', 'create_at', 'update_at', 'confirm'];
 
     /**
-     * Get the user record associated with the news.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function newsComments()
+    {
+        return $this->hasMany('App\Models\NewsComment');
+    }
 }

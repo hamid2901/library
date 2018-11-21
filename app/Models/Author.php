@@ -4,33 +4,50 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property int $role_id
+ * @property string $first_name
+ * @property string $last_name
+ * @property AuthorRole $authorRole
+ * @property Article[] $articles
+ * @property Book[] $books
+ */
 class Author extends Model
 {
-    
+    /**
+     * The table associated with the model.
+     * 
+     * @var string
+     */
     protected $table = 'author';
 
-      /**
-     * Get the author_role record associated with the author.
-     */
-    public function author_role()
-    {
-        return $this->belongsTo('App\Models\Author_role', 'author_id');
-    }
-
-
-     /**
-     * The books that belong to the author.
-     */
-    public function books()
-    {
-        return $this->belongsToMany('App\Models\Book', 'book_author', 'author_id', 'book_id');
-    }
-    
     /**
-     * The articles that belong to the author.
+     * @var array
+     */
+    protected $fillable = ['role_id', 'first_name', 'last_name'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function authorRole()
+    {
+        return $this->belongsTo('App\Models\AuthorRole', 'role_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function articles()
     {
-        return $this->belongsToMany('App\Models\Article', 'article_author', 'author_id', 'article_id');
+        return $this->belongsToMany('App\Models\Article');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function books()
+    {
+        return $this->belongsToMany('App\Models\Book', 'book_author');
     }
 }
