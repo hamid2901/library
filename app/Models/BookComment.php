@@ -16,10 +16,29 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BookComment extends Model
 {
-    /**
-     * @var array
-     */
-    protected $fillable = ['reply_to', 'content', 'created_at', 'updated_at', 'confirm'];
+    
+    protected $fillable = [
+    
+    ];
+    
+    protected $hidden = [
+    
+    ];
+    
+    protected $dates = [
+    
+    ];
+    
+    
+    public $timestamps = false;
+    
+    protected $appends = ['resource_url'];
+
+    /* ************************ ACCESSOR ************************* */
+
+    public function getResourceUrlAttribute() {
+        return url('/admin/book-comments/'.$this->getKey());
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

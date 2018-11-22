@@ -30,17 +30,46 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Book extends Model
 {
+
+    protected $fillable = [
+        "title",
+        "availability_id",
+        "image_dir",
+        "isbn",
+        "publisher_id",
+        "description",
+        "issue_date",
+        "cover",
+        "format_id",
+        "pages",
+        "weight",
+        "price",
+    
+    ];
+    
+    protected $hidden = [
+    
+    ];
+    
+    protected $dates = [
+    
+    ];
+    
+    
+    
+    protected $appends = ['resource_url'];
+
+
+    public function getResourceUrlAttribute() {
+        return url('/admin/books/'.$this->getKey());
+    }
+
     /**
      * The table associated with the model.
      * 
      * @var string
      */
     protected $table = 'book';
-
-    /**
-     * @var array
-     */
-    protected $fillable = ['availability_id', 'publisher_id', 'format_id', 'title', 'image_dir', 'created_at', 'updated_at', 'isbn', 'description', 'issue_date', 'cover', 'pages', 'weight', 'price'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

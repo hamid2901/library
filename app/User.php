@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @property int $id
  * @property int $role_id
@@ -39,10 +40,52 @@ use Illuminate\Database\Eloquent\Model;
  */
 class User extends Model
 {
-    /**
-     * @var array
-     */
-    protected $fillable = ['role_id', 'status_id', 'sex', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at', 'image_name', 'confirm', 'first_name', 'last_name', 'phone', 'profession', 'university', 'birthdate', 'city', 'street', 'plate', 'alley', 'postal_code'];
+    use SoftDeletes;
+
+    protected $fillable = [
+        "email",
+        "email_verified_at",
+        "password",
+        "image_name",
+        "role_id",
+        "status_id",
+        "confirm",
+        "first_name",
+        "last_name",
+        "phone",
+        "profession",
+        "university",
+        "birthdate",
+        "sex",
+        "city",
+        "street",
+        "plate",
+        "alley",
+        "postal_code",
+        "activated",
+        "forbidden",
+        "language",
+    
+    ];
+    
+    protected $hidden = [
+        "password",
+        "remember_token",
+    
+    ];
+    
+    protected $dates = [
+        "email_verified_at",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+    
+    ];
+    protected $appends = ['resource_url'];
+
+    public function getResourceUrlAttribute() {
+        return url('/admin/users/'.$this->getKey());
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

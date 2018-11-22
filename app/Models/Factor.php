@@ -17,17 +17,39 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Factor extends Model
 {
+    protected $fillable = [
+        "borrow_status",
+        "quantity",
+        "borrow_date",
+        "reserve_date",
+        "duration",
+    
+    ];
+    
+    protected $hidden = [
+    
+    ];
+    
+    protected $dates = [
+    
+    ];
+    
+    
+    
+    protected $appends = ['resource_url'];
+
+    /* ************************ ACCESSOR ************************* */
+
+    public function getResourceUrlAttribute() {
+        return url('/admin/factors/'.$this->getKey());
+    }
+
     /**
      * The table associated with the model.
      * 
      * @var string
      */
     protected $table = 'factor';
-
-    /**
-     * @var array
-     */
-    protected $fillable = ['borrow_status', 'quantity', 'borrow_date', 'created_at', 'updated_at', 'reserve_date', 'duration'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

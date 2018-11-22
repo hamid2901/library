@@ -15,17 +15,38 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Author extends Model
 {
+
+    protected $fillable = [
+        "first_name",
+        "last_name",
+        "role_id",
+    
+    ];
+    
+    protected $hidden = [
+    
+    ];
+    
+    protected $dates = [
+    
+    ];
+    
+    
+    public $timestamps = false;
+    
+    protected $appends = ['resource_url'];
+
+    /* ************************ ACCESSOR ************************* */
+
+    public function getResourceUrlAttribute() {
+        return url('/admin/authors/'.$this->getKey());
+    }
     /**
      * The table associated with the model.
      * 
      * @var string
      */
     protected $table = 'author';
-
-    /**
-     * @var array
-     */
-    protected $fillable = ['role_id', 'first_name', 'last_name'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

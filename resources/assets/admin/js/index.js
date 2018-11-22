@@ -1,0 +1,12 @@
+import './post';
+import './user';
+import './book';
+import './article';
+import './author';
+import './category';
+import './factor';
+import './message';
+import './news';
+import './book-comment';
+import './news-comment';
+import './publisher';

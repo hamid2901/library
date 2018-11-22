@@ -18,17 +18,38 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Article extends Model
 {
+    protected $fillable = [
+        "title",
+        "publish_date",
+        "description",
+        "article_filename",
+        "confirm",
+    
+    ];
+    
+    protected $hidden = [
+    
+    ];
+    
+    protected $dates = [
+    
+    ];
+    
+    
+    
+    protected $appends = ['resource_url'];
+
+    /* ************************ ACCESSOR ************************* */
+
+    public function getResourceUrlAttribute() {
+        return url('/admin/articles/'.$this->getKey());
+    }
     /**
      * The table associated with the model.
      * 
      * @var string
      */
     protected $table = 'article';
-
-    /**
-     * @var array
-     */
-    protected $fillable = ['title', 'publish_date', 'description', 'article_filename', 'created_at', 'updated_at', 'confirm'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

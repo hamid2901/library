@@ -12,10 +12,29 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Category extends Model
 {
-    /**
-     * @var array
-     */
-    protected $fillable = ['type'];
+       
+    protected $fillable = [
+    
+    ];
+    
+    protected $hidden = [
+    
+    ];
+    
+    protected $dates = [
+    
+    ];
+    
+    
+    public $timestamps = false;
+    
+    protected $appends = ['resource_url'];
+
+    /* ************************ ACCESSOR ************************* */
+
+    public function getResourceUrlAttribute() {
+        return url('/admin/categories/'.$this->getKey());
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

@@ -18,11 +18,32 @@ use Illuminate\Database\Eloquent\Model;
  */
 class News extends Model
 {
-    /**
-     * @var array
-     */
-    protected $fillable = ['user_id', 'title', 'content', 'image_dir', 'created_at', 'updated_at', 'confirm'];
+    protected $fillable = [
+        "title",
+        "content",
+        "image_dir",
+        "user_id",
+        "confirm",
+    
+    ];
+    
+    protected $hidden = [
+    
+    ];
+    
+    protected $dates = [
+    
+    ];
+    
+    
+    
+    protected $appends = ['resource_url'];
 
+    /* ************************ ACCESSOR ************************* */
+
+    public function getResourceUrlAttribute() {
+        return url('/admin/news/'.$this->getKey());
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

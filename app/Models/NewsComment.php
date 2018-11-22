@@ -16,10 +16,28 @@ use Illuminate\Database\Eloquent\Model;
  */
 class NewsComment extends Model
 {
-    /**
-     * @var array
-     */
-    protected $fillable = ['reply_to', 'content', 'created_at', 'updated_at', 'confirm'];
+    protected $fillable = [
+    
+    ];
+    
+    protected $hidden = [
+    
+    ];
+    
+    protected $dates = [
+    
+    ];
+    
+    
+    public $timestamps = false;
+    
+    protected $appends = ['resource_url'];
+
+    /* ************************ ACCESSOR ************************* */
+
+    public function getResourceUrlAttribute() {
+        return url('/admin/news-comments/'.$this->getKey());
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

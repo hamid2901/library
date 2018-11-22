@@ -14,9 +14,9 @@ class CreateArticleCategoryTable extends Migration {
 	{
 		Schema::create('article_category', function(Blueprint $table)
 		{
-			$table->integer('category_id')->index('idx_article_category_category_id');
 			$table->integer('article_id')->index('idx_article_category_article_id');
-			$table->primary(['category_id','article_id']);
+			$table->integer('category_id')->index('idx_article_category_category_id');
+			$table->primary(['article_id','category_id']);
 		});
 	}
 
