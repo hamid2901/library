@@ -12,7 +12,8 @@ class IndexArticle extends FormRequest
      */
     public function authorize()
     {
-        return Gate::allows('admin.article.index');
+        // return Gate::allows('admin.article.index');
+        return true;
     }
 
     /**

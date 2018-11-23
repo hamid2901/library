@@ -10,3 +10,5 @@ import './news';
 import './book-comment';
 import './news-comment';
 import './publisher';
+import './profile-edit-profile';
+import './profile-edit-password';

@@ -12,14 +12,11 @@
 */
 
 
-Route::get('/admin', function () {
-    return view('admin.hello-world');
-});
-
-
-
 /* Auto-generated admin routes */
 Route::middleware(['admin'])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.hello-world');
+    });
     Route::get('/admin/users',                                  'Admin\UsersController@index');
     Route::get('/admin/users/create',                           'Admin\UsersController@create');
     Route::post('/admin/users',                                 'Admin\UsersController@store');
@@ -33,14 +30,14 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 /* Auto-generated admin routes */
-// Route::middleware(['admin'])->group(function () {
+Route::middleware(['admin'])->group(function () {
     Route::get('/admin/books',                                  'Admin\BookController@index');
     Route::get('/admin/books/create',                           'Admin\BookController@create');
     Route::post('/admin/books',                                 'Admin\BookController@store');
     Route::get('/admin/books/{book}/edit',                      'Admin\BookController@edit')->name('admin/books/edit');
     Route::post('/admin/books/{book}',                          'Admin\BookController@update')->name('admin/books/update');
     Route::delete('/admin/books/{book}',                        'Admin\BookController@destroy')->name('admin/books/destroy');
-// });
+});
 
 /* Auto-generated admin routes */
 Route::middleware(['admin'])->group(function () {
@@ -130,4 +127,12 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/publishers/{publisher}/edit',            'Admin\PublisherController@edit')->name('admin/publishers/edit');
     Route::post('/admin/publishers/{publisher}',                'Admin\PublisherController@update')->name('admin/publishers/update');
     Route::delete('/admin/publishers/{publisher}',              'Admin\PublisherController@destroy')->name('admin/publishers/destroy');
+});
+
+/* Auto-generated profile routes */
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin/profile',                                'Admin\ProfileController@editProfile');
+    Route::post('/admin/profile',                               'Admin\ProfileController@updateProfile');
+    Route::get('/admin/password',                               'Admin\ProfileController@editPassword');
+    Route::post('/admin/password',                              'Admin\ProfileController@updatePassword');
 });

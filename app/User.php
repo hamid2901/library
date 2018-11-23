@@ -5,6 +5,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 /**
  * @property int $id
  * @property int $role_id
@@ -38,8 +40,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Message[] $messages
  * @property News[] $news
  */
-class User extends Model
+class User extends Model  implements Authenticatable
 {
+    use AuthenticableTrait;
     use SoftDeletes;
 
     protected $fillable = [
