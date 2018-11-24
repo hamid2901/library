@@ -21,6 +21,10 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
     );
 
     public static $prefixLengthsPsr4 = array (
+        'r' => 
+        array (
+            'risul\\LaravelLikeComment\\' => 25,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -139,6 +143,10 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
     );
 
     public static $prefixDirsPsr4 = array (
+        'risul\\LaravelLikeComment\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/risul/laravel-like-comment/src',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
@@ -4404,6 +4412,13 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+        'risul\\LaravelLikeComment\\Controllers\\CommentController' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Controllers/CommentController.php',
+        'risul\\LaravelLikeComment\\Controllers\\LikeController' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Controllers/LikeController.php',
+        'risul\\LaravelLikeComment\\Facade\\LaravelLikeComment' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Facade/LaravelLikeComment.php',
+        'risul\\LaravelLikeComment\\LikeCommentServiceProvider' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/LikeCommentServiceProvider.php',
+        'risul\\LaravelLikeComment\\Models\\Comment' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Models/Comment.php',
+        'risul\\LaravelLikeComment\\Models\\Like' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Models/Like.php',
+        'risul\\LaravelLikeComment\\Models\\TotalLike' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Models/TotalLike.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

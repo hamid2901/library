@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b153881baa7b4cf9b59865baa2117a08",
+    "content-hash": "e031e3ebf72f01f575aa114572a3edf5",
     "packages": [
         {
             "name": "brackets/admin-auth",
@@ -1017,6 +1017,71 @@
             "time": "2018-11-07T12:41:02+00:00"
         },
         {
+            "name": "laravel/scout",
+            "version": "v6.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/scout.git",
+                "reference": "767de369a4702cdd4fdf29d1dcb4ba7dfafdbe95"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/767de369a4702cdd4fdf29d1dcb4ba7dfafdbe95",
+                "reference": "767de369a4702cdd4fdf29d1dcb4ba7dfafdbe95",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/bus": "~5.4",
+                "illuminate/contracts": "~5.4",
+                "illuminate/database": "~5.4",
+                "illuminate/pagination": "~5.4",
+                "illuminate/queue": "~5.4",
+                "illuminate/support": "~5.4",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "algolia/algoliasearch-client-php": "^1.10",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~6.0"
+            },
+            "suggest": {
+                "algolia/algoliasearch-client-php": "Required to use the Algolia engine (^1.10)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Scout\\ScoutServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Scout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Scout provides a driver based solution to searching your Eloquent models.",
+            "keywords": [
+                "algolia",
+                "laravel",
+                "search"
+            ],
+            "time": "2018-11-20T16:12:35+00:00"
+        },
+        {
             "name": "laravel/tinker",
             "version": "v1.0.8",
             "source": {
@@ -1755,6 +1820,45 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "risul/laravel-like-comment",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/risul3/laravel-like-comment.git",
+                "reference": "f9051abb5770b71ccdad9fca4408d5238645df52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/risul3/laravel-like-comment/zipball/f9051abb5770b71ccdad9fca4408d5238645df52",
+                "reference": "f9051abb5770b71ccdad9fca4408d5238645df52",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "risul\\LaravelLikeComment\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "risul",
+                    "email": "risul321@gmail.com"
+                }
+            ],
+            "description": "Ajax based site wide like and comment system for laravel",
+            "keywords": [
+                "ajax",
+                "comment",
+                "laravel",
+                "like"
+            ],
+            "time": "2017-07-03T18:11:34+00:00"
         },
         {
             "name": "spatie/laravel-translatable",

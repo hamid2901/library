@@ -167,7 +167,7 @@ return [
             // ...
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         LaraCrud\LaraCrudServiceProvider::class,
-
+        risul\LaravelLikeComment\LikeCommentServiceProvider::class,
         /*
          * Application Service Providers...
          */

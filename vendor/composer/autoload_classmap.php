@@ -3989,4 +3989,11 @@ return array(
     'phpDocumentor\\Reflection\\Types\\String_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/String_.php',
     'phpDocumentor\\Reflection\\Types\\This' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/This.php',
     'phpDocumentor\\Reflection\\Types\\Void_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+    'risul\\LaravelLikeComment\\Controllers\\CommentController' => $vendorDir . '/risul/laravel-like-comment/src/Controllers/CommentController.php',
+    'risul\\LaravelLikeComment\\Controllers\\LikeController' => $vendorDir . '/risul/laravel-like-comment/src/Controllers/LikeController.php',
+    'risul\\LaravelLikeComment\\Facade\\LaravelLikeComment' => $vendorDir . '/risul/laravel-like-comment/src/Facade/LaravelLikeComment.php',
+    'risul\\LaravelLikeComment\\LikeCommentServiceProvider' => $vendorDir . '/risul/laravel-like-comment/src/LikeCommentServiceProvider.php',
+    'risul\\LaravelLikeComment\\Models\\Comment' => $vendorDir . '/risul/laravel-like-comment/src/Models/Comment.php',
+    'risul\\LaravelLikeComment\\Models\\Like' => $vendorDir . '/risul/laravel-like-comment/src/Models/Like.php',
+    'risul\\LaravelLikeComment\\Models\\TotalLike' => $vendorDir . '/risul/laravel-like-comment/src/Models/TotalLike.php',
 );

@@ -26,8 +26,6 @@ Route::middleware(['admin'])->group(function () {
 });
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-
 
 /* Auto-generated admin routes */
 Route::middleware(['admin'])->group(function () {
@@ -136,3 +134,17 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/password',                               'Admin\ProfileController@editPassword');
     Route::post('/admin/password',                              'Admin\ProfileController@updatePassword');
 });
+
+
+//Homepage route
+Route::get('/', 'HomeController@index')->name('home');
+
+//Routes for Visitors
+Route::get('/books',        'Admin/BookController@index');
+Route::get('/news',         'Admin/NewsController@index');
+Route::get('/articles',     'Admin/ArticleController@index');
+
+Route::get('/home',     'HomeController@index');
+
+
+

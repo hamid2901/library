@@ -37,7 +37,8 @@ class BookController extends Controller
             return ['data' => $data];
         }
 
-        return view('admin.book.index', ['data' => $data]);
+        // return view('admin.book.index', ['data' => $data]);
+        return view('admin.book.index')->with('books', Book::all());
 
     }
 
@@ -140,5 +141,9 @@ class BookController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function BookByCateogory(){
+
     }
 }

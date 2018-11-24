@@ -14,7 +14,9 @@
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
         "laravel/framework": "5.7.*",
-        "laravel/tinker": "^1.0"
+        "laravel/scout": "^6.1",
+        "laravel/tinker": "^1.0",
+        "risul/laravel-like-comment": "^2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

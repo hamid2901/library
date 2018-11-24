@@ -33,9 +33,9 @@ class ArticleController extends Controller
             ['id', 'title', 'publish_date', 'description', 'article_filename', 'created_at', 'updated_at']
         );
 
-        // if ($request->ajax()) {
-        //     return ['data' => $data];
-        // }
+        if ($request->ajax()) {
+            return ['data' => $data];
+        }
 
         return view('admin.article.index', ['data' => $data]);
 
