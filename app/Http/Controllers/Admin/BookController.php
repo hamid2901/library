@@ -146,4 +146,15 @@ class BookController extends Controller
     public function BookByCateogory(){
 
     }
+
+    public function indexBooks()
+    {
+        $books = Book::with('categories')->get();
+        // foreach($news as $new){
+        //     $new->created_at = Jalalian::forge('now')->format('%B %d، %Y'); // دی 02، 1391
+        // }
+        return view('books.index')->with('books', $books);
+    }
+
+    
 }

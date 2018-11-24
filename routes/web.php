@@ -140,11 +140,16 @@ Route::middleware(['admin'])->group(function () {
 Route::get('/', 'HomeController@index')->name('home');
 
 //Routes for Visitors
-Route::get('/books',        'Admin/BookController@index');
-Route::get('/news',         'Admin/NewsController@index');
 Route::get('/articles',     'Admin/ArticleController@index');
 
-Route::get('/home',     'HomeController@index');
+Route::get('/news',         'Admin\NewsController@indexNews');
+Route::get('/news/{news}',  'Admin\NewsController@showNews');
 
+Route::get('/books',        'Admin\BookController@indexBooks');
+Route::get('/book/{book}',  'Admin\BookController@showBook');
 
+Route::get('/articles',        'Admin\ArticleController@indexArticles');
+Route::get('/Article/{article}',  'Admin\ArticleController@showArticle');
+
+Route::get('/contact',        'Admin\BookController@indexBooks');
 

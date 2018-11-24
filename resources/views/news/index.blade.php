@@ -3,7 +3,7 @@
 @section('content')
 
     <h1 class="page-header">
-        مقالات سایت
+        اخبار 
     </h1>
 
     <!-- First Blog Post -->
@@ -11,17 +11,17 @@
 
         <div>
             <h2>
-                <a href="#">{{ $new->title }}</a>
+                عنوان: <a href="{{url('/news/'.$new->id.'')}}">{{ $new->title }}</a>
             </h2>
             <p class="lead">
-                ارسال شده توسط <a href="index.php">حسام موسوی</a>
+                ارسال شده توسط {{$new->user->firs_tname}}{{$new->user->last_name}}
             </p>
-            <p><span class="glyphicon glyphicon-time"></span>ارسال شده در تاریخ  فرودین 1396</p>
+            <p><i class="far fa-clock"></i>&nbsp;</span>&nbspارسال شده در تاریخ  {{  jdate($new->created_at)->format(' %d %B، %Y') }}</p>
             <hr>
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+            <img class="img-responsive" src="../images/{{$new->title}}.jpg" alt="hello">
             <hr>
             <p>{!! $new->content !!}</p>
-            <a class="btn btn-primary" href="#">ادامه  مطلب <span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="btn btn-primary" href="{{url('/news/'.$new->id.'')}}">ادامه  مطلب &nbsp<i class="fas fa-chevron-circle-left"></i></a>
         </div>
 
         @if(! $loop->last )

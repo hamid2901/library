@@ -9,6 +9,8 @@ use App\Http\Requests\Admin\News\UpdateNews;
 use App\Http\Requests\Admin\News\DestroyNews;
 use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\News;
+use App\User;
+use App\Models\NewsComment;
 
 class NewsController extends Controller
 {
@@ -140,5 +142,19 @@ class NewsController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function indexNews()
+    {
+        $news = News::with('user')->where('confirm',1)->latest()->take(4)->get();
+        return view('news.index')->with('news', $news);
+    }
+
+    public function showNews($new)
+    {
+        $news = News::find($new);
+        // $comments = NewsComment::with('News')->where('confirm', 1)->get();
+        $comments = [[1], [2]];
+        return view('News.show',compact('news','comments'));
     }
 }

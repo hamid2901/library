@@ -6,27 +6,27 @@
     <!-- Blog Post -->
 
     <!-- Title -->
-    <h1>{{ $article->title }}</h1>
+    <h1>{{ $news->title }}</h1>
 
     <!-- Author -->
     <p class="lead">
-        ارسال شده توسط <a href="index.php">{{ $article->user->name }}</a>
+        ارسال شده توسط <a href="index.php">{{ $news->user->name }}</a>
     </p>
 
     <hr>
 
     <!-- Date/Time -->
-    <p><span class="glyphicon glyphicon-time"></span> ارسال شده در تاریخ  {{  jdate($article->created_at)->format('%B %d، %Y') }}</p>
+    <p><span class="glyphicon glyphicon-time"></span> ارسال شده در تاریخ  {{  jdate($news->created_at)->format('%B %d، %Y') }}</p>
 
     <hr>
 
     <!-- Preview Image -->
-    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+    <img class="img-responsive"src="../images/{{$news->title}}.jpg" alt="http://placehold.it/900x300">
 
     <hr>
 
     <!-- Post Content -->
-    {!! $article->body !!}
+    {!! $news->content !!}
     <hr>
 
     <!-- Blog Comments -->
@@ -38,7 +38,7 @@
         @if(auth()->check())
             <h4>ارسال کامنت :</h4>
             <hr>
-            <form role="form" action="{{ route('comment.store' , ['article' => $article->slug ]) }}" method="post">
+            <form role="form" action="{{ route('comment.store' , ['article' => $news->slug ]) }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-group">
                     <label for="title">متن : </label>
@@ -54,17 +54,17 @@
 
     <hr>
 
-    <!-- Posted Comments -->
+    {{-- <!-- Posted Comments -->
     @foreach($comments as $comment)
         <div class="media">
             <div class="media-body">
                 <h4 class="media-heading">{{ $comment->user->name }}
-                    <small>ارسال شده در تاریخ  {{  jdate($article->created_at)->format('%B %d، %Y') }}</small>
+                    <small>ارسال شده در تاریخ  {{  jdate($news->created_at)->format('%B %d، %Y') }}</small>
                 </h4>
                 {{ $comment->body }}
             </div>
         </div>
-    @endforeach
+    @endforeach --}}
 
     {{--<!-- Comment -->--}}
     {{--<div class="media">--}}

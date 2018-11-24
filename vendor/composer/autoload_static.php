@@ -15,9 +15,11 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'a4ecaeafb8cfb009ad0e052c90355e98' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
+        'e4e590a9b5afe940db71ee1662c02677' => __DIR__ . '/..' . '/morilog/jalali/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -83,6 +85,7 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         ),
         'M' => 
         array (
+            'Morilog\\Jalali\\' => 15,
             'Monolog\\' => 8,
         ),
         'L' => 
@@ -139,6 +142,7 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         ),
         'A' => 
         array (
+            'Assert\\' => 7,
             'App\\' => 4,
         ),
     );
@@ -266,6 +270,10 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
         ),
+        'Morilog\\Jalali\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/morilog/jalali/src',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -369,6 +377,10 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'BeyondCode\\DumpServer\\' => 
         array (
             0 => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src',
+        ),
+        'Assert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/beberlei/assert/lib/Assert',
         ),
         'App\\' => 
         array (
@@ -536,6 +548,13 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'ArtcileCategorySeeder' => __DIR__ . '/../..' . '/database/seeds/ArticleCategorySeeder.php',
         'ArticleAuthorSeeder' => __DIR__ . '/../..' . '/database/seeds/ArticleAuthorSeeder.php',
         'ArticleSeeder' => __DIR__ . '/../..' . '/database/seeds/ArticleSeeder.php',
+        'Assert\\Assert' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/Assert.php',
+        'Assert\\Assertion' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/Assertion.php',
+        'Assert\\AssertionChain' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/AssertionChain.php',
+        'Assert\\AssertionFailedException' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/AssertionFailedException.php',
+        'Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/InvalidArgumentException.php',
+        'Assert\\LazyAssertion' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/LazyAssertion.php',
+        'Assert\\LazyAssertionException' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/LazyAssertionException.php',
         'AuthorRoleSeeder' => __DIR__ . '/../..' . '/database/seeds/AuthorRoleSeeder.php',
         'AuthorSeeder' => __DIR__ . '/../..' . '/database/seeds/AuthorSeeder.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
@@ -2692,6 +2711,8 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'Monolog\\ResettableInterface' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ResettableInterface.php',
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
+        'Morilog\\Jalali\\CalendarUtils' => __DIR__ . '/..' . '/morilog/jalali/src/CalendarUtils.php',
+        'Morilog\\Jalali\\Jalalian' => __DIR__ . '/..' . '/morilog/jalali/src/Jalalian.php',
         'NewsCommentsSeeder' => __DIR__ . '/../..' . '/database/seeds/NewsCommentsSeeder.php',
         'NewsSeeder' => __DIR__ . '/../..' . '/database/seeds/NewsSeeder.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/CollisionServiceProvider.php',

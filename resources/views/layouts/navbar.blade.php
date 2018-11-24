@@ -9,19 +9,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">راکت</a>
+            <a class="navbar-brand" href="#">کتابخانه مرتمید</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">درباره ما</a>
+                    <a href="{{url('/books')}}">کتاب ها</a>
                 </li>
                 <li>
-                    <a href="#">سرویس ها</a>
+                    <a href="{{url('/news')}}">اخبار</a>
                 </li>
                 <li>
-                    <a href="#">تماس با ما</a>
+                    <a href="{{url('/articles')}}">مقالات</a>
+                </li>
+                <li>
+                    <a href="{{url('/contact')}}">تماس با ما</a>
                 </li>
             </ul>
         </div>
