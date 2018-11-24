@@ -39,6 +39,7 @@ return array(
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'Laravel\\Tinker\\' => array($vendorDir . '/laravel/tinker/src'),
+    'Laravel\\Scout\\' => array($vendorDir . '/laravel/scout/src'),
     'LaraCrud\\' => array($vendorDir . '/digitaldream/laracrud/src/lara-crud'),
     'Krlove\\EloquentModelGenerator\\' => array($vendorDir . '/krlove/eloquent-model-generator/src'),
     'Krlove\\CodeGenerator\\' => array($vendorDir . '/krlove/code-generator/src'),
