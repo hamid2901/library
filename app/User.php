@@ -117,9 +117,9 @@ class User extends Model  implements Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function bookCommentUsers()
+    public function bookComments()
     {
-        return $this->hasMany('App\Models\BookCommentUser');
+        return $this->hasMany('App\Models\BookComment', 'user_id');
     }
 
     /**
@@ -129,14 +129,14 @@ class User extends Model  implements Authenticatable
     {
         return $this->hasMany('App\Models\BookFactorUser');
     }
-
-    /**
+ /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function commentNewsUsers()
+    public function newsComments()
     {
-        return $this->hasMany('App\Models\CommentNewsUser');
+        return $this->hasMany('App\Models\NewsComment', 'user_id');
     }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

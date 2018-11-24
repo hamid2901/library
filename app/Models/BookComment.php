@@ -49,10 +49,20 @@ class BookComment extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
-    public function bookCommentUsers()
+    public function book()
     {
-        return $this->hasMany('App\Models\BookCommentUser', 'comment_id');
+        return $this->belongsTo('App\Models\Book', 'book_id');
     }
+
+     /**
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
+
 }

@@ -114,9 +114,9 @@ class Book extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function bookCommentUsers()
+    public function bookComments()
     {
-        return $this->hasMany('App\Models\BookCommentUser');
+        return $this->hasMany('App\Models\BookComment', 'book_id');
     }
 
     /**

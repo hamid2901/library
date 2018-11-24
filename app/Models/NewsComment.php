@@ -48,10 +48,18 @@ class NewsComment extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
-    public function commentNewsUsers()
+    public function news()
     {
-        return $this->hasMany('App\Models\CommentNewsUser', 'comment_id');
+        return $this->belongsTo('App\Models\News', 'news_id');
+    }
+
+     /**
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
     }
 }

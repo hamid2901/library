@@ -49,14 +49,14 @@ class News extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function commentNewsUsers()
+    public function newsComments()
     {
-        return $this->hasMany('App\Models\CommentNewsUser');
+        return $this->hasMany('App\Models\NewsComment', 'news_id');
     }
 }
