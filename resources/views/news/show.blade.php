@@ -38,7 +38,7 @@
         @if(auth()->check())
             <h4>ارسال کامنت :</h4>
             <hr>
-            <form role="form" action="{{ route('comment.store' , ['article' => $news->slug ]) }}" method="post">
+            <form role="form" action="{{ route('comment.store' , ['news' => $news->slug ]) }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-group">
                     <label for="title">متن : </label>
