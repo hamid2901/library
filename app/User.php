@@ -34,9 +34,7 @@ use Illuminate\Auth\Authenticatable as AuthenticableTrait;
  * @property UserGender $userGender
  * @property UserRole $userRole
  * @property UserStatus $userStatus
- * @property BookCommentUser[] $bookCommentUsers
  * @property BookFactorUser[] $bookFactorUsers
- * @property CommentNewsUser[] $commentNewsUsers
  * @property Message[] $messages
  * @property News[] $news
  */
@@ -80,9 +78,7 @@ class User extends Model  implements Authenticatable
     protected $dates = [
         "email_verified_at",
         "created_at",
-        "updated_at",
-        "deleted_at",
-    
+        "updated_at",    
     ];
     protected $appends = ['resource_url'];
 
@@ -151,7 +147,7 @@ class User extends Model  implements Authenticatable
      */
     public function news()
     {
-        return $this->hasMany('App\Models\News');
+        return $this->hasMany('App\Models\News', 'user_id');
     }
 
      /**

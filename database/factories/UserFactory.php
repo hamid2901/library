@@ -37,6 +37,8 @@ $factory->define(App\User::class, function (Faker $faker) {
         'profession'=> $faker->jobTitle,
         'university'=> $faker->company,
         'birthdate'=> $faker->unixTime(),
+        'deleted_at'=> Carbon::now(),
+
     ];
 });
 
@@ -53,6 +55,7 @@ $factory->define(App\Models\Book::class, function (Faker $faker) {
         'pages'=> $faker->numberBetween(30,1500),
         'weight'=> $faker->numberBetween(500,2500),
         'price'=> $faker->numberBetween(5000,1000000),
+        'description'=> $faker->sentence($nbWords = 6, $variableNbWords = true),
     ];
 });
 

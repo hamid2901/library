@@ -146,13 +146,13 @@ class NewsController extends Controller
 
     public function indexNews()
     {
-        $news = News::with('user')->where('confirm',1)->latest()->take(4)->get();
+        $news = News::with('user')->where('confirm',1)->paginate(4);
         return view('news.index')->with('news', $news);
     }
 
     public function showNews($new)
     {
-        $news = News::find($new);
+        $news = News::with('user')->find($new);
         // $comments = NewsComment::with('News')->where('confirm', 1)->get();
         $comments = [[1], [2]];
         return view('News.show',compact('news','comments'));

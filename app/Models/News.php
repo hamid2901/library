@@ -13,8 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property int $confirm
- * @property User $user
- * @property CommentNewsUser[] $commentNewsUsers
+ * @property user $user
  */
 class News extends Model
 {
@@ -49,7 +48,7 @@ class News extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User');
     }
 
     /**
