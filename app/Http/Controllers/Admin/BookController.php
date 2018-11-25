@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\Book\DestroyBook;
 use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Book;
 use App\Models\Publisher;
+use App\Models\Category;
 
 class BookController extends Controller
 {
@@ -150,9 +151,28 @@ class BookController extends Controller
 
     public function indexBooks()
     {
-        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->where('availability_id', 1)->paginate(10);
+        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->where('availability_id', 1)->paginate(5);
         $publishers = Publisher::all();
-        return view('books.index')->with(['books'=> $books , 'publishers'=>$publishers]);
+        $categories = Category::all();
+        return view('books.index')->with(['books'=> $books , 'publishers'=>$publishers, 'categories'=> $categories]);
+    }
+
+    public function searchByCategory($categoryName = null)
+    {
+        // $categories = Category::all();
+        // $category = Category::with('books')->where('type',$categoryName )->with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->paginate(5);
+        // $publishers = Publisher::all();
+        // return view('books.index')->with(['categoryBook'=> $category , 'publishers'=>$publishers, 'categories'=> $categories]);
+        return view('books.index')->with('categoryName', $categoryName);
+
+    }
+
+    public function searchByPublisher($publisherName = null)
+    {
+        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->where('availability_id', 1)->paginate(5);
+        $publishers = Publisher::all();
+        $categories = Category::all();
+        return view('books.index')->with(['books'=> $books , 'publishers'=>$publishers, 'categories'=> $categories]);
     }
 
     

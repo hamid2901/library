@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateUserRoleTable extends Migration {
+class CreateLaravellikecommentLikesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,13 @@ class CreateUserRoleTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_role', function(Blueprint $table)
+		Schema::create('laravellikecomment_likes', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('role', 10)->nullable();
+			$table->integer('user_id');
+			$table->string('item_id', 191);
+			$table->smallInteger('vote');
+			$table->timestamps();
 		});
 	}
 
@@ -27,7 +30,7 @@ class CreateUserRoleTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_role');
+		Schema::drop('laravellikecomment_likes');
 	}
 
 }

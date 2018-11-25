@@ -20,6 +20,8 @@ class CreateNewsCommentsTable extends Migration {
 			$table->string('created_at', 30)->nullable();
 			$table->string('updated_at', 30)->nullable();
 			$table->integer('confirm')->default(0);
+			$table->integer('user_id')->unsigned()->nullable()->index('idx_news_comments_user_id');
+			$table->integer('new_id')->nullable()->index('idx_news_comments_new_id');
 		});
 	}
 

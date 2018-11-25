@@ -146,7 +146,12 @@ Route::get('/news',         'Admin\NewsController@indexNews');
 Route::get('/news/{news}',  'Admin\NewsController@showNews');
 
 Route::get('/books',        'Admin\BookController@indexBooks');
-Route::get('/book/{book}',  'Admin\BookController@showBook');
+Route::get('/books/{book}',  'Admin\BookController@showBook');
+Route::get('/books/category/{categoryName}',  'Admin\BookController@searchByCategory');
+Route::get('/books/publisher/{publisherName}',  'Admin\BookController@searchByPublisher');
+
+
+
 
 Route::get('/articles',        'Admin\ArticleController@indexArticles');
 Route::get('/Article/{article}',  'Admin\ArticleController@showArticle');
