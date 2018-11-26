@@ -11,6 +11,11 @@ use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Book;
 use App\Models\Publisher;
 use App\Models\Category;
+use Edofre\SliderPro\Models\Slide;
+use Edofre\SliderPro\Models\Slides\Caption;
+use Edofre\SliderPro\Models\Slides\Image;
+use Edofre\SliderPro\Models\Slides\Layer;
+use Edofre\SliderPro\SliderPro;
 
 class BookController extends Controller
 {
@@ -175,5 +180,36 @@ class BookController extends Controller
         return view('books.search')->with(['searchedBooks'=> $books , 'publishers'=>$publishers, 'categories'=> $categories]);
     }
 
+    public function searchByText(Request $request)
+    {
+        $keyword = $request->get('word');
+        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->where('title','LIKE','%'.$keyword.'%')->orWhere('description','LIKE','%'.$keyword.'%')->orWhere('description','LIKE','%'.$keyword.'%')->paginate(5);
+        $publishers = Publisher::all();
+        $categories = Category::all();
+        return view('books.index')->with(['books'=> $books , 'publishers'=>$publishers, 'categories'=> $categories]);
+     }
+
+
+     public function showBook($id = null)
+    {
+        $slider = new SliderPro();
+        $slider->setId('my-slider');
+        $slider->setOptions([
+                'sliderOptions' => [
+                        'width'  => 960,
+                        'height' => 500,
+                        'arrows' => true,
+                        'init'   => new \Edofre\SliderPro\JsExpression("
+                    function() {
+                        console.log('slider is initialized');
+                    }
+                "),
+                ]
+        ]);
+        $book = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments.user'])->where('id', $id)->get();
+        $publishers = Publisher::all();
+        $categories = Category::all();
+        return view('books.show')->with(['books'=> $book , 'publishers'=>$publishers, 'categories'=> $categories, 'slider'=> $slider]);
+     }
     
 }

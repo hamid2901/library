@@ -51,6 +51,17 @@
     array (
     ),
   ),
+  'edofre/laravel-slider-pro' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Edofre\\SliderPro\\SliderProServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'SliderPro' => 'Edofre\\SliderPro\\Facades\\SliderPro',
+    ),
+  ),
   'fideloper/proxy' => 
   array (
     'providers' => 

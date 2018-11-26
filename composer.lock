@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5bc7019638857cbd4666ce9d0cab27c",
+    "content-hash": "7dd12cd41bbc975dfa5360bf23daa170",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -635,6 +635,66 @@
             "time": "2018-06-06T03:12:17+00:00"
         },
         {
+            "name": "edofre/laravel-slider-pro",
+            "version": "V1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Edofre/laravel-slider-pro.git",
+                "reference": "dcae3c6651f234047f2b0cc4d4dcb4a7a0066952"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Edofre/laravel-slider-pro/zipball/dcae3c6651f234047f2b0cc4d4dcb4a7a0066952",
+                "reference": "dcae3c6651f234047f2b0cc4d4dcb4a7a0066952",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.*",
+                "npm-asset/slider-pro": "1.2.2",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.2.0|~3.3.0",
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Edofre\\SliderPro\\SliderProServiceProvider"
+                    ],
+                    "aliases": {
+                        "SliderPro": "Edofre\\SliderPro\\Facades\\SliderPro"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Edofre\\SliderPro\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Edo Freriks",
+                    "email": "edofre@gmail.com"
+                }
+            ],
+            "description": "Laravel widget for slider-pro",
+            "homepage": "https://github.com/edofre/laravel-slider-pro",
+            "keywords": [
+                "images",
+                "jquery",
+                "laravel",
+                "slider",
+                "slider-pro"
+            ],
+            "time": "2018-05-18T10:06:48+00:00"
+        },
+        {
             "name": "egulias/email-validator",
             "version": "2.1.6",
             "source": {
@@ -790,6 +850,65 @@
                 "trusted proxy"
             ],
             "time": "2018-02-07T20:20:57+00:00"
+        },
+        {
+            "name": "fxp/composer-asset-plugin",
+            "version": "v1.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fxpio/composer-asset-plugin.git",
+                "reference": "0d07328eef6e6f3753aa835fd2faef7fed1717bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/0d07328eef6e6f3753aa835fd2faef7fed1717bf",
+                "reference": "0d07328eef6e6f3753aa835fd2faef7fed1717bf",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "composer/composer": "^1.6.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Fxp\\Composer\\AssetPlugin\\FxpAssetPlugin",
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fxp\\Composer\\AssetPlugin\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Pluchino",
+                    "email": "francois.pluchino@gmail.com"
+                }
+            ],
+            "description": "NPM/Bower Dependency Manager for Composer",
+            "homepage": "https://github.com/fxpio/composer-asset-plugin",
+            "keywords": [
+                "asset",
+                "bower",
+                "composer",
+                "dependency manager",
+                "nodejs",
+                "npm",
+                "package"
+            ],
+            "time": "2018-07-02T11:37:17+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -1592,6 +1711,49 @@
                 "php"
             ],
             "time": "2018-10-10T09:24:14+00:00"
+        },
+        {
+            "name": "npm-asset/slider-pro",
+            "version": "1.2.2",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/slider-pro/-/slider-pro-1.2.2.tgz",
+                "reference": null,
+                "shasum": "4519151fe6b14b5151a4fc9f7d28b21ef5146f7f"
+            },
+            "type": "npm-asset-library",
+            "extra": {
+                "npm-asset-bugs": {
+                    "url": "https://github.com/bqworks/slider-pro/issues"
+                },
+                "npm-asset-directories": [],
+                "npm-asset-repository": {
+                    "type": "git",
+                    "url": "https://github.com/bqworks/slider-pro"
+                },
+                "npm-asset-scripts": []
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "bqworks",
+                    "url": "http://bqworks.com/"
+                },
+                {
+                    "name": "David Ghiurau",
+                    "email": "david.ghiurau@gmail.com"
+                }
+            ],
+            "description": "Responsive jQuery slider, featuring modular architecture, CSS3 animations, touch swipe, animated layers, retina, lazy loading and much more.",
+            "homepage": "http://bqworks.com/slider-pro/",
+            "keywords": [
+                "jquery-plugin",
+                "responsive-slider",
+                "slider-pro"
+            ],
+            "time": "2015-08-20T15:47:51+00:00"
         },
         {
             "name": "opis/closure",

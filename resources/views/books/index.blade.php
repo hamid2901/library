@@ -71,7 +71,6 @@
                 <li>
                     {{$books->links()}}
                 </li>
-                </li>
             </ul>
         </nav>
     </div>
@@ -85,14 +84,17 @@
     <!-- Blog Search Well -->
     <div class="well">
         <h4>جستجو در کتاب ها</h4>
-        <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                    <i class="fas fa-search"></i>
-                </button>
-            </span>
-        </div>
+        <form action="/books" method="POST" role="search">
+            {{ csrf_field() }}
+            <div class="input-group">
+                <input type="text" name="word" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
         <!-- /.input-group -->
     </div>
 

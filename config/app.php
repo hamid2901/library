@@ -169,6 +169,8 @@ return [
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         LaraCrud\LaraCrudServiceProvider::class,
         risul\LaravelLikeComment\LikeCommentServiceProvider::class,
+        Edofre\SliderPro\SliderProServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -231,6 +233,9 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'SliderPro' => Edofre\SliderPro\Facades\SliderPro::class,
+
     ],
 
 ];

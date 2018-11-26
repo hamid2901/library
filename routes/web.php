@@ -145,11 +145,14 @@ Route::get('/articles',     'Admin/ArticleController@index');
 Route::get('/news',         'Admin\NewsController@indexNews');
 Route::get('/news/{news}',  'Admin\NewsController@showNews');
 
+
+//Route for Books
 Route::get('/books',        'Admin\BookController@indexBooks');
 Route::get('/books/{book}',  'Admin\BookController@showBook');
 Route::get('/books/category/{categoryName}',  'Admin\BookController@searchByCategory');
 Route::get('/books/publisher/{publisherName}',  'Admin\BookController@searchByPublisher');
-
+Route::post('/books',  'Admin\BookController@searchByText');
+Route::post('bookComments/store', 'BookCommentController@store');
 
 
 

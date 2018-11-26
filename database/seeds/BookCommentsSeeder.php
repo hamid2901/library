@@ -21,6 +21,9 @@ class BookCommentsSeeder extends Seeder
                 'created_at'=> Carbon::now(),
                 'updated_at'=> Carbon::now(),
                 'confirm'=> $faker->numberBetween(1,2),
+                'user_id'=> $faker->numberBetween(1,20),
+                'book_id'=> $faker->numberBetween(1,20),
+
         ]);
         }  
     }
