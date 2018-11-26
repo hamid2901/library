@@ -12,15 +12,15 @@
     <title>سامانه کتابخانه</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../css/fontiran.css" rel="stylesheet">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="{!! asset('css/fontiran.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../css/blog-home.css" rel="stylesheet">
+    <link href="{!! asset('css/blog-home.css') !!}" rel="stylesheet">
 
     <!--  Bootstrap-RTL -->
-    <link href="../css/bootstrap-rtl.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="{!! asset('css/bootstrap-rtl.min.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
 

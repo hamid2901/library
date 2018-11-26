@@ -57,6 +57,7 @@ return array(
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'DbReader\\' => array($vendorDir . '/digitaldream/dbreader/src'),
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
+    'Collective\\Html\\' => array($vendorDir . '/laravelcollective/html/src'),
     'Brackets\\Translatable\\' => array($vendorDir . '/brackets/translatable/src'),
     'Brackets\\AdminUI\\' => array($vendorDir . '/brackets/admin-ui/src'),
     'Brackets\\AdminListing\\' => array($vendorDir . '/brackets/admin-listing/src'),

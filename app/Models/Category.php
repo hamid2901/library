@@ -32,9 +32,9 @@ class Category extends Model
 
     /* ************************ ACCESSOR ************************* */
 
-    public function getResourceUrlAttribute() {
-        return url('/admin/categories/'.$this->getKey());
-    }
+    // public function getResourceUrlAttribute() {
+    //     return url('/admin/categories/'.$this->getKey());
+    // }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

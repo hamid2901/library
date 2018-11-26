@@ -34,20 +34,22 @@
     30 => 'Krlove\\EloquentModelGenerator\\Provider\\GeneratorServiceProvider',
     31 => 'Laravel\\Scout\\ScoutServiceProvider',
     32 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    33 => 'Carbon\\Laravel\\ServiceProvider',
-    34 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    35 => 'Spatie\\Translatable\\TranslatableServiceProvider',
-    36 => 'Way\\Generators\\GeneratorsServiceProvider',
-    37 => 'Xethron\\MigrationsGenerator\\MigrationsGeneratorServiceProvider',
-    38 => 'Krlove\\EloquentModelGenerator\\Provider\\GeneratorServiceProvider',
-    39 => 'LaraCrud\\LaraCrudServiceProvider',
-    40 => 'risul\\LaravelLikeComment\\LikeCommentServiceProvider',
-    41 => 'App\\Providers\\AppServiceProvider',
-    42 => 'App\\Providers\\AuthServiceProvider',
-    43 => 'App\\Providers\\EventServiceProvider',
-    44 => 'App\\Providers\\RouteServiceProvider',
-    45 => 'Way\\Generators\\GeneratorsServiceProvider',
-    46 => 'Xethron\\MigrationsGenerator\\MigrationsGeneratorServiceProvider',
+    33 => 'Collective\\Html\\HtmlServiceProvider',
+    34 => 'Carbon\\Laravel\\ServiceProvider',
+    35 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    36 => 'Spatie\\Translatable\\TranslatableServiceProvider',
+    37 => 'Way\\Generators\\GeneratorsServiceProvider',
+    38 => 'Xethron\\MigrationsGenerator\\MigrationsGeneratorServiceProvider',
+    39 => 'Collective\\Html\\HtmlServiceProvider',
+    40 => 'Krlove\\EloquentModelGenerator\\Provider\\GeneratorServiceProvider',
+    41 => 'LaraCrud\\LaraCrudServiceProvider',
+    42 => 'risul\\LaravelLikeComment\\LikeCommentServiceProvider',
+    43 => 'App\\Providers\\AppServiceProvider',
+    44 => 'App\\Providers\\AuthServiceProvider',
+    45 => 'App\\Providers\\EventServiceProvider',
+    46 => 'App\\Providers\\RouteServiceProvider',
+    47 => 'Way\\Generators\\GeneratorsServiceProvider',
+    48 => 'Xethron\\MigrationsGenerator\\MigrationsGeneratorServiceProvider',
   ),
   'eager' => 
   array (
@@ -188,6 +190,10 @@
     'admin-listing' => 'Brackets\\AdminListing\\AdminListingServiceProvider',
     'laracrud' => 'LaraCrud\\LaraCrudServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'html' => 'Collective\\Html\\HtmlServiceProvider',
+    'form' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'NunoMaduro\\Collision\\Contracts\\Provider' => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
   ),
   'when' => 
@@ -235,6 +241,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
     'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider' => 

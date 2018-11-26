@@ -159,20 +159,20 @@ class BookController extends Controller
 
     public function searchByCategory($categoryName = null)
     {
-        // $categories = Category::all();
-        // $category = Category::with('books')->where('type',$categoryName )->with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->paginate(5);
-        // $publishers = Publisher::all();
-        // return view('books.index')->with(['categoryBook'=> $category , 'publishers'=>$publishers, 'categories'=> $categories]);
-        return view('books.index')->with('categoryName', $categoryName);
+
+        $categoryBook = Category::with('books', 'books.publisher', 'books.categories', 'books.authors', 'books.bookComments')->where('type',$categoryName )->paginate(5);
+        $categories = Category::all();
+        $publishers = Publisher::all();
+        return view('books.search')->with(['searchedBooks'=> $categoryBook, 'publishers'=>$publishers, 'categories'=> $categories ]);
 
     }
 
     public function searchByPublisher($publisherName = null)
     {
-        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->where('availability_id', 1)->paginate(5);
+        $books = publisher::with('books', 'books.publisher', 'books.categories', 'books.authors', 'books.bookComments')->where('name', $publisherName )->paginate(5);
         $publishers = Publisher::all();
         $categories = Category::all();
-        return view('books.index')->with(['books'=> $books , 'publishers'=>$publishers, 'categories'=> $categories]);
+        return view('books.search')->with(['searchedBooks'=> $books , 'publishers'=>$publishers, 'categories'=> $categories]);
     }
 
     

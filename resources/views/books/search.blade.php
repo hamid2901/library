@@ -6,12 +6,12 @@
     <h1 class="page-header">
         کتاب ها
     </h1>
+    @foreach ($searchedBooks as $searchedBook)
+    @foreach ($searchedBook->books as $book)
 
-    <!-- First Blog Post -->
-    @foreach( $books as $book )
-    <div style="margin-bottom:10px" class="col-md-12 bg-light card">
+    <div style="margin-bottom:5px" class="col-md-12 bg-light card">
         <div class="col-md-3" style="padding: 5px">
-            <img class="img-responsive zoom" src="../images/book_images/{{$book->id}}/front.jpg" alt="hello">
+            <img class="img-responsive zoom" src="{!! asset('images/book_images/'.$book->id.'/front.jpg') !!}" alt="hello">
         </div>
         <script type='text/javascript'>
             $('.zoo-item').ZooMove();
@@ -61,21 +61,22 @@
             <a class="btn btn-primary" href="{{url('/books/'.$book->id.'')}}">مشاهده اطلاعات کتاب &nbsp<i class="fas fa-chevron-circle-left"></i></a>
         </div>
     </div>
-    @endforeach
-
 
     <!-- Pager -->
+    
+    @endforeach
+    @endforeach
+
     <div style="text-align:center;">
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li>
-                    {{$books->links()}}
+                    {{-- {{$book->links()}} --}}
                 </li>
                 </li>
             </ul>
         </nav>
     </div>
-
 
 </div>
 
