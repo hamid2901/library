@@ -136,28 +136,34 @@ Route::middleware(['admin'])->group(function () {
 });
 
 
+
+//Routes for Visitors---------------------------->
+
 //Homepage route
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/',                                            'HomeController@index')->name('home');
+Route::post('/',                                           'HomeController@searchEveryThings')->name('home');
 
-//Routes for Visitors
-Route::get('/articles',     'Admin/ArticleController@index');
-
-Route::get('/news',         'Admin\NewsController@indexNews');
-Route::get('/news/{news}',  'Admin\NewsController@showNews');
-
+//Route for News
+Route::get('/news',                                        'Admin\NewsController@indexNews');
+Route::get('/news/{news}',                                 'Admin\NewsController@showNews');
+Route::post('/news',                                       'Admin\NewsController@searchByText');
+Route::post('/news/comment',                               'Admin\NewsController@storeComment');
 
 //Route for Books
-Route::get('/books',        'Admin\BookController@indexBooks');
-Route::get('/books/{book}',  'Admin\BookController@showBook');
-Route::get('/books/category/{categoryName}',  'Admin\BookController@searchByCategory');
-Route::get('/books/publisher/{publisherName}',  'Admin\BookController@searchByPublisher');
-Route::post('/books',  'Admin\BookController@searchByText');
-Route::post('bookComments/store', 'BookCommentController@store');
+Route::get('/books',                                       'Admin\BookController@indexBooks');
+Route::get('/books/{book}',                                'Admin\BookController@showBook');
+Route::get('/books/category/{categoryName}',               'Admin\BookController@searchByCategory');
+Route::get('/books/publisher/{publisherName}',             'Admin\BookController@searchByPublisher');
+Route::post('/books',                                      'Admin\BookController@searchByText');
+Route::post('/books/comment',                              'Admin\BookController@storeComment');
 
+//Route for Articles
+Route::get('/articles',                                    'Admin\ArticleController@indexArticles');
+Route::get('/articles/{book}',                             'Admin\ArticleController@showArticle');
+Route::get('/articles/category/{categoryName}',            'Admin\ArticleController@searchByCategory');
+Route::post('/articles',                                   'Admin\ArticleController@searchByText');
 
-
-Route::get('/articles',        'Admin\ArticleController@indexArticles');
-Route::get('/Article/{article}',  'Admin\ArticleController@showArticle');
-
-Route::get('/contact',        'Admin\BookController@indexBooks');
+//Route for Contact Us
+Route::get('/contact',                                     'ContactUsController@indexBooks');
+Route::post('/contact',                                    'ContactUsController@sendMessage');
 

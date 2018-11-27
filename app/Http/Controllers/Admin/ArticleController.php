@@ -9,6 +9,8 @@ use App\Http\Requests\Admin\Article\UpdateArticle;
 use App\Http\Requests\Admin\Article\DestroyArticle;
 use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Article;
+use App\Models\Category;
+use App\Models\Author;
 
 class ArticleController extends Controller
 {
@@ -141,4 +143,34 @@ class ArticleController extends Controller
 
         return redirect()->back();
     }
+
+    public function indexArticles()
+    {
+        $articles = Article::with(['categories', 'authors'])->where('confirm', 1)->paginate(5);
+        $categories = Category::all();
+        return view('articles.index')->with(['articles'=> $articles, 'categories'=> $categories]);
+    }
+
+    public function searchByCategory($categoryName = null)
+    {
+        $categoryArticle = Category::with('articles', 'articles.categories', 'articles.authors')->where('type',$categoryName )->paginate(5);
+        $categories = Category::all();
+        return view('articles.search')->with(['categoryArticle'=> $categoryArticle, 'categories'=> $categories ]);
+    }
+
+    public function searchByText(Request $request)
+    {
+        $keyword = $request->get('word');
+        $articles = Article::with(['categories', 'authors'])->where('title','LIKE','%'.$keyword.'%')->orWhere('description','LIKE','%'.$keyword.'%')->where('confirm', 1)->paginate(5);
+        $categories = Category::all();
+        return view('articles.index')->with(['articles'=> $books, 'categories'=> $categories]);
+     }
+
+
+     public function showArticle($id = null)
+    {
+        $article = Article::with(['categories', 'authors'])->where('id', $id)->get();
+        $categories = Category::all();
+        return view('articles.show')->with(['articles'=> $book, 'categories'=> $categories]);
+     }
 }

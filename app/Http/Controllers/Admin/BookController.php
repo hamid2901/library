@@ -192,24 +192,10 @@ class BookController extends Controller
 
      public function showBook($id = null)
     {
-        $slider = new SliderPro();
-        $slider->setId('my-slider');
-        $slider->setOptions([
-                'sliderOptions' => [
-                        'width'  => 960,
-                        'height' => 500,
-                        'arrows' => true,
-                        'init'   => new \Edofre\SliderPro\JsExpression("
-                    function() {
-                        console.log('slider is initialized');
-                    }
-                "),
-                ]
-        ]);
         $book = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments.user'])->where('id', $id)->get();
         $publishers = Publisher::all();
         $categories = Category::all();
-        return view('books.show')->with(['books'=> $book , 'publishers'=>$publishers, 'categories'=> $categories, 'slider'=> $slider]);
+        return view('books.show')->with(['books'=> $book , 'publishers'=>$publishers, 'categories'=> $categories]);
      }
     
 }

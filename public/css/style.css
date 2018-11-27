@@ -15,6 +15,7 @@ body {
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px gray
 }
+
 a{
   text-decoration: none
 }
@@ -37,4 +38,12 @@ img.zoom {
   -moz-transform: scale(1.8);
   -o-transform: scale(1.8);
   transform: scale(1.8);
+}
+.description{
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 3.6em;
+  line-height: 1.8em;
 }
