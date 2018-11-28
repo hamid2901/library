@@ -155,7 +155,7 @@ class ArticleController extends Controller
     {
         $categoryArticle = Category::with('articles', 'articles.categories', 'articles.authors')->where('type',$categoryName )->paginate(5);
         $categories = Category::all();
-        return view('articles.search')->with(['categoryArticle'=> $categoryArticle, 'categories'=> $categories ]);
+        return view('articles.search')->with(['searchedArticles'=> $categoryArticle, 'categories'=> $categories ]);
     }
 
     public function searchByText(Request $request)
@@ -163,7 +163,7 @@ class ArticleController extends Controller
         $keyword = $request->get('word');
         $articles = Article::with(['categories', 'authors'])->where('title','LIKE','%'.$keyword.'%')->orWhere('description','LIKE','%'.$keyword.'%')->where('confirm', 1)->paginate(5);
         $categories = Category::all();
-        return view('articles.index')->with(['articles'=> $books, 'categories'=> $categories]);
+        return view('articles.index')->with(['searchedArticles'=> $books, 'categories'=> $categories]);
      }
 
 
@@ -171,6 +171,20 @@ class ArticleController extends Controller
     {
         $article = Article::with(['categories', 'authors'])->where('id', $id)->get();
         $categories = Category::all();
-        return view('articles.show')->with(['articles'=> $book, 'categories'=> $categories]);
+        return view('articles.show')->with(['articles'=> $article, 'categories'=> $categories]);
      }
+
+     public function getDownload($id = null)
+    {
+        $articles = Article::with(['categories', 'authors'])->where('id', $id)->get();
+        foreach($articles as $article){
+        //PDF file is stored under project/public/download/info.pdf
+        $file= public_path('images/article_images/'.$article->id.'.pdf');
+        $headers = array(
+                  'Content-Type: application/octet-stream',
+                );
+
+        return response()->download($file, 'filename.pdf', $headers);
+        }
+    }   
 }

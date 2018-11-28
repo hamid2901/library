@@ -57,7 +57,7 @@
 
                 @endforeach
             </p>
-            <p class="description">{{$book->description}}</p>
+            <p class="description">توضیحات: {{$book->description}}</p>
             <a class="btn btn-primary" href="{{url('/books/'.$book->id.'')}}">مشاهده اطلاعات کتاب &nbsp<i class="fas fa-chevron-circle-left"></i></a>
         </div>
     </div>

@@ -159,11 +159,11 @@ Route::post('/books/comment',                              'Admin\BookController
 
 //Route for Articles
 Route::get('/articles',                                    'Admin\ArticleController@indexArticles');
-Route::get('/articles/{book}',                             'Admin\ArticleController@showArticle');
+Route::get('/articles/{article}',                          'Admin\ArticleController@showArticle');
 Route::get('/articles/category/{categoryName}',            'Admin\ArticleController@searchByCategory');
 Route::post('/articles',                                   'Admin\ArticleController@searchByText');
+Route::get('/articles/{article}/downloading','Admin\ArticleController@getDownload');
 
 //Route for Contact Us
 Route::get('/contact',                                     'ContactUsController@indexBooks');
 Route::post('/contact',                                    'ContactUsController@sendMessage');
-

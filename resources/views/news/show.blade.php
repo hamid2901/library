@@ -3,12 +3,15 @@
 
 @section('content')
 <div class="col-md-8">
-
     <!-- Blog Post -->
-
+    @foreach ($news as $new)
+        
     <!-- Title -->
-    <h1>{{ $news->title }}</h1>
+    <h1>{{ $new->title }}</h1>
 
+    <img class="zoom" src={!! asset('images/news_images/'.$new->id.'/first.jpg') !!} alt="">
+    <img class="zoom" src={!! asset('images/news_images/'.$new->id.'/second.jpg') !!} alt="">
+    <img class="zoom" src={!! asset('images/news_images/'.$new->id.'/third.png') !!} alt="">
     <!-- Author -->
     <p class="lead">
         ارسال شده توسط <a href="index.php"></a>
@@ -17,18 +20,18 @@
     <hr>
 
     <!-- Date/Time -->
-    <p><span class="glyphicon glyphicon-time"></span> ارسال شده در تاریخ {{ jdate($news->created_at)->format('%B %d،
-        %Y') }}</p>
+    <p><span class="glyphicon glyphicon-time"></span> ارسال شده در تاریخ {{ jdate($new->created_at)->format('%B %d،%Y') }}</p>
 
     <hr>
 
     <!-- Preview Image -->
-    <img class="img-responsive" src="../images/{{$news->title}}.jpg" alt="">
-
+    <script type='text/javascript'>
+        $('.zoo-item').ZooMove();
+    </script>
     <hr>
 
     <!-- Post Content -->
-    {!! $news->content !!}
+    {!! $new->content !!}
     <hr>
 
     <!-- Blog Comments -->
@@ -40,7 +43,7 @@
         @if(1)
         <h4>ارسال کامنت :</h4>
         <hr>
-        <form role="form" action="{{ route('newsComment.store' , ['news' => $news->slug ]) }}" method="post">
+        <form role="form" action="/news/comment" method="post">
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="title">متن : </label>
@@ -69,33 +72,34 @@
     </div>
     @endforeach --}}
 
-    {{--
-    <!-- Comment -->--}}
-    {{--<div class="media">--}}
-        {{--<div class="media-body">--}}
-            {{--<h4 class="media-heading">علی موسوی--}}
-                {{--<small>ارسال شده در تاریخ فرودین 1396</small>--}}
-                {{--</h4>--}}
-            {{--لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و
+
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">علی موسوی
+                <small>ارسال شده در تاریخ فرودین 1396</small>
+            </h4>
+            لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و
             طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه
-            اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید--}}
+            اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید
             {{--
             <!-- Nested Comment -->--}}
-            {{--<div class="media">--}}
-                {{--<div class="media-body">--}}
-                    {{--<h4 class="media-heading">حسام موسوی--}}
-                        {{--<small>ارسال شده در تاریخ فرودین 1396</small>--}}
-                        {{--</h4>--}}
-                    {{--لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
-                    صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر
-                    کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--
-            <!-- End Nested Comment -->--}}
-            {{--</div>--}}
-        {{--</div>--}}
+            <div class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading">حسام موسوی
+                            <small>ارسال شده در تاریخ فرودین 1396</small>
+                        </h4>
+                        لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
+                        صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر
+                        کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید
+                    </div>
+                </div>
+                {{--
+                <!-- End Nested Comment -->--}}
+            </div>
+        </div>
 </div>
+@endforeach
+
 <div class="col-md-4">
 
     <!-- Blog Search Well -->

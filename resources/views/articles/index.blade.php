@@ -41,8 +41,8 @@
                 @endif
                 @endif
 
+                @endforeach                
 
-                @endforeach
                 @foreach( $article->authors as $article->author )
                 @if ($article->author->role_id == 2)
                 {{$article->author->first_name}}&nbsp{{$article->author->last_name}}
@@ -55,7 +55,7 @@
                 @endforeach
             </p>
             <p class="description" >توضیحات: {{$article->description}}</p>
-            <a class="btn btn-primary" href="{{url('/articles/'.$article->id.'')}}">مشاهده اطلاعات مقاله &nbsp<i class="fas fa-chevron-circle-left"></i></a>
+            <a class="btn btn-primary" href="{{url('/articles/'.$article->id.'')}}">مشاهده اطلاعات مقاله و دانلود &nbsp<i class="fas fa-chevron-circle-left"></i></a>
         </div>
     </div>
     @endforeach
