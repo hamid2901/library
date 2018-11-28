@@ -6,62 +6,6 @@
       0 => 'BeyondCode\\DumpServer\\DumpServerServiceProvider',
     ),
   ),
-  'brackets/admin-auth' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Brackets\\AdminAuth\\AdminAuthServiceProvider',
-    ),
-  ),
-  'brackets/admin-generator' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Brackets\\AdminGenerator\\AdminGeneratorServiceProvider',
-    ),
-  ),
-  'brackets/admin-listing' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Brackets\\AdminListing\\AdminListingServiceProvider',
-    ),
-  ),
-  'brackets/admin-ui' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Brackets\\AdminUI\\AdminUIServiceProvider',
-    ),
-  ),
-  'brackets/translatable' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Brackets\\Translatable\\TranslatableServiceProvider',
-    ),
-  ),
-  'digitaldream/laracrud' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'LaraCrud\\LaraCrudServiceProvider',
-    ),
-    'aliases' => 
-    array (
-    ),
-  ),
-  'edofre/laravel-slider-pro' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Edofre\\SliderPro\\SliderProServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'SliderPro' => 'Edofre\\SliderPro\\Facades\\SliderPro',
-    ),
-  ),
   'fideloper/proxy' => 
   array (
     'providers' => 
@@ -114,13 +58,6 @@
     'providers' => 
     array (
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    ),
-  ),
-  'spatie/laravel-translatable' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Spatie\\Translatable\\TranslatableServiceProvider',
     ),
   ),
   'xethron/migrations-generator' => 

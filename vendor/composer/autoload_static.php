@@ -13,9 +13,9 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
+        'a4ecaeafb8cfb009ad0e052c90355e98' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        'a4ecaeafb8cfb009ad0e052c90355e98' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
@@ -24,10 +24,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
     );
 
     public static $prefixLengthsPsr4 = array (
-        'r' => 
-        array (
-            'risul\\LaravelLikeComment\\' => 25,
-        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -62,7 +58,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
-            'Spatie\\Translatable\\' => 20,
         ),
         'R' => 
         array (
@@ -94,7 +89,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
             'Laravel\\Scout\\' => 14,
-            'LaraCrud\\' => 9,
         ),
         'K' => 
         array (
@@ -103,6 +97,7 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         ),
         'J' => 
         array (
+            'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
             'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
         'I' => 
@@ -118,7 +113,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
-            'Edofre\\SliderPro\\' => 17,
         ),
         'D' => 
         array (
@@ -128,7 +122,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
-            'DbReader\\' => 9,
         ),
         'C' => 
         array (
@@ -137,11 +130,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         ),
         'B' => 
         array (
-            'Brackets\\Translatable\\' => 22,
-            'Brackets\\AdminUI\\' => 17,
-            'Brackets\\AdminListing\\' => 22,
-            'Brackets\\AdminGenerator\\' => 24,
-            'Brackets\\AdminAuth\\' => 19,
             'BeyondCode\\DumpServer\\' => 22,
         ),
         'A' => 
@@ -152,10 +140,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
     );
 
     public static $prefixDirsPsr4 = array (
-        'risul\\LaravelLikeComment\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/risul/laravel-like-comment/src',
-        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
@@ -238,10 +222,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'Spatie\\Translatable\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/spatie/laravel-translatable/src',
-        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -294,10 +274,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         array (
             0 => __DIR__ . '/..' . '/laravel/scout/src',
         ),
-        'LaraCrud\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud',
-        ),
         'Krlove\\EloquentModelGenerator\\' => 
         array (
             0 => __DIR__ . '/..' . '/krlove/eloquent-model-generator/src',
@@ -305,6 +281,10 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'Krlove\\CodeGenerator\\' => 
         array (
             0 => __DIR__ . '/..' . '/krlove/code-generator/src',
+        ),
+        'JakubOnderka\\PhpConsoleHighlighter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
         ),
         'JakubOnderka\\PhpConsoleColor\\' => 
         array (
@@ -330,10 +310,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
         ),
-        'Edofre\\SliderPro\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src',
-        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -358,10 +334,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'DbReader\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/digitaldream/dbreader/src',
-        ),
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
@@ -369,26 +341,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
-        ),
-        'Brackets\\Translatable\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/brackets/translatable/src',
-        ),
-        'Brackets\\AdminUI\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/brackets/admin-ui/src',
-        ),
-        'Brackets\\AdminListing\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/brackets/admin-listing/src',
-        ),
-        'Brackets\\AdminGenerator\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/brackets/admin-generator/src',
-        ),
-        'Brackets\\AdminAuth\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/brackets/admin-auth/src',
         ),
         'BeyondCode\\DumpServer\\' => 
         array (
@@ -439,13 +391,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
             'Mockery' => 
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
-            ),
-        ),
-        'J' => 
-        array (
-            'JakubOnderka\\PhpConsoleHighlighter' => 
-            array (
-                0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
             ),
         ),
         'D' => 
@@ -586,75 +531,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'BookFactorUserSeeder' => __DIR__ . '/../..' . '/database/seeds/BookFactorUserSeeder.php',
         'BookFormatSeeder' => __DIR__ . '/../..' . '/database/seeds/BookFormatSeeder.php',
         'BookSeeder' => __DIR__ . '/../..' . '/database/seeds/BookSeeder.php',
-        'Brackets\\AdminAuth\\AdminAuthServiceProvider' => __DIR__ . '/..' . '/brackets/admin-auth/src/AdminAuthServiceProvider.php',
-        'Brackets\\AdminAuth\\Auth\\Activations\\ActivationBroker' => __DIR__ . '/..' . '/brackets/admin-auth/src/Auth/Activations/ActivationBroker.php',
-        'Brackets\\AdminAuth\\Auth\\Activations\\ActivationBrokerManager' => __DIR__ . '/..' . '/brackets/admin-auth/src/Auth/Activations/ActivationBrokerManager.php',
-        'Brackets\\AdminAuth\\Auth\\Activations\\ActivationServiceProvider' => __DIR__ . '/..' . '/brackets/admin-auth/src/Auth/Activations/ActivationServiceProvider.php',
-        'Brackets\\AdminAuth\\Auth\\Activations\\CanActivate' => __DIR__ . '/..' . '/brackets/admin-auth/src/Auth/Activations/CanActivate.php',
-        'Brackets\\AdminAuth\\Auth\\Activations\\DatabaseTokenRepository' => __DIR__ . '/..' . '/brackets/admin-auth/src/Auth/Activations/DatabaseTokenRepository.php',
-        'Brackets\\AdminAuth\\Auth\\Activations\\TokenRepositoryInterface' => __DIR__ . '/..' . '/brackets/admin-auth/src/Auth/Activations/TokenRepositoryInterface.php',
-        'Brackets\\AdminAuth\\Console\\Commands\\AdminAuthInstall' => __DIR__ . '/..' . '/brackets/admin-auth/src/Console/Commands/AdminAuthInstall.php',
-        'Brackets\\AdminAuth\\Contracts\\Auth\\ActivationBroker' => __DIR__ . '/..' . '/brackets/admin-auth/src/Contracts/Auth/ActivationBroker.php',
-        'Brackets\\AdminAuth\\Contracts\\Auth\\ActivationBrokerFactory' => __DIR__ . '/..' . '/brackets/admin-auth/src/Contracts/Auth/ActivationBrokerFactory.php',
-        'Brackets\\AdminAuth\\Contracts\\Auth\\CanActivate' => __DIR__ . '/..' . '/brackets/admin-auth/src/Contracts/Auth/CanActivate.php',
-        'Brackets\\AdminAuth\\Facades\\Activation' => __DIR__ . '/..' . '/brackets/admin-auth/src/Facades/Activation.php',
-        'Brackets\\AdminAuth\\Http\\Controllers\\AdminHomepageController' => __DIR__ . '/..' . '/brackets/admin-auth/src/Http/Controllers/AdminHomepageController.php',
-        'Brackets\\AdminAuth\\Http\\Controllers\\Auth\\ActivationController' => __DIR__ . '/..' . '/brackets/admin-auth/src/Http/Controllers/Auth/ActivationController.php',
-        'Brackets\\AdminAuth\\Http\\Controllers\\Auth\\ActivationEmailController' => __DIR__ . '/..' . '/brackets/admin-auth/src/Http/Controllers/Auth/ActivationEmailController.php',
-        'Brackets\\AdminAuth\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/..' . '/brackets/admin-auth/src/Http/Controllers/Auth/ForgotPasswordController.php',
-        'Brackets\\AdminAuth\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/..' . '/brackets/admin-auth/src/Http/Controllers/Auth/LoginController.php',
-        'Brackets\\AdminAuth\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/..' . '/brackets/admin-auth/src/Http/Controllers/Auth/ResetPasswordController.php',
-        'Brackets\\AdminAuth\\Http\\Controllers\\Controller' => __DIR__ . '/..' . '/brackets/admin-auth/src/Http/Controllers/Controller.php',
-        'Brackets\\AdminAuth\\Http\\Middleware\\Admin' => __DIR__ . '/..' . '/brackets/admin-auth/src/Http/Middleware/Admin.php',
-        'Brackets\\AdminAuth\\Http\\Middleware\\ApplyUserLocale' => __DIR__ . '/..' . '/brackets/admin-auth/src/Http/Middleware/ApplyUserLocale.php',
-        'Brackets\\AdminAuth\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/..' . '/brackets/admin-auth/src/Http/Middleware/RedirectIfAuthenticated.php',
-        'Brackets\\AdminAuth\\Listeners\\ActivationListener' => __DIR__ . '/..' . '/brackets/admin-auth/src/Listeners/ActivationListener.php',
-        'Brackets\\AdminAuth\\Notifications\\ActivationNotification' => __DIR__ . '/..' . '/brackets/admin-auth/src/Notifications/ActivationNotification.php',
-        'Brackets\\AdminAuth\\Notifications\\ResetPassword' => __DIR__ . '/..' . '/brackets/admin-auth/src/Notifications/ResetPassword.php',
-        'Brackets\\AdminAuth\\Providers\\EventServiceProvider' => __DIR__ . '/..' . '/brackets/admin-auth/src/Providers/EventServiceProvider.php',
-        'Brackets\\AdminAuth\\Services\\ActivationService' => __DIR__ . '/..' . '/brackets/admin-auth/src/Services/ActivationService.php',
-        'Brackets\\AdminGenerator\\AdminGeneratorServiceProvider' => __DIR__ . '/..' . '/brackets/admin-generator/src/AdminGeneratorServiceProvider.php',
-        'Brackets\\AdminGenerator\\GenerateAdmin' => __DIR__ . '/..' . '/brackets/admin-generator/src/GenerateAdmin.php',
-        'Brackets\\AdminGenerator\\GenerateProfile' => __DIR__ . '/..' . '/brackets/admin-generator/src/GenerateProfile.php',
-        'Brackets\\AdminGenerator\\GenerateUser' => __DIR__ . '/..' . '/brackets/admin-generator/src/GenerateUser.php',
-        'Brackets\\AdminGenerator\\Generate\\ClassGenerator' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/ClassGenerator.php',
-        'Brackets\\AdminGenerator\\Generate\\Controller' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/Controller.php',
-        'Brackets\\AdminGenerator\\Generate\\DestroyRequest' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/DestroyRequest.php',
-        'Brackets\\AdminGenerator\\Generate\\FileAppender' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/FileAppender.php',
-        'Brackets\\AdminGenerator\\Generate\\IndexRequest' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/IndexRequest.php',
-        'Brackets\\AdminGenerator\\Generate\\Lang' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/Lang.php',
-        'Brackets\\AdminGenerator\\Generate\\Model' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/Model.php',
-        'Brackets\\AdminGenerator\\Generate\\ModelFactory' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/ModelFactory.php',
-        'Brackets\\AdminGenerator\\Generate\\Permissions' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/Permissions.php',
-        'Brackets\\AdminGenerator\\Generate\\Routes' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/Routes.php',
-        'Brackets\\AdminGenerator\\Generate\\StoreRequest' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/StoreRequest.php',
-        'Brackets\\AdminGenerator\\Generate\\Traits\\Columns' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/Traits/Columns.php',
-        'Brackets\\AdminGenerator\\Generate\\Traits\\FileManipulations' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/Traits/FileManipulations.php',
-        'Brackets\\AdminGenerator\\Generate\\Traits\\Helpers' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/Traits/Helpers.php',
-        'Brackets\\AdminGenerator\\Generate\\Traits\\Names' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/Traits/Names.php',
-        'Brackets\\AdminGenerator\\Generate\\UpdateRequest' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/UpdateRequest.php',
-        'Brackets\\AdminGenerator\\Generate\\ViewForm' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/ViewForm.php',
-        'Brackets\\AdminGenerator\\Generate\\ViewFullForm' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/ViewFullForm.php',
-        'Brackets\\AdminGenerator\\Generate\\ViewGenerator' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/ViewGenerator.php',
-        'Brackets\\AdminGenerator\\Generate\\ViewIndex' => __DIR__ . '/..' . '/brackets/admin-generator/src/Generate/ViewIndex.php',
-        'Brackets\\AdminListing\\AdminListing' => __DIR__ . '/..' . '/brackets/admin-listing/src/AdminListing.php',
-        'Brackets\\AdminListing\\AdminListingServiceProvider' => __DIR__ . '/..' . '/brackets/admin-listing/src/AdminListingServiceProvider.php',
-        'Brackets\\AdminListing\\Console\\Commands\\AdminListingInstall' => __DIR__ . '/..' . '/brackets/admin-listing/src/Console/Commands/AdminListingInstall.php',
-        'Brackets\\AdminListing\\Exceptions\\NotAModelClassException' => __DIR__ . '/..' . '/brackets/admin-listing/src/Exceptions/NotAModelClassException.php',
-        'Brackets\\AdminListing\\Facades\\AdminListing' => __DIR__ . '/..' . '/brackets/admin-listing/src/Facades/AdminListing.php',
-        'Brackets\\AdminUI\\AdminUIServiceProvider' => __DIR__ . '/..' . '/brackets/admin-ui/src/AdminUIServiceProvider.php',
-        'Brackets\\AdminUI\\Console\\Commands\\AdminUIInstall' => __DIR__ . '/..' . '/brackets/admin-ui/src/Console/Commands/AdminUIInstall.php',
-        'Brackets\\AdminUI\\Http\\Controllers\\WysiwygMediaUploadController' => __DIR__ . '/..' . '/brackets/admin-ui/src/Http/Controllers/WysiwygMediaUploadController.php',
-        'Brackets\\AdminUI\\Traits\\HasWysiwygMediaTrait' => __DIR__ . '/..' . '/brackets/admin-ui/src/Traits/HasWysiwygMediaTrait.php',
-        'Brackets\\AdminUI\\WysiwygMedia' => __DIR__ . '/..' . '/brackets/admin-ui/src/WysiwygMedia.php',
-        'Brackets\\Translatable\\Facades\\Translatable' => __DIR__ . '/..' . '/brackets/translatable/src/Facades/Translatable.php',
-        'Brackets\\Translatable\\Providers\\TranslatableProvider' => __DIR__ . '/..' . '/brackets/translatable/src/Providers/TranslatableProvider.php',
-        'Brackets\\Translatable\\Providers\\ViewComposerProvider' => __DIR__ . '/..' . '/brackets/translatable/src/Providers/ViewComposerProvider.php',
-        'Brackets\\Translatable\\Traits\\HasTranslations' => __DIR__ . '/..' . '/brackets/translatable/src/Traits/HasTranslations.php',
-        'Brackets\\Translatable\\Translatable' => __DIR__ . '/..' . '/brackets/translatable/src/Translatable.php',
-        'Brackets\\Translatable\\TranslatableFormRequest' => __DIR__ . '/..' . '/brackets/translatable/src/TranslatableFormRequest.php',
-        'Brackets\\Translatable\\TranslatableServiceProvider' => __DIR__ . '/..' . '/brackets/translatable/src/TranslatableServiceProvider.php',
-        'Brackets\\Translatable\\ViewComposers\\TranslatableComposer' => __DIR__ . '/..' . '/brackets/translatable/src/ViewComposers/TranslatableComposer.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\CarbonPeriod' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonPeriod.php',
@@ -680,12 +556,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
-        'DbReader\\Column' => __DIR__ . '/..' . '/digitaldream/dbreader/src/Column.php',
-        'DbReader\\Database' => __DIR__ . '/..' . '/digitaldream/dbreader/src/Database.php',
-        'DbReader\\Helpers\\Connector' => __DIR__ . '/..' . '/digitaldream/dbreader/src/Helpers/Connector.php',
-        'DbReader\\Helpers\\DatabaseHelper' => __DIR__ . '/..' . '/digitaldream/dbreader/src/Helpers/DatabaseHelper.php',
-        'DbReader\\Helpers\\ForeignKey' => __DIR__ . '/..' . '/digitaldream/dbreader/src/Helpers/ForeignKey.php',
-        'DbReader\\Table' => __DIR__ . '/..' . '/digitaldream/dbreader/src/Table.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
@@ -1007,17 +877,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'Dotenv\\Exception\\ValidationException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
         'Dotenv\\Loader' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Loader.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
-        'Edofre\\SliderPro\\Facades\\SliderPro' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/Facades/SliderPro.php',
-        'Edofre\\SliderPro\\JsExpression' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/JsExpression.php',
-        'Edofre\\SliderPro\\JsonEncoder' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/JsonEncoder.php',
-        'Edofre\\SliderPro\\Models\\Slide' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/Models/Slide.php',
-        'Edofre\\SliderPro\\Models\\SliderProModel' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/Models/SliderProModel.php',
-        'Edofre\\SliderPro\\Models\\Slides\\Caption' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/Models/Slides/Caption.php',
-        'Edofre\\SliderPro\\Models\\Slides\\Image' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/Models/Slides/Image.php',
-        'Edofre\\SliderPro\\Models\\Slides\\Layer' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/Models/Slides/Layer.php',
-        'Edofre\\SliderPro\\Models\\Thumbnail' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/Models/Thumbnail.php',
-        'Edofre\\SliderPro\\SliderPro' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/SliderPro.php',
-        'Edofre\\SliderPro\\SliderProServiceProvider' => __DIR__ . '/..' . '/edofre/laravel-slider-pro/src/SliderProServiceProvider.php',
         'Egulias\\EmailValidator\\EmailLexer' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/EmailLexer.php',
         'Egulias\\EmailValidator\\EmailParser' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/EmailParser.php',
         'Egulias\\EmailValidator\\EmailValidator' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/EmailValidator.php',
@@ -2464,7 +2323,7 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
-        'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
+        'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
         'JsonSerializable' => __DIR__ . '/..' . '/nesbot/carbon/src/JsonSerializable.php',
         'Krlove\\CodeGenerator\\Exception\\GeneratorException' => __DIR__ . '/..' . '/krlove/code-generator/src/Exception/GeneratorException.php',
         'Krlove\\CodeGenerator\\Exception\\ValidationException' => __DIR__ . '/..' . '/krlove/code-generator/src/Exception/ValidationException.php',
@@ -2514,56 +2373,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'Krlove\\EloquentModelGenerator\\Processor\\TableNameProcessor' => __DIR__ . '/..' . '/krlove/eloquent-model-generator/src/Processor/TableNameProcessor.php',
         'Krlove\\EloquentModelGenerator\\Provider\\GeneratorServiceProvider' => __DIR__ . '/..' . '/krlove/eloquent-model-generator/src/Provider/GeneratorServiceProvider.php',
         'Krlove\\EloquentModelGenerator\\TypeRegistry' => __DIR__ . '/..' . '/krlove/eloquent-model-generator/src/TypeRegistry.php',
-        'LaraCrud\\Builder\\Model' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Builder/Model.php',
-        'LaraCrud\\Builder\\Page' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Builder/Page.php',
-        'LaraCrud\\Console\\Controller' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Controller.php',
-        'LaraCrud\\Console\\Factory' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Factory.php',
-        'LaraCrud\\Console\\Migration' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Migration.php',
-        'LaraCrud\\Console\\Model' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Model.php',
-        'LaraCrud\\Console\\Mvc' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Mvc.php',
-        'LaraCrud\\Console\\Package' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Package.php',
-        'LaraCrud\\Console\\Policy' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Policy.php',
-        'LaraCrud\\Console\\Request' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Request.php',
-        'LaraCrud\\Console\\Route' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Route.php',
-        'LaraCrud\\Console\\Test' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Test.php',
-        'LaraCrud\\Console\\Transformer' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/Transformer.php',
-        'LaraCrud\\Console\\View' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Console/View.php',
-        'LaraCrud\\Contracts\\Crud' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Contracts/Crud.php',
-        'LaraCrud\\Crud\\Controller' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/Controller.php',
-        'LaraCrud\\Crud\\MigrationCrud' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/MigrationCrud.php',
-        'LaraCrud\\Crud\\Model' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/Model.php',
-        'LaraCrud\\Crud\\ModelFactory' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/ModelFactory.php',
-        'LaraCrud\\Crud\\Package' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/Package.php',
-        'LaraCrud\\Crud\\Policy' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/Policy.php',
-        'LaraCrud\\Crud\\Request' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/Request.php',
-        'LaraCrud\\Crud\\RequestController' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/RequestController.php',
-        'LaraCrud\\Crud\\RequestResource' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/RequestResource.php',
-        'LaraCrud\\Crud\\RouteCrud' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/RouteCrud.php',
-        'LaraCrud\\Crud\\Test' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/Test.php',
-        'LaraCrud\\Crud\\Transformer' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/Transformer.php',
-        'LaraCrud\\Crud\\View' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/View.php',
-        'LaraCrud\\Crud\\ViewController' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Crud/ViewController.php',
-        'LaraCrud\\Helpers\\ClassInspector' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Helpers/ClassInspector.php',
-        'LaraCrud\\Helpers\\Connector' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Helpers/Connector.php',
-        'LaraCrud\\Helpers\\DatabaseHelper' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Helpers/DatabaseHelper.php',
-        'LaraCrud\\Helpers\\FakerColumn' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Helpers/FakerColumn.php',
-        'LaraCrud\\Helpers\\ForeignKey' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Helpers/ForeignKey.php',
-        'LaraCrud\\Helpers\\Helper' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Helpers/Helper.php',
-        'LaraCrud\\Helpers\\Image' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Helpers/Image.php',
-        'LaraCrud\\Helpers\\TemplateManager' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Helpers/TemplateManager.php',
-        'LaraCrud\\Helpers\\TestMethod' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/Helpers/TestMethod.php',
-        'LaraCrud\\LaraCrudServiceProvider' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/LaraCrudServiceProvider.php',
-        'LaraCrud\\View\\Blank' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Blank.php',
-        'LaraCrud\\View\\Create' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Create.php',
-        'LaraCrud\\View\\Edit' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Edit.php',
-        'LaraCrud\\View\\Index' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Index.php',
-        'LaraCrud\\View\\Page' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Page.php',
-        'LaraCrud\\View\\Partial\\Form' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Partial/Form.php',
-        'LaraCrud\\View\\Partial\\Link' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Partial/Link.php',
-        'LaraCrud\\View\\Partial\\Modal' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Partial/Modal.php',
-        'LaraCrud\\View\\Partial\\Panel' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Partial/Panel.php',
-        'LaraCrud\\View\\Partial\\Table' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Partial/Table.php',
-        'LaraCrud\\View\\Show' => __DIR__ . '/..' . '/digitaldream/laracrud/src/lara-crud/View/Show.php',
         'Laravel\\Scout\\Builder' => __DIR__ . '/..' . '/laravel/scout/src/Builder.php',
         'Laravel\\Scout\\Console\\FlushCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/FlushCommand.php',
         'Laravel\\Scout\\Console\\ImportCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/ImportCommand.php',
@@ -3587,6 +3396,7 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'Psr\\Log\\NullLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/NullLogger.php',
         'Psr\\Log\\Test\\DummyTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
         'Psr\\Log\\Test\\LoggerInterfaceTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
+        'Psr\\Log\\Test\\TestLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/TestLogger.php',
         'Psr\\SimpleCache\\CacheException' => __DIR__ . '/..' . '/psr/simple-cache/src/CacheException.php',
         'Psr\\SimpleCache\\CacheInterface' => __DIR__ . '/..' . '/psr/simple-cache/src/CacheInterface.php',
         'Psr\\SimpleCache\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/simple-cache/src/InvalidArgumentException.php',
@@ -3874,10 +3684,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'SebastianBergmann\\Timer\\RuntimeException' => __DIR__ . '/..' . '/phpunit/php-timer/src/RuntimeException.php',
         'SebastianBergmann\\Timer\\Timer' => __DIR__ . '/..' . '/phpunit/php-timer/src/Timer.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
-        'Spatie\\Translatable\\Events\\TranslationHasBeenSet' => __DIR__ . '/..' . '/spatie/laravel-translatable/src/Events/TranslationHasBeenSet.php',
-        'Spatie\\Translatable\\Exceptions\\AttributeIsNotTranslatable' => __DIR__ . '/..' . '/spatie/laravel-translatable/src/Exceptions/AttributeIsNotTranslatable.php',
-        'Spatie\\Translatable\\HasTranslations' => __DIR__ . '/..' . '/spatie/laravel-translatable/src/HasTranslations.php',
-        'Spatie\\Translatable\\TranslatableServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-translatable/src/TranslatableServiceProvider.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
         'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',
@@ -4599,13 +4405,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
-        'risul\\LaravelLikeComment\\Controllers\\CommentController' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Controllers/CommentController.php',
-        'risul\\LaravelLikeComment\\Controllers\\LikeController' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Controllers/LikeController.php',
-        'risul\\LaravelLikeComment\\Facade\\LaravelLikeComment' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Facade/LaravelLikeComment.php',
-        'risul\\LaravelLikeComment\\LikeCommentServiceProvider' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/LikeCommentServiceProvider.php',
-        'risul\\LaravelLikeComment\\Models\\Comment' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Models/Comment.php',
-        'risul\\LaravelLikeComment\\Models\\Like' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Models/Like.php',
-        'risul\\LaravelLikeComment\\Models\\TotalLike' => __DIR__ . '/..' . '/risul/laravel-like-comment/src/Models/TotalLike.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
