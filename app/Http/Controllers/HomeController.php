@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 use \Morilog\Jalali\Jalalian;
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\Article;
+use App\Models\Book;
+use App\Models\Category;
+use App\Models\Publisher;
 
 class HomeController extends Controller
 {
@@ -15,10 +19,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $news = News::with('user')->get();
-        // foreach($news as $new){
-        //     $new->created_at = Jalalian::forge('now')->format('%B %d، %Y'); // دی 02، 1391
-        // }
-        return view('news.index')->with('news', $news);
+        $publishers = Publisher::all();
+        $categories = Category::all();
+        $news = News::with('user')->where('confirm',1)->orderBy('id', 'desc')->take(5)->get();;
+        $articles = Article::with(['categories', 'authors'])->orderBy('id', 'desc')->take(5)->get();;
+        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->orderBy('id', 'desc')->take(5)->get();;
+
+        return view('home.home')->with(['news'=>$news , 'articles'=> $articles, 'books'=> $books, 'publishers'=> $publishers, 'categories'=>$categories]);
     }
 }

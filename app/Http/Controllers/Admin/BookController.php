@@ -11,11 +11,6 @@ use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Book;
 use App\Models\Publisher;
 use App\Models\Category;
-use Edofre\SliderPro\Models\Slide;
-use Edofre\SliderPro\Models\Slides\Caption;
-use Edofre\SliderPro\Models\Slides\Image;
-use Edofre\SliderPro\Models\Slides\Layer;
-use Edofre\SliderPro\SliderPro;
 
 class BookController extends Controller
 {
