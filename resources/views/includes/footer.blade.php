@@ -1,0 +1,1 @@
+<script src="{{ asset('js/admin-panel.js')}}"></script>

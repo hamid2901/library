@@ -11,11 +11,10 @@
 |
 */
 
-
 /* Auto-generated admin routes */
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/admin', function () {
-        return view('admin.hello-world');
+        return view('admin.user.index');
     });
     Route::get('/admin/users',                                  'Admin\UsersController@index');
     Route::get('/admin/users/create',                           'Admin\UsersController@create');
@@ -47,25 +46,7 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/admin/articles/{article}',                  'Admin\ArticleController@destroy')->name('admin/articles/destroy');
 });
 
-/* Auto-generated admin routes */
-Route::middleware(['admin'])->group(function () {
-    Route::get('/admin/authors',                                'Admin\AuthorController@index');
-    Route::get('/admin/authors/create',                         'Admin\AuthorController@create');
-    Route::post('/admin/authors',                               'Admin\AuthorController@store');
-    Route::get('/admin/authors/{author}/edit',                  'Admin\AuthorController@edit')->name('admin/authors/edit');
-    Route::post('/admin/authors/{author}',                      'Admin\AuthorController@update')->name('admin/authors/update');
-    Route::delete('/admin/authors/{author}',                    'Admin\AuthorController@destroy')->name('admin/authors/destroy');
-});
 
-/* Auto-generated admin routes */
-Route::middleware(['admin'])->group(function () {
-    Route::get('/admin/categories',                             'Admin\CategoryController@index');
-    Route::get('/admin/categories/create',                      'Admin\CategoryController@create');
-    Route::post('/admin/categories',                            'Admin\CategoryController@store');
-    Route::get('/admin/categories/{category}/edit',             'Admin\CategoryController@edit')->name('admin/categories/edit');
-    Route::post('/admin/categories/{category}',                 'Admin\CategoryController@update')->name('admin/categories/update');
-    Route::delete('/admin/categories/{category}',               'Admin\CategoryController@destroy')->name('admin/categories/destroy');
-});
 
 /* Auto-generated admin routes */
 Route::middleware(['admin'])->group(function () {
@@ -167,3 +148,18 @@ Route::get('/articles/{article}/downloading','Admin\ArticleController@getDownloa
 //Route for Contact Us
 Route::get('/contact',                                     'ContactUsController@indexBooks');
 Route::post('/contact',                                    'ContactUsController@sendMessage');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('admin', 'Admin\AdminController@index');
+Route::resource('admin/roles', 'Admin\RolesController');
+Route::resource('admin/permissions', 'Admin\PermissionsController');
+Route::resource('admin/users', 'Admin\UsersController');
+Route::resource('admin/pages', 'Admin\PagesController');
+Route::resource('admin/activitylogs', 'Admin\ActivityLogsController')->only([
+    'index', 'show', 'destroy'
+]);
+Route::resource('admin/settings', 'Admin\SettingsController');
+Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
+Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);

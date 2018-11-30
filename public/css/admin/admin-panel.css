@@ -1,0 +1,102 @@
+body {
+    background: #fafafa;
+}
+p {
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.main{
+    height: 100vh;
+}
+.rightside{
+    direction: rtl;
+    /* height:100vh; */
+}
+#sidebar {
+    /* don't forget to add all the previously mentioned styles here too */
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+    height:100vh;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+#sidebar .sidebar-header h3{
+    font-size: 25px;
+    text-align: center;
+    padding: 4px;
+}
+#sidebar ul.components {
+    text-align: center;
+    padding:0 0 20px 0;
+}
+#sidebar ul p {
+   text-align: center;
+   font-weight: 500;
+   font-size: 20px;
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+    border-bottom: 1px solid #83b9d493;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+header{
+    height: 13%;
+}
+.navbar{
+    height: 100%;
+    background-color: #6D7FCC;
+}
+.navbar-inner{
+    display: flex;
+ }
+ .navbar a{
+     padding: 20px;
+ }
+ .navbar a:hover{
+    color: rgb(58, 68, 107);
+    background-color:white;
+}
+.navbar span{
+    font-weight: bold;
+    font-size: 18px;
+    color:white;
+}
+.navbar ul{
+    justify-self:start;
+}
+.navbar ul li{
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0px;
+    color:white;
+}
+.content{
+    background-color: rgb(228, 221, 221);
+    height: 87%;
+}
