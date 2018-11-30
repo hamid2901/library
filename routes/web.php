@@ -23,7 +23,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/users/{user}',                          'Admin\UsersController@update')->name('admin/users/update');
     Route::delete('/admin/users/{user}',                        'Admin\UsersController@destroy')->name('admin/users/destroy');
 });
-Auth::routes();
 
 
 /* Auto-generated admin routes */

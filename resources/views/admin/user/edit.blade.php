@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="row col-12">
-        <a href="/admin/users/create" class="badge badge-primary p-3 m-2">ایجاد کاربر</a>
+        <a href="admin/users/create" class="badge badge-primary p-3 m-2">ایجاد کاربر</a>
     </div>
 
     <table class="table table-bordered">

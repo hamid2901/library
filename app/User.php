@@ -2,11 +2,8 @@
 
 namespace App;
 
-
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+
 /**
  * @property int $id
  * @property int $role_id
@@ -18,6 +15,7 @@ use Illuminate\Auth\Authenticatable as AuthenticableTrait;
  * @property string $remember_token
  * @property string $created_at
  * @property string $updated_at
+ * @property string $deleted_at
  * @property string $image_name
  * @property int $confirm
  * @property string $first_name
@@ -34,57 +32,18 @@ use Illuminate\Auth\Authenticatable as AuthenticableTrait;
  * @property UserGender $userGender
  * @property UserRole $userRole
  * @property UserStatus $userStatus
+ * @property BookComment[] $bookComments
  * @property BookFactorUser[] $bookFactorUsers
  * @property Message[] $messages
  * @property News[] $news
+ * @property NewsComment[] $newsComments
  */
-class User extends Model  implements Authenticatable
+class User extends Model
 {
-    use AuthenticableTrait;
-    use SoftDeletes;
-
-    protected $fillable = [
-        "email",
-        "email_verified_at",
-        "password",
-        "image_name",
-        "role_id",
-        "status_id",
-        "confirm",
-        "first_name",
-        "last_name",
-        "phone",
-        "profession",
-        "university",
-        "birthdate",
-        "sex",
-        "city",
-        "street",
-        "plate",
-        "alley",
-        "postal_code",
-        "activated",
-        "forbidden",
-        "language",
-    
-    ];
-    
-    protected $hidden = [
-        "password",
-        "remember_token",
-    
-    ];
-    
-    protected $dates = [
-        "email_verified_at",
-        "created_at",
-        "updated_at",    
-    ];
-    protected $appends = ['resource_url'];
-
-    public function getResourceUrlAttribute() {
-        return url('/admin/users/'.$this->getKey());
-    }
+    /**
+     * @var array
+     */
+    protected $fillable = ['role_id', 'status_id', 'sex', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at', 'deleted_at', 'image_name', 'confirm', 'first_name', 'last_name', 'phone', 'profession', 'university', 'birthdate', 'city', 'street', 'plate', 'alley', 'postal_code'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -115,7 +74,7 @@ class User extends Model  implements Authenticatable
      */
     public function bookComments()
     {
-        return $this->hasMany('App\Models\BookComment', 'user_id');
+        return $this->hasMany('App\Models\BookComment');
     }
 
     /**
@@ -125,14 +84,6 @@ class User extends Model  implements Authenticatable
     {
         return $this->hasMany('App\Models\BookFactorUser');
     }
- /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function newsComments()
-    {
-        return $this->hasMany('App\Models\NewsComment', 'user_id');
-    }
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -147,24 +98,14 @@ class User extends Model  implements Authenticatable
      */
     public function news()
     {
-        return $this->hasMany('App\Models\News', 'user_id');
+        return $this->hasMany('App\Models\News');
     }
 
-     /**
-     * Return the user attributes.
-
-     * @return array
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public static function getAuthor($id)
+    public function newsComments()
     {
-        $user = self::find($id);
-        return [
-            'id'     => $user->id,
-            'name'   => $user->name,
-            'email'  => $user->email,
-            'url'    => '',  // Optional
-            'avatar' => 'gravatar',  // Default avatar
-            'admin'  => $user->role === 'admin', // bool
-        ];
+        return $this->hasMany('App\Models\NewsComment');
     }
 }

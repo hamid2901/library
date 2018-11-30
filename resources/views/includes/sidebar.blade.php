@@ -7,7 +7,7 @@
     <ul class="list-unstyled components">
         <p>امکانات</p>
         <li>
-            <a href="#">کاربران</a>
+            <a href="/admin/users">کاربران</a>
         </li>
         <li>
             <a href="#">کتاب ها</a>
