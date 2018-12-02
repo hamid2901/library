@@ -131,6 +131,7 @@ Route::get('/news',                                        'Admin\NewsController
 Route::get('/news/{news}',                                 'Admin\NewsController@showNews');
 Route::post('/news',                                       'Admin\NewsController@searchByText');
 Route::post('/news/comment',                               'Admin\NewsController@storeComment');
+Route::post('/news/{news}/comment/{user}',                 'Admin\NewsController@storeComment');
 
 //Route for Books
 Route::get('/books',                                       'Admin\BookController@indexBooks');

@@ -44,7 +44,7 @@
         @if(1)
         <h4>ارسال کامنت :</h4>
         <hr>
-        <form role="form" action='/news/{{$new->id}}/comment' method="post">
+    <form role="form" action='/news/{{$new->id}}/comment/{{ Auth::id() }}' method="post">
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="title">متن : </label>
