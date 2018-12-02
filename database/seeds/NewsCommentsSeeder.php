@@ -22,6 +22,8 @@ class NewsCommentsSeeder extends Seeder
                 'created_at'=> Carbon::now(),
                 'updated_at'=> Carbon::now(),
                 'confirm'=> $faker->numberBetween(1,2),
+                'user_id'=> $faker->numberBetween(1,20),
+                'news_id'=> $faker->numberBetween(1,25),
         ]);
         }  
     }

@@ -34,7 +34,8 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/admin/books',                                 'Admin\BookController@store');
     Route::get('/admin/books/{book}/edit',                      'Admin\BookController@edit')->name('admin/books/edit');
     Route::post('/admin/books/{book}',                          'Admin\BookController@update')->name('admin/books/update');
-    Route::delete('/admin/books/{book}/delete',                        'Admin\BookController@destroy')->name('admin/books/destroy');
+    Route::delete('/admin/books/{book}/delete',                 'Admin\BookController@destroy')->name('admin/books/destroy');
+
 });
 
 /* Auto-generated admin routes */
@@ -138,6 +139,7 @@ Route::get('/books/category/{categoryName}',               'Admin\BookController
 Route::get('/books/publisher/{publisherName}',             'Admin\BookController@searchByPublisher');
 Route::post('/books',                                      'Admin\BookController@searchByText');
 Route::post('/books/comment',                              'Admin\BookController@storeComment');
+Route::post('/books/{book}/comment/{user}',                 'Admin\BookController@storeComment');
 
 //Route for Articles
 Route::get('/articles',                                    'Admin\ArticleController@indexArticles');

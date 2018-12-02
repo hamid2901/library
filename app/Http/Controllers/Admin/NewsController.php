@@ -152,8 +152,34 @@ class NewsController extends Controller
 
     public function showNews($id = null)
     {
-        $news = News::with('user')->where('id', $id)->get();;
-        // $comments = NewsComment::with('News')->where('confirm', 1)->get();
-        return view('News.show',compact('news','comments'));
+        $news = News::with('user')->where('id', $id)->get();
+        $comments = NewsComment::where('news_id', $id)->get();
+        // dd($comments);
+
+
+        // $book = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments.user'])->where('id', $id)->get();
+        // $publishers = Publisher::all();
+        // $categories = Category::all();
+        // return view('books.show')->with(['books'=> $book , 'publishers'=>$publishers, 'categories'=> $categories]);
+
+        return view('news.show')->with(['news'=>$news, 'comments'=>$comments]);
     }
+
+
+    public function storeComment(Request $request, $news, $user)
+    {
+        // dd($user);
+        $comment = new NewsComment();
+        $comment->content = $request->input('body');
+        $comment->user_id = $user;
+        $comment->book_id = $news;
+        $comment->save();
+        // BookComment::create([
+        //     'user_id'=>$user,
+        //     'book_id'=>$book,
+        //     'content'=>$request->input('body')
+        // ]);
+        return redirect()->back();
+    }
+
 }

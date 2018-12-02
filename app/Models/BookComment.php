@@ -10,15 +10,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $content
  * @property string $created_at
  * @property string $updated_at
+ * @property int $user_id
+ * @property int $book_id
  * @property int $confirm
  * @property BookComment $bookComment
- * @property BookCommentUser[] $bookCommentUsers
  */
 class BookComment extends Model
 {
     
     protected $fillable = [
-    
+        'user_id', 'book_id'
     ];
     
     protected $hidden = [

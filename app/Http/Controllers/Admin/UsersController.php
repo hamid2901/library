@@ -119,15 +119,4 @@ class UsersController extends Controller
         return redirect()->back();
     }
 
-    public function changeStatus(Request $request, $id){
-        $leaveType = $request->selectOption; //**Your selected option
-        $user = User::find($id)->update(['status_id'=>$request->input('LEAVECODE')]);
-
-        // Do your DB processing
-        // $this->getLeveBalance($leaveType, $empcode);
-        // I assume $leaveBalance contains the value you need to show in OtherTextBox
-
-
-        return response()->json(['success' => true, 'leaveBalance' => $leaveBalance]);
-    }
 }

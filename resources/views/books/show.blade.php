@@ -88,7 +88,7 @@
         @if(1)
         <h4>ارسال کامنت :</h4>
         <hr>
-        <form role="form" action="/bookComments/store" method="post">
+    <form role="form" action='/books/{{$book->id}}/comment/{{ Auth::id() }}' method="post">
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="title">متن : </label>
@@ -106,10 +106,10 @@
 
 
     <!-- Posted Comments -->
-    @foreach($book->bookComments as $comment)
+    @foreach($comments as $comment)
     <div class="media">
         <div class="media-body">
-            <h4 class="media-heading">{{ $comment->user->last_name }}
+            <h4 class="media-heading">{{ $comment->user->first_name }}&nbsp{{ $comment->user->last_name }}
                 <small>ارسال شده در تاریخ {{ jdate($comment->created_at)->format('%B %d، %Y') }}</small>
             </h4>
             {{ $comment->content }}
@@ -119,7 +119,7 @@
 
     {{--
     <!-- Comment -->--}}
-    <div class="media">
+    {{-- <div class="media">
         <div class="media-body">
             <h4 class="media-heading">علی موسوی
                 <small>ارسال شده در تاریخ فرودین 1396</small>
@@ -127,8 +127,6 @@
             لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و
             طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه
             اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید
-            {{--
-            <!-- Nested Comment -->--}}
             <div class="media">
                 <div class="media-body">
                     <h4 class="media-heading">حسام موسوی
@@ -139,10 +137,8 @@
                     کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید
                 </div>
             </div>
-            {{--
-            <!-- End Nested Comment -->--}}
         </div>
-    </div>
+    </div> --}}
 </div>
 @endforeach
 

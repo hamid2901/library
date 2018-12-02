@@ -20,7 +20,7 @@ class NewsSeeder extends Seeder
                 'image_dir'=> $faker->userName,
                 'created_at'=> Carbon::now(),
                 'updated_at'=> Carbon::now(),
-                'user_id'=> $faker->numberBetween(1,2),
+                'user_id'=> $faker->numberBetween(1,20),
                 'confirm'=> $faker->numberBetween(0,1),
 
         ]);

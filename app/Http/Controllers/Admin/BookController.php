@@ -11,6 +11,7 @@ use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Book;
 use App\Models\Publisher;
 use App\Models\Category;
+use App\Models\BookComment;
 
 class BookController extends Controller
 {
@@ -190,7 +191,24 @@ class BookController extends Controller
         $book = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments.user'])->where('id', $id)->get();
         $publishers = Publisher::all();
         $categories = Category::all();
-        return view('books.show')->with(['books'=> $book , 'publishers'=>$publishers, 'categories'=> $categories]);
+        $comments = BookComment::with(['user', 'book'])->where('book_id', $id)->get();
+        return view('books.show')->with(['books'=> $book , 'publishers'=>$publishers, 'categories'=> $categories, 'comments'=>$comments]);
      }
+
+     public function storeComment(Request $request, $book, $user)
+    {
+        // dd($user);
+        $comment = new BookComment();
+        $comment->content = $request->input('body');
+        $comment->user_id = $user;
+        $comment->book_id = $book;
+        $comment->save();
+        // BookComment::create([
+        //     'user_id'=>$user,
+        //     'book_id'=>$book,
+        //     'content'=>$request->input('body')
+        // ]);
+        return redirect()->back();
+    }
     
 }
