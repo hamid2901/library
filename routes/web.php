@@ -12,7 +12,7 @@
 */
 
 /* Auto-generated admin routes */
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['admin'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.user.index');
     });
@@ -21,7 +21,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/users',                                 'Admin\UsersController@store');
     Route::get('/admin/users/{user}/edit',                      'Admin\UsersController@edit')->name('admin/users/edit');
     Route::post('/admin/users/{user}',                          'Admin\UsersController@update')->name('admin/users/update');
-    Route::delete('/admin/users/{user}',                        'Admin\UsersController@destroy')->name('admin/users/destroy');
+    Route::get('/admin/users/{user}/delete',                    'Admin\UsersController@delete')->name('admin/users/delete');
+    Route::post('/admin/users/{user}/status',                   'Admin\UsersController@changeStatus');
+
 });
 
 
@@ -32,7 +34,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/admin/books',                                 'Admin\BookController@store');
     Route::get('/admin/books/{book}/edit',                      'Admin\BookController@edit')->name('admin/books/edit');
     Route::post('/admin/books/{book}',                          'Admin\BookController@update')->name('admin/books/update');
-    Route::delete('/admin/books/{book}',                        'Admin\BookController@destroy')->name('admin/books/destroy');
+    Route::delete('/admin/books/{book}/delete',                        'Admin\BookController@destroy')->name('admin/books/destroy');
 });
 
 /* Auto-generated admin routes */

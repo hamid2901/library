@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+
 
 /**
  * @property int $id
@@ -38,8 +41,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property News[] $news
  * @property NewsComment[] $newsComments
  */
-class User extends Model
+class User extends Model implements Authenticatable
 {
+    use AuthenticableTrait;
+
     /**
      * @var array
      */

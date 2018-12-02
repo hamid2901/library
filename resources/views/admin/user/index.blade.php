@@ -39,25 +39,22 @@
                 <td class="">{{$user->email}}</td>
 
                 <td>
-                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                        @foreach($userStatus as $status)
-                        <option value="{{$status->id}}" @if ($user->status_id === $status->id)
-                            selected
-                            @endif >{{$status->status}}</option>
-                        @endforeach
-                    </select>
+                    @foreach($userStatus as $status)
+
+                    @if ($user->status_id === $status->id)
+                    {{$status->status}}
+                    @endif @endforeach
+
                 </td>
                 <td>
-                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                        @foreach($userRole as $role)
-                        <option value="{{$role->id}}" @if ($user->role_id === $role->id)
-                            selected
-                            @endif >{{$role->role}}</option>
-                        @endforeach
-                    </select>
+                    @foreach($userRole as $role)
+                    @if ($user->role_id === $role->id)
+                    {{$role->role}}
+                    @endif
+                    @endforeach
                 </td>
-            <td class=""><a href="/admin/users/{{$user->id}}/edit"><i class="fas fa-edit"></i></a></td>
-                <td class=""><a href=""><i class="fas fa-user-times"></i></a></td>
+                <td class=""><a href="/admin/users/{{$user->id}}/edit"><i class="fas fa-edit"></i></a></td>
+                <td class=""><a href="/admin/users/{{$user->id}}/delete"><i class="fas fa-user-times"></i></a></td>
             </tr>
             @endforeach
 
