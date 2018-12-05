@@ -122,8 +122,14 @@ class Book extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function bookFactorUsers()
+    public function factors()
     {
-        return $this->hasMany('App\Models\BookFactorUser');
+        return $this->belongsToMany('App\Models\Factor', 'book_factor_user');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'book_factor_user');
+    }
+    
 }

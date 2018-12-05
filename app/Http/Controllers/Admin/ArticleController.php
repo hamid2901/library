@@ -163,7 +163,7 @@ class ArticleController extends Controller
         $keyword = $request->get('word');
         $articles = Article::with(['categories', 'authors'])->where('title','LIKE','%'.$keyword.'%')->orWhere('description','LIKE','%'.$keyword.'%')->where('confirm', 1)->paginate(5);
         $categories = Category::all();
-        return view('articles.index')->with(['searchedArticles'=> $books, 'categories'=> $categories]);
+        return view('articles.index')->with(['articles'=> $articles, 'categories'=> $categories]);
      }
 
 

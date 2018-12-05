@@ -85,14 +85,6 @@ class User extends Model implements Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function bookFactorUsers()
-    {
-        return $this->hasMany('App\Models\BookFactorUser');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function messages()
     {
         return $this->hasMany('App\Models\Message');
@@ -112,5 +104,15 @@ class User extends Model implements Authenticatable
     public function newsComments()
     {
         return $this->hasMany('App\Models\NewsComment');
+    }
+
+    public function books()
+    {
+        return $this->belongsToMany('App\Models\Book', 'book_factor_user');
+    }
+
+    public function factors()
+    {
+        return $this->belongsToMany('App\Models\Factor', 'book_factor_user');
     }
 }

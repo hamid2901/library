@@ -26,6 +26,30 @@
                 <li>
                     <a href="{{url('/contact')}}">تماس با ما</a>
                 </li>
+                <li>
+
+  
+                </li>
+
+            </ul>
+            <ul style="float: left" class="navbar-nav">
+                <!-- Authentication Links -->
+                @if(!Auth::check())
+
+                @else
+                <a id="parent" class="btn btn-md btn-light text-success navbar-brand" href="{{url('/factor/cart')}}"
+                    onclick="event.preventDefault(); document.getElementById('factor-form').submit();">
+                    <form id="factor-form" action="{{url('/factor/cart')}}" method="POST" style="display: none;">
+                        @csrf
+                        <input value="{!! Auth::user()->id !!}" name="user_id" type="text">
+                    </form>
+                    <span id="child">سبد رزرو&nbsp<i class="text-success fas fa-cart-arrow-down"></i></span>
+                    <span id="child">
+
+                        {{\Cart::session(Auth::user()->id)->getTotalQuantity()}}
+                    </span>
+                </a>
+                @endif
             </ul>
         </div>
         <!-- /.navbar-collapse -->

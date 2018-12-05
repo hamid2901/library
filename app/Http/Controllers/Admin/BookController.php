@@ -179,7 +179,7 @@ class BookController extends Controller
     public function searchByText(Request $request)
     {
         $keyword = $request->get('word');
-        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->where('title','LIKE','%'.$keyword.'%')->orWhere('description','LIKE','%'.$keyword.'%')->orWhere('description','LIKE','%'.$keyword.'%')->paginate(5);
+        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->where('title','LIKE','%'.$keyword.'%')->orWhere('description','LIKE','%'.$keyword.'%')->orWhere('description','LIKE','%'.$keyword.'%')->where('availability_id',1 )->paginate(5);
         $publishers = Publisher::all();
         $categories = Category::all();
         return view('books.index')->with(['books'=> $books , 'publishers'=>$publishers, 'categories'=> $categories]);

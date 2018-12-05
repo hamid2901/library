@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         'Way\Generators\GeneratorsServiceProvider',
         'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
+        Darryldecode\Cart\CartServiceProvider::class
 
     ],
 
@@ -230,6 +231,7 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
     ],
 
 ];

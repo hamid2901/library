@@ -14,67 +14,90 @@
     <!-- Title -->
     <img class="zoom" src="{!! asset('images/book_images/'.$book->id.'/front.jpg') !!}" alt="hello">
     <img class="zoom" src="{!! asset('images/book_images/'.$book->id.'/back.jpg') !!}" alt="hello">
+    <div style="float:left" class="row">
+        @if(Auth::check())
+        @if(Cart::session(Auth::user()->id)->get($book->id) != null)
+        <form action="/factor/{{$book->id}}/removeFromCart" method="POST">
+            {{ csrf_field() }}
 
+            <button id="" value='{!! Auth::user()->id !!}' name="factor" style="" class="btn btn-danger">حذف کردن از
+                سبد رزرو&nbsp<i class="fas fa-cart-plus text-light"></i></button>
+        </form>
+        @else
+        <form action="/factor/{{$book->id}}/addToCart" method="POST">
+            {{ csrf_field() }}
+
+            <button id="" value='{!! Auth::user()->id !!}' name="factor" style="" class="btn btn-primary">اضافه کردن به
+                سبد رزرو&nbsp<i class="fas fa-cart-plus text-light"></i></button>
+        </form>
+        @endif
+
+        @else
+        <a class="btn btn-primary">اضافه کردن به سبد رزرو&nbsp<i class="fas fa-plus-square"></i></a>
+        <span>&nbsp برای رزرو کتاب باید عضو سایت باشید.</span>
+        @endif
+    </div>
     <!-- Author -->
     <p class="lead">
         <p class="lead" style="font-size: 15px !important">
             دسته بندی کتاب:
             @foreach( $book->categories as $book->category )
-            <a href="{{url('/books/'.$book->id.'')}}">{{$book->category->type}}</a>@if(! $loop->last )
+            <a href="{{url('/books/category/'.$book->category->type.'')}}">{{$book->category->type}}</a>@if(!
+            $loop->last )
             ،
             @endif
             @endforeach
         </p>
     </p>
     <p class="lead" style="font-size: 15px !important">
-            ناشر:
-            {{$book->publisher->name}}
-            <br>
-            سال انتشار:
-            {{jdate($book->issue_date)->format('%B %Y') }}
-            <br>
-            جلد:
-            {{$book->cover}}
-            <br>
-            تعداد صفحات:
-            {{$book->pages}}
-            <br>
-            شابک:
-            {{$book->isbn}}
-            <br>
-            قطع کتاب:
-            {{$book->bookFormat->format}}
-            <br>
-            وزن:
-            {{$book->weight}}
-            <br>
-            قیمت:
-            {{$book->price}}
-            <br>
-            
-            نویسندگان:
-            @foreach( $book->authors as $book->author )
-            @if ($book->author->role_id == 1)
-            {{$book->author->first_name}}&nbsp{{$book->author->last_name}}
-            @if(! $loop->last )
-            ،
-            @endif
-            @endif
+        ناشر:
+        {{$book->publisher->name}}
+        <br>
+        سال انتشار:
+        {{jdate($book->issue_date)->format('%B %Y') }}
+        <br>
+        جلد:
+        {{$book->cover}}
+        <br>
+        تعداد صفحات:
+        {{$book->pages}}
+        <br>
+        شابک:
+        {{$book->isbn}}
+        <br>
+        قطع کتاب:
+        {{$book->bookFormat->format}}
+        <br>
+        وزن:
+        {{$book->weight}}
+        <br>
+        قیمت:
+        {{$book->price}}
+        <br>
+
+        نویسندگان:
+        @foreach( $book->authors as $book->author )
+        @if ($book->author->role_id == 1)
+        {{$book->author->first_name}}&nbsp{{$book->author->last_name}}
+        @if(! $loop->last )
+        ،
+        @endif
+        @endif
 
 
-            @endforeach
-            @foreach( $book->authors as $book->author )
-            @if ($book->author->role_id == 2)
-            {{$book->author->first_name}}&nbsp{{$book->author->last_name}}
-            <span style="font-size:10px">(مترجم)</span>
-            @if(! $loop->last )
-            ،
-            @endif
-            @endif
+        @endforeach
+        @foreach( $book->authors as $book->author )
+        @if ($book->author->role_id == 2)
+        {{$book->author->first_name}}&nbsp{{$book->author->last_name}}
+        <span style="font-size:10px">(مترجم)</span>
+        @if(! $loop->last )
+        ،
+        @endif
+        @endif
 
-            @endforeach
-        </p>
-        توضیحات:
+        @endforeach
+    </p>
+    توضیحات:
     <!-- Post Content -->
     {!! $book->description !!}
     <hr>
@@ -88,7 +111,7 @@
         @if(1)
         <h4>ارسال کامنت :</h4>
         <hr>
-    <form role="form" action='/books/{{$book->id}}/comment/{{ Auth::id() }}' method="post">
+        <form role="form" action='/books/{{$book->id}}/comment/{{ Auth::id() }}' method="post">
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="title">متن : </label>
@@ -145,7 +168,53 @@
 
 <!-- Blog Sidebar Widgets Column -->
 <div class="col-md-4">
+    <div class="well">
+        <ul class="list-unstyled">
+            @if(!Auth::check())
+            <li><a href="{{url('/register')}}"><i class="fas fa-user-plus"></i>&nbspثبت نام</a>
+            </li>
+            <li><a href="{{url('/login')}}"><i class="fas fa-sign-in-alt"></i>&nbspورود</a>
+            </li>
+            @else
+            <li>
+                <p>
+                    <img class="row zoom d-block" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/'.Auth::user()->image_name.'')}}
+                        alt="بدون عکس">
+                </p>
+            </li>
+            <li>سلام&nbsp{{ Auth::user()->first_name }}&nbsp{{ Auth::user()->last_name }}&nbspعزیز</li>
+            <li><a href="{{url('/factor/reserved')}}" onclick="event.preventDefault();
+                            document.getElementById('reserved-form').submit();"><i
+                        class="fas fa-book"></i>&nbsp لیست کتاب های رزرو شده</a>
+                <form id="reserved-form" action="{{url('/factor/reserved')}}" method="POST" style="display: none;">
+                    @csrf
+                    <input value="{!! Auth::user()->id !!}" name="user_id" type="text">
+                </form>
+            </li>
+            <li><a href="{{url('/factor/borrowed')}}" onclick="event.preventDefault();
+                            document.getElementById('borrowed-form').submit();"><i
+                        class="fas fa-book-reader"></i>&nbspلیست کتاب های امانت گرفته
+                    شده</a>
 
+
+                <form id="borrowed-form" action="{{url('/factor/borrowed')}}" method="POST" style="display: none;">
+                    @csrf
+                    <input value="{!! Auth::user()->id !!}" name="user_id" type="text">
+                </form>
+            </li>
+            <li><a href="{{url('/profile')}}"><i class="fas fa-user-circle"></i>&nbspمشاهده پروفایل</a>
+            </li>
+            <li><a href="{{url('/logout')}}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"><i
+                        class="fas fa-sign-out-alt"></i>&nbspخروج از حساب کاربری</a>
+
+                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
+            @endif
+        </ul>
+    </div>
     <!-- Blog Search Well -->
     <div class="well">
         <h4>جستجو در کتاب ها</h4>
@@ -186,14 +255,8 @@
         </ul>
     </div>
     <!-- Side Widget Well -->
-    <div class="well">
-        <ul class="list-unstyled">
-            <li><a href="{{url('/register')}}"><i class="fas fa-user-plus"></i>&nbspثبت نام</a>
-            </li>
-            <li><a href="{{url('/login')}}"><i class="fas fa-sign-in-alt"></i>&nbspورود</a>
-            </li>
-        </ul>
-    </div>
+
+
 </div>
 
 

@@ -122,6 +122,7 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
+            'Darryldecode\\' => 13,
         ),
         'C' => 
         array (
@@ -334,6 +335,10 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'Darryldecode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode',
+        ),
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
@@ -409,14 +414,11 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\Admin\\ActivityLogsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ActivityLogsController.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
         'App\\Http\\Controllers\\Admin\\ArticleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ArticleController.php',
-        'App\\Http\\Controllers\\Admin\\BookCommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BookCommentController.php',
         'App\\Http\\Controllers\\Admin\\BookController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BookController.php',
         'App\\Http\\Controllers\\Admin\\FactorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/FactorController.php',
         'App\\Http\\Controllers\\Admin\\MessageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MessageController.php',
-        'App\\Http\\Controllers\\Admin\\NewsCommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/NewsCommentController.php',
         'App\\Http\\Controllers\\Admin\\NewsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/NewsController.php',
         'App\\Http\\Controllers\\Admin\\PagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PagesController.php',
         'App\\Http\\Controllers\\Admin\\PermissionsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PermissionsController.php',
@@ -482,7 +484,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'BookAuthorSeeder' => __DIR__ . '/../..' . '/database/seeds/BookAuthorSeeder.php',
         'BookAvailabilitySeeder' => __DIR__ . '/../..' . '/database/seeds/BookAvailabilitySeeder.php',
         'BookCategorySeeder' => __DIR__ . '/../..' . '/database/seeds/BookCategorySeeder.php',
-        'BookCommentUserSeeder' => __DIR__ . '/../..' . '/database/seeds/BookCommentUserSeeder.php',
         'BookCommentsSeeder' => __DIR__ . '/../..' . '/database/seeds/BookCommentsSeeder.php',
         'BookFactorUserSeeder' => __DIR__ . '/../..' . '/database/seeds/BookFactorUserSeeder.php',
         'BookFormatSeeder' => __DIR__ . '/../..' . '/database/seeds/BookFormatSeeder.php',
@@ -501,7 +502,6 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
-        'CommentNewsUserSeeder' => __DIR__ . '/../..' . '/database/seeds/CommentNewsUserSeeder.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -511,6 +511,20 @@ class ComposerStaticInit918992cd7b22e1acf8a1caf803154b53
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Darryldecode\\Cart\\Cart' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Cart.php',
+        'Darryldecode\\Cart\\CartCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartCollection.php',
+        'Darryldecode\\Cart\\CartCondition' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartCondition.php',
+        'Darryldecode\\Cart\\CartConditionCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartConditionCollection.php',
+        'Darryldecode\\Cart\\CartServiceProvider' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartServiceProvider.php',
+        'Darryldecode\\Cart\\Exceptions\\InvalidConditionException' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Exceptions/InvalidConditionException.php',
+        'Darryldecode\\Cart\\Exceptions\\InvalidItemException' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Exceptions/InvalidItemException.php',
+        'Darryldecode\\Cart\\Facades\\CartFacade' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Facades/CartFacade.php',
+        'Darryldecode\\Cart\\Helpers\\Helpers' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Helpers/Helpers.php',
+        'Darryldecode\\Cart\\ItemAttributeCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/ItemAttributeCollection.php',
+        'Darryldecode\\Cart\\ItemCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/ItemCollection.php',
+        'Darryldecode\\Cart\\Validators\\CartConditionValidator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartConditionValidator.php',
+        'Darryldecode\\Cart\\Validators\\CartItemValidator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartItemValidator.php',
+        'Darryldecode\\Cart\\Validators\\Validator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/Validator.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',

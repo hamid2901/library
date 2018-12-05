@@ -12,7 +12,7 @@
 */
 
 /* Auto-generated admin routes */
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.user.index');
     });
@@ -51,7 +51,7 @@ Route::middleware(['admin'])->group(function () {
 
 
 /* Auto-generated admin routes */
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/admin/factors',                                'Admin\FactorController@index');
     Route::get('/admin/factors/create',                         'Admin\FactorController@create');
     Route::post('/admin/factors',                               'Admin\FactorController@store');
@@ -156,14 +156,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('admin', 'Admin\AdminController@index');
-Route::resource('admin/roles', 'Admin\RolesController');
-Route::resource('admin/permissions', 'Admin\PermissionsController');
-Route::resource('admin/users', 'Admin\UsersController');
-Route::resource('admin/pages', 'Admin\PagesController');
-Route::resource('admin/activitylogs', 'Admin\ActivityLogsController')->only([
-    'index', 'show', 'destroy'
-]);
-Route::resource('admin/settings', 'Admin\SettingsController');
-Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
-Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
+//Routes for factor
+Route::middleware(['auth'])->group(function () {
+
+    Route::post('/factor/cart',                                'Admin\FactorController@yourCart');
+    Route::post('/factor/{book}/addToCart',                    'Admin\FactorController@addToCart');
+    Route::post('/factor/{book}/removeFromCart',               'Admin\FactorController@removeFromCart');
+    Route::post('/factor/reserved',                            'Admin\FactorController@reservedBooks');
+    Route::post('/factor/borrowed',                            'Admin\FactorController@borrowedBooks');
+    Route::post('/factor/yourFactor',                          'Admin\FactorController@factorIndex');
+    Route::post('/factor/submitCart',                          'Admin\FactorController@submitFactor');
+    Route::post('/factor/reserved',                            'Admin\FactorController@reservedBooks');
+    Route::post('/factor/borrowed',                            'Admin\FactorController@borrowedBooks');
+    Route::post('/factor/deleteReserve',                       'Admin\FactorController@deleteReserve');
+});

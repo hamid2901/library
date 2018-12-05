@@ -3,142 +3,198 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \Illuminate\Http\Response;
-use App\Http\Requests\Admin\Factor\IndexFactor;
-use App\Http\Requests\Admin\Factor\StoreFactor;
-use App\Http\Requests\Admin\Factor\UpdateFactor;
-use App\Http\Requests\Admin\Factor\DestroyFactor;
-use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Factor;
+use App\Models\Book;
+use App\Models\Publisher;
+use App\Models\Category;
+use Carbon\Carbon;
+use App\User;
+
+use App\ValueObjects\Cart\ItemObject;
 
 class FactorController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  IndexFactor $request
-     * @return Response|array
-     */
-    public function index(IndexFactor $request)
-    {
-        // create and AdminListing instance for a specific model and
-        $data = AdminListing::create(Factor::class)->processRequestAndGet(
-            // pass the request with params
-            $request,
+    public function addToCart(Request $request, $book){
 
-            // set columns to query
-            ['id', 'borrow_status', 'quantity', 'borrow_date', 'reserve_date', 'duration'],
+        $user = $request->input('factor');
+        $factorUser = User::with('factors')->find($user);
+        $theFactor = $factorUser->factors;
+        $factor = $theFactor[0];
+        if($factor->borrow_status == 0){
 
-            // set columns to searchIn
-            ['id', 'borrow_date', 'created_at', 'updated_at', 'reserve_date', 'duration']
-        );
+            //اگر کتاب رزرو کرده باشد دیگر نمی تواند  کتابی به سبد خرید اضافه کند... نیاز است تا پیغامی را به کار بر نیز نمایش دهد
+            return redirect()->back();
 
-        if ($request->ajax()) {
-            return ['data' => $data];
+        }else{
+            $user = $request->input('factor');
+
+            //چک میکنه که بیشتر از 2 تا کتاب نتونه یکبار رزرو کنه
+            if(\Cart::session($user)->getTotalQuantity() < 2){
+
+                //برای اطمینان اگه نیاز شد کل سبد خریدش حذف بشه
+                // \Cart::session($user)->clear();
+
+                //اضافه کردن کتب به سبد رزرو
+                \Cart::session($user)->add($book, 'Book', 0, 1, array());
+
+                //درصورتی که کتاب به سبد رزرو اضافه شد وضعیت کتاب از در دسترس به رزروشده تغییر می یابد.
+                $theBook = Book::find($book)->update(['availability_id'=>4]);
+
+                return redirect()->back();
+            }
+            else{
+            //اگه 2تا کتاب رزرو کرده برش میگردونه به همون صفحه فقط باید یه پیغامی رو بهش برگردونه. روش کار میکنیم.
+                return redirect()->back();
+        }}
+    }
+
+    public function removeFromCart(Request $request, $book){
+
+        $user = $request->input('factor');
+
+        //حذف کردن کتاب از سبد رزرو
+        \Cart::session($user)->remove($book);
+
+        //درصورتی که کتاب از سبد رزرو حذف شد وضعیت کتاب به در دسترس تغییر می یابد.
+        $theBook = Book::find($book)->update(['availability_id'=> 1]);
+
+        return redirect('/books');
+    }
+
+    public function yourCart(Request $request){
+
+
+        $user = $request->input('user_id');
+        $array = array();
+        $books = \Cart::session($user)->getContent();
+        
+                foreach($books as $book){
+                    $array[] = $book['id'];
+                }
+
+        $bookCart = Book::with(['categories','bookFormat', 'publisher', 'authors'])->find($array);
+        $publishers = Publisher::all();
+        $categories = Category::all();
+        return view('factor.cartIndex')->with(['books'=>$bookCart,'item'=>'سبد رزرو','message'=>'سبد رزرو شما خالی است.', 'publishers'=> $publishers, 'categories'=>$categories]);
+    }
+
+    public function submitFactor(Request $request){
+
+        $user_id = $request->input('user');
+        $array = array();
+        $books = \Cart::session($user_id)->getContent();
+        
+        foreach($books as $book){
+            $array[] = $book['id'];
         }
 
-        return view('admin.factor.index', ['data' => $data]);
+        $factor = new Factor();
+        $factor->borrow_status = 0;
+        $factor->quantity = \Cart::session($user_id)->getTotalQuantity();
+        $factor->reserve_date = Carbon::now();
+        $factor->save();
+        
+        $user = User::find($user_id);
+
+        foreach($books as $book){
+            $user->books()->attach($book['id'], ['factor_id' => $factor->id]);
+        }
+        \Cart::session($user_id)->clear();
+
+        return redirect('/books');
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        $this->authorize('admin.factor.create');
+    public function reservedBooks(Request $request){
 
-        return view('admin.factor.create');
-    }
+        $user = $request->input('user_id');
+        $factorUser = User::with('factors')->find($user);
+        $theFactor = $factorUser->factors;
+        //اینجا نیاز به تصحیح دارد... خواستم با آخرین آیدی وارد شده به جدول فاکتور برای یه یوزر خاص بگیرم اولین فاکتورشو داد از این ترفند استفاده کردم.
+        $publishers = Publisher::all();
+        $categories = Category::all();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  StoreFactor $request
-     * @return Response|array
-     */
-    public function store(StoreFactor $request)
-    {
-        // Sanitize input
-        $sanitized = $request->validated();
 
-        // Store the Factor
-        $factor = Factor::create($sanitized);
+        foreach($theFactor as $factor)
+            if($factor->borrow_status == 0){
 
-        if ($request->ajax()) {
-            return ['redirect' => url('admin/factors'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+                $books = $factor->books;       
+                $factorArray = $factor;
+
+            foreach($books as $book){
+                $array[] = $book['id'];
+            }
+
+            $bookCart = Book::with(['categories','bookFormat', 'publisher', 'authors'])->find($array);
+            // dd($books);
+
         }
 
-        return redirect('admin/factors');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  Factor $factor
-     * @return Response
-     */
-    public function show(Factor $factor)
-    {
-        $this->authorize('admin.factor.show', $factor);
-
-        // TODO your code goes here
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  Factor $factor
-     * @return Response
-     */
-    public function edit(Factor $factor)
-    {
-        $this->authorize('admin.factor.edit', $factor);
-
-        return view('admin.factor.edit', [
-            'factor' => $factor,
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UpdateFactor $request
-     * @param  Factor $factor
-     * @return Response|array
-     */
-    public function update(UpdateFactor $request, Factor $factor)
-    {
-        // Sanitize input
-        $sanitized = $request->validated();
-
-        // Update changed values Factor
-        $factor->update($sanitized);
-
-        if ($request->ajax()) {
-            return ['redirect' => url('admin/factors'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+        if($factorArray != null){
+            return view('factor.reserved')->with(['factor'=>$factor ,'books'=>$bookCart,'item'=>'کتاب های رزرو شده', 'publishers'=> $publishers, 'categories'=>$categories]);
+        }else{
+                
+            
+        
+        
+            return view('factor.reserved')->with(['books'=>array() ,'item'=>'کتاب های رزرو شده', 'message'=>'شما اخیراً کتابی رزرو نکرده اید.', 'publishers'=> $publishers, 'categories'=>$categories]);
         }
 
-        return redirect('admin/factors');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  DestroyFactor $request
-     * @param  Factor $factor
-     * @return Response|bool
-     */
-    public function destroy(DestroyFactor $request, Factor $factor)
-    {
-        $factor->delete();
+    public function borrowedBooks(Request $request){
 
-        if ($request->ajax()) {
-            return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
+        $user = $request->input('user_id');
+        $factorUser = User::with('factors')->find($user);
+        $factors = $factorUser->factors;
+        $array = array();
+        $factorArray = array();
+
+        $publishers = Publisher::all();
+        $categories = Category::all();
+        // dd($factor);
+        foreach($factors as $factor){
+            if($factor->borrow_status == 1){
+
+                $books = $factor->books;       
+                $factorArray = $factor;
+                foreach($books as $book){
+                    $array[] = $book['id'];
+                }
+
+                
+            }
         }
+        // dd($books);
+            
+        // dd($factorArray);
 
-        return redirect()->back();
+            $bookCart = Book::with(['categories','bookFormat', 'publisher', 'authors'])->find($array);
+            // dd($books);
+
+            return view('factor.borrowed')->with(['factor'=>$factorArray ,'books'=>$books,'item'=>'کتاب های امانت گرفته شده', 'publishers'=> $publishers, 'categories'=>$categories]);
+
+
+
+    }
+
+    public function deleteReserve(Request $request){
+
+        $user = $request->input('user');
+        $factorUser = User::with('factors')->find($user);
+        $theFactor = $factorUser->factors;
+        $factor = $theFactor[0];
+        // dd($factors);
+
+        $thisFactor = Factor::find($factor->id);
+        $thisFactor->delete();
+
+        // dd($books);
+            
+        return redirect('/books');
+
+
+
     }
 }

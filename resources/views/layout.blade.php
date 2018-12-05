@@ -15,6 +15,7 @@
     <link href="{!! asset('css/fontiran.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">
 
+
     <!-- Custom CSS -->
     <link href="{!! asset('css/blog-home.css') !!}" rel="stylesheet">
 
@@ -64,6 +65,7 @@
             });
         });
     </script>
+
 </body>
 
 </html>
