@@ -3,151 +3,109 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \Illuminate\Http\Response;
-use App\Http\Requests\Admin\Book\IndexBook;
-use App\Http\Requests\Admin\Book\StoreBook;
-use App\Http\Requests\Admin\Book\UpdateBook;
-use App\Http\Requests\Admin\Book\DestroyBook;
-use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Book;
 use App\Models\Publisher;
+use App\Models\Author;
 use App\Models\Category;
+use App\Models\BookAvailability;
+use App\Models\BookFormat;
+use App\Models\AuthorRole;
 use App\Models\BookComment;
+use Carbon\Carbon;
 
 class BookController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  IndexBook $request
-     * @return Response|array
-     */
-    public function index(IndexBook $request)
-    {
-        // create and AdminListing instance for a specific model and
-        $data = AdminListing::create(Book::class)->processRequestAndGet(
-            // pass the request with params
-            $request,
+    // return books to the admin panel
+    public function index(){
 
-            // set columns to query
-            ['id', 'title', 'availability_id', 'image_dir', 'isbn', 'publisher_id', 'issue_date', 'cover', 'format_id', 'pages', 'weight', 'price'],
-
-            // set columns to searchIn
-            ['id', 'title', 'image_dir', 'created_at', 'updated_at', 'isbn', 'description', 'issue_date']
-        );
-
-        if ($request->ajax()) {
-            return ['data' => $data];
-        }
-
-        // return view('admin.book.index', ['data' => $data]);
-        return view('admin.book.index')->with('books', Book::all());
+        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])
+                        ->where('availability_id', 1)
+                        ->paginate(4);
+    
+        return view('admin.book.index')->with(['books'=> $books]);
 
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
+    
+    // create the form to add book
     public function create()
     {
-        $this->authorize('admin.book.create');
+        $bookAvailability = BookAvailability::all();
+        $bookFormat       = BookFormat::all();
+        $category         = Category::all();
+        $authorRole       = AuthorRole::all();
+        $publisher        = Publisher::all();
+        $author           = Author::all();
 
-        return view('admin.book.create');
+        return view('admin.book.create')->with(['bookAvailabilities'=>$bookAvailability,
+                                                'bookFormats'=> $bookFormat,
+                                                'categories'=> $category,
+                                                'authorRoles'=> $authorRole,
+                                                'publishers'=> $publisher,
+                                                'authors'=> $author]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  StoreBook $request
-     * @return Response|array
-     */
-    public function store(StoreBook $request)
+
+
+    // store book
+    public function store(Request $request)
     {
-        // Sanitize input
-        $sanitized = $request->validated();
+        $front= $request->file('front_photo')->store();
+        $back=$request->file('back_photo')->getClientOriginalName();
 
-        // Store the Book
-        $book = Book::create($sanitized);
-
-        if ($request->ajax()) {
-            return ['redirect' => url('admin/books'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
-        }
-
-        return redirect('admin/books');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  Book $book
-     * @return Response
-     */
-    public function show(Book $book)
-    {
-        $this->authorize('admin.book.show', $book);
-
-        // TODO your code goes here
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  Book $book
-     * @return Response
-     */
-    public function edit(Book $book)
-    {
-        $this->authorize('admin.book.edit', $book);
-
-        return view('admin.book.edit', [
-            'book' => $book,
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UpdateBook $request
-     * @param  Book $book
-     * @return Response|array
-     */
-    public function update(UpdateBook $request, Book $book)
-    {
-        // Sanitize input
-        $sanitized = $request->validated();
-
-        // Update changed values Book
-        $book->update($sanitized);
-
-        if ($request->ajax()) {
-            return ['redirect' => url('admin/books'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
-        }
-
-        return redirect('admin/books');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  DestroyBook $request
-     * @param  Book $book
-     * @return Response|bool
-     */
-    public function destroy(DestroyBook $request, Book $book)
-    {
-        $book->delete();
-
-        if ($request->ajax()) {
-            return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
-        }
+        $request->front_photo->move(public_path().'/images/book_images/front', $front); 
+        $request->back_photo->move(public_path().'/images/book_images/back', $back);   
+            
+        $book = Book::create([
+                    'title'             => $request->input('title'),
+                    'availability_id'   => $request->input('status'),
+                    'isbn'              => $request->input('isbn'),
+                    'publisher_id'      => $request->input('publisher'),
+                    'description'       => $request->input('description'),
+                    'issue_date'        => Carbon  ::parse($request->input('issue_date'))->timestamp,
+                    'cover'             => $request->input('cover'),
+                    'format_id'         => $request->input('format'),
+                    'pages'             => $request->input('pages'),
+                    'weight'            => $request->input('weight'),
+                    'price'             => $request->input('price'),
+                    // 'image_dir'         => $path,
+                ]); 
+        $book->categories()->attach($request->input('category'));
+        $book->authors()->attach($request->input('author'));
 
         return redirect()->back();
     }
 
-    public function BookByCateogory(){
 
+    // to edit and update book
+    public function update(Request $request, $id = null)
+    {        
+        $book = Book::find($id);
+
+        $book->title = $request->input('title');
+        $book->availability_id = $request->input('status');
+        $book->isbn = $request->input('isbn');
+        $book->publisher_id = $request->input('publisher');
+        $book->description = $request->input('description');
+        $book->issue_date = Carbon  ::parse($request->input('issue_date'))->timestamp;
+        $book->cover = $request->input('cover');
+        $book->cover = $request->input('format');
+        $book->pages = $request->input('pages');
+        $book->weight = $request->input('weight');
+        $book->price = $request->input('price');
+        $book->updated_at = Carbon::now();
+
+        $book->save();
+        return redirect()->back();
+    }
+
+
+    public function destroy($id)
+    {
+        $book = Book::find($id);
+
+        $book->delete();
+        return redirect()->back();
     }
 
     public function indexBooks()

@@ -153,7 +153,7 @@ class FactorController extends Controller
 
         $publishers = Publisher::all();
         $categories = Category::all();
-        // dd($factor);
+        // dd($factors);
         foreach($factors as $factor){
             if($factor->borrow_status == 1){
 
@@ -166,14 +166,14 @@ class FactorController extends Controller
                 
             }
         }
-        // dd($books);
+        // dd($array);
             
         // dd($factorArray);
 
             $bookCart = Book::with(['categories','bookFormat', 'publisher', 'authors'])->find($array);
-            // dd($books);
+            // dd($bookCart);
 
-            return view('factor.borrowed')->with(['factor'=>$factorArray ,'books'=>$books,'item'=>'کتاب های امانت گرفته شده', 'publishers'=> $publishers, 'categories'=>$categories]);
+            return view('factor.borrowed')->with(['message'=>'شما اخیراً کتابی امانت نگرفته اید' ,'factor'=>$factorArray ,'books'=>$bookCart,'item'=>'کتاب های امانت گرفته شده', 'publishers'=> $publishers, 'categories'=>$categories]);
 
 
 
@@ -193,8 +193,18 @@ class FactorController extends Controller
         // dd($books);
             
         return redirect('/books');
+    }
+
+    public function index(){
+        $factors = User::with('users')->paginate(5);
+
+        return view('admin.factor.index')->with(['factor'=> $factors, 'user'=> $users]);
+    }
 
 
-
+    public function destroy($id){
+        $factor = Factor::find($id);
+        $factor->delete();
+        return redirect()->back();
     }
 }

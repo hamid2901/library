@@ -12,7 +12,7 @@
 */
 
 /* Auto-generated admin routes */
-Route::middleware(['auth'])->group(function () {
+Route::middleware([])->group(function () {
     Route::get('/admin', function () {
         return view('admin.user.index');
     });
@@ -28,16 +28,15 @@ Route::middleware(['auth'])->group(function () {
 
 
 /* Auto-generated admin routes */
-Route::middleware(['admin'])->group(function () {
+Route::middleware([])->group(function () {
     Route::get('/admin/books',                                  'Admin\BookController@index');
     Route::get('/admin/books/create',                           'Admin\BookController@create');
     Route::post('/admin/books',                                 'Admin\BookController@store');
     Route::get('/admin/books/{book}/edit',                      'Admin\BookController@edit')->name('admin/books/edit');
     Route::post('/admin/books/{book}',                          'Admin\BookController@update')->name('admin/books/update');
-    Route::delete('/admin/books/{book}/delete',                 'Admin\BookController@destroy')->name('admin/books/destroy');
+    Route::get('/admin/books/{book}/delete',                    'Admin\BookController@destroy');
 
 });
-
 /* Auto-generated admin routes */
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/articles',                               'Admin\ArticleController@index');
