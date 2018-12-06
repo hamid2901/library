@@ -20,8 +20,7 @@ class BookController extends Controller
     public function index(){
 
         $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])
-                        ->where('availability_id', 1)
-                        ->paginate(4);
+                        ->paginate(5);
     
         return view('admin.book.index')->with(['books'=> $books]);
 

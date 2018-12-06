@@ -10,28 +10,31 @@
             <a href="/admin/users">کاربران</a>
         </li>
         <li>
-            <a href="#">کتاب ها</a>
+            <a href="/admin/books">کتاب ها</a>
         </li>
         <li>
-            <a href="#">مقالات</a>
+            <a href="/admin/articles">مقالات</a>
         </li>
         <li>
-            <a href="#">امانات</a>
+            <a href="/admin/factors">امانات</a>
         </li>
         <li>
-            <a href="#">کامنت ها</a>
+            <a href="/admin/comments">کامنت ها</a>
         </li>
         <li>
-            <a href="#">نویسندگان</a>
+            <a href="/admin/news">اخبار</a>
         </li>
         <li>
-            <a href="#">ناشر ها</a>
+            <a href="/admin/authors">نویسندگان</a>
         </li>
         <li>
-            <a href="#">موضوعات</a>
+            <a href="/admin/publishers">ناشر ها</a>
         </li>
         <li>
-            <a href="#">نقش ها</a>
+            <a href="/admin/categories">موضوعات</a>
+        </li>
+        <li>
+            <a href="/admin/roles">نقش ها</a>
         </li>
     </ul>
 </nav>

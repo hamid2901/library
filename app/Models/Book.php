@@ -119,9 +119,6 @@ class Book extends Model
         return $this->hasMany('App\Models\BookComment', 'book_id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function factors()
     {
         return $this->belongsToMany('App\Models\Factor', 'book_factor_user');

@@ -51,9 +51,6 @@ class Factor extends Model
      */
     protected $table = 'factor';
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function books()
     {
         return $this->belongsToMany('App\Models\Book', 'book_factor_user');

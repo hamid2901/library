@@ -14,7 +14,7 @@
 /* Auto-generated admin routes */
 Route::middleware([])->group(function () {
     Route::get('/admin', function () {
-        return view('admin.user.index');
+        return view('admin.dashboard');
     });
     Route::get('/admin/users',                                  'Admin\UsersController@index');
     Route::get('/admin/users/create',                           'Admin\UsersController@create');

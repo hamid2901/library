@@ -1,4 +1,7 @@
-@extends('layouts.admin') @section('form') <div class="container">
+@extends('layouts.admin')
+ @section('form') 
+
+ <div class="container">
     <h2 class="pt-5">ایجاد کاربر جدید</h2>
     <form class="pt-4 d-block row" method="post" action="/admin/users" enctype="multipart/form-data">
         @csrf
@@ -69,4 +72,7 @@
 
         <input class="btn btn-success mt-4" value="ثبت کاربر" type="submit">
     </form>
-</div>@stop
+</div>
+
+
+@stop
