@@ -56,6 +56,9 @@
         crossorigin="anonymous"></script>
     @yield('scripts')
     @include('layouts.footer-script')
+    <script type='text/javascript'>
+        $('.zoo-item').ZooMove();
+    </script>
     <script>
         $(document).ready(function () {
             $('.zoom').hover(function () {
@@ -65,6 +68,7 @@
             });
         });
     </script>
+
 
 </body>
 

@@ -20,8 +20,15 @@ class FactorController extends Controller
         $user = $request->input('factor');
         $factorUser = User::with('factors')->find($user);
         $theFactor = $factorUser->factors;
+        echo $theFactor;
+        // dd($theFactor);
+        if(!$theFactor->isEmpty()){
+
+        
+
         $factor = $theFactor[0];
-        if($factor->borrow_status == 0){
+
+        if($factor->borrow_status == 0  ){
 
             //اگر کتاب رزرو کرده باشد دیگر نمی تواند  کتابی به سبد خرید اضافه کند... نیاز است تا پیغامی را به کار بر نیز نمایش دهد
             return redirect()->back();
@@ -46,8 +53,26 @@ class FactorController extends Controller
             else{
             //اگه 2تا کتاب رزرو کرده برش میگردونه به همون صفحه فقط باید یه پیغامی رو بهش برگردونه. روش کار میکنیم.
                 return redirect()->back();
-        }}
+        }}}else{
+            $user = $request->input('factor');
+
+            //چک میکنه که بیشتر از 2 تا کتاب نتونه یکبار رزرو کنه
+            if(\Cart::session($user)->getTotalQuantity() < 2){
+
+                //برای اطمینان اگه نیاز شد کل سبد خریدش حذف بشه
+                // \Cart::session($user)->clear();
+
+                //اضافه کردن کتب به سبد رزرو
+                \Cart::session($user)->add($book, 'Book', 0, 1, array());
+
+                //درصورتی که کتاب به سبد رزرو اضافه شد وضعیت کتاب از در دسترس به رزروشده تغییر می یابد.
+                $theBook = Book::find($book)->update(['availability_id'=>4]);
+
+                return redirect()->back();
+        }
+
     }
+}
 
     public function removeFromCart(Request $request, $book){
 
@@ -59,7 +84,7 @@ class FactorController extends Controller
         //درصورتی که کتاب از سبد رزرو حذف شد وضعیت کتاب به در دسترس تغییر می یابد.
         $theBook = Book::find($book)->update(['availability_id'=> 1]);
 
-        return redirect('/books');
+        return redirect()->back();
     }
 
     public function yourCart(Request $request){
@@ -128,19 +153,20 @@ class FactorController extends Controller
 
             $bookCart = Book::with(['categories','bookFormat', 'publisher', 'authors'])->find($array);
             // dd($books);
-
-        }
-
-        if($factorArray != null){
-            return view('factor.reserved')->with(['factor'=>$factor ,'books'=>$bookCart,'item'=>'کتاب های رزرو شده', 'publishers'=> $publishers, 'categories'=>$categories]);
-        }else{
+            if($factorArray != null){
+                return view('factor.reserved')->with(['factor'=>$factor ,'books'=>$bookCart,'item'=>'کتاب های رزرو شده', 'publishers'=> $publishers, 'categories'=>$categories]);
+            }else{
+                    
                 
             
-        
-        
-            return view('factor.reserved')->with(['books'=>array() ,'item'=>'کتاب های رزرو شده', 'message'=>'شما اخیراً کتابی رزرو نکرده اید.', 'publishers'=> $publishers, 'categories'=>$categories]);
+            
+                return view('factor.reserved')->with(['books'=>array() ,'item'=>'کتاب های رزرو شده', 'message'=>'شما اخیراً کتابی رزرو نکرده اید.', 'publishers'=> $publishers, 'categories'=>$categories]);
+            }
+            
         }
+        return view('factor.reserved')->with(['books'=>array() ,'item'=>'کتاب های رزرو شده', 'message'=>'شما اخیراً کتابی رزرو نکرده اید.', 'publishers'=> $publishers, 'categories'=>$categories]);
 
+        
     }
 
     public function borrowedBooks(Request $request){
