@@ -164,6 +164,7 @@
                     <br>
                     مهلت امانت تا تاریخ: {{jdate(strtotime($factor->duration, strtotime($factor->borrow_date)))->format(' %d %B %y')}} 
                     <br>
+
                     {{-- {{date_diff((date_create('now')) , new DateTime((strtotime($factor->duration, strtotime($factor->borrow_date)))))}} روز مهلت تا برگرداندن کتاب --}}
 
             </div>
