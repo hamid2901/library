@@ -23,7 +23,7 @@ class HomeController extends Controller
         $categories = Category::all();
         $news = News::with('user')->where('confirm',1)->orderBy('id', 'desc')->take(5)->get();;
         $articles = Article::with(['categories', 'authors'])->orderBy('id', 'desc')->take(5)->get();;
-        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->where('availability_id', 1)->orderBy('id', 'desc')->take(5)->get();;
+        $books = Book::with(['categories','bookFormat', 'publisher', 'authors', 'bookComments'])->orderBy('id', 'desc')->take(5)->get();;
 
         return view('home.home')->with(['news'=>$news , 'articles'=> $articles, 'books'=> $books, 'publishers'=> $publishers, 'categories'=>$categories]);
     }

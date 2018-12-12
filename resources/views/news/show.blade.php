@@ -123,7 +123,7 @@
     <div class="media">
         <div class="media-body">
             <h4 class="media-heading">{{ $comment->user->first_name }}&nbsp{{ $comment->user->last_name }}
-                <small>ارسال شده در تاریخ {{ jdate($comment->created_at)->format('%B %d، %Y') }}</small>
+                <small>ارسال شده در  {{ jdate($comment->created_at)->format('%B %d، %Y') }}</small>
             </h4>
             {{ $comment->content }}
         </div>

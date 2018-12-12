@@ -106,7 +106,7 @@
         <div class="col-md-3" style="padding: 5px">
             <img class="img-responsive zoom" src="{!! asset('images/book_images/'.$book->id.'/front.jpg') !!}" alt="hello">
         </div>
-        
+
         <div class="col-md-9">
             <h3>
                 <a href="{{url('/books/'.$book->id.'')}}">{{ $book->title }}</a>
@@ -150,6 +150,22 @@
             </p>
             <p class="description">توضیحات: {{$book->description}}</p>
             <a class="btn btn-primary" href="{{url('/books/'.$book->id.'')}}">مشاهده اطلاعات کتاب &nbsp<i class="fas fa-chevron-circle-left"></i></a>
+            @if ($book->availability_id == 1)
+            <a style="float:left" class="btn disabled btn-success"> کتاب در دسترس است.&nbsp</a>
+            @else
+            @if ($book->availability_id == 2)
+            <a style="float:left" class="btn disabled btn-danger"> کتاب در دسترس نیست.&nbsp</a>
+            @else
+            @if ($book->availability_id == 3)
+            <a style="float:left" class="btn disabled btn-warning"> کتاب در دست امانت است.&nbsp</a>
+            @else
+            @if ($book->availability_id == 4)
+            <a style="float:left" class="btn disabled btn-danger"> کتاب رزرو شده است.&nbsp</a>
+            @endif
+            @endif
+            @endif
+            @endif
+
         </div>
     </div>
     @endforeach

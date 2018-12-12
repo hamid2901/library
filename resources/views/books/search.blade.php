@@ -100,14 +100,11 @@
     </h1>
     @foreach ($searchedBooks as $searchedBook)
     @foreach ($searchedBook->books as $book)
-
-    <div style="margin-bottom:5px" class="col-md-12 bg-light card">
+    <div style="margin-bottom:10px" class="col-md-12 bg-light card">
         <div class="col-md-3" style="padding: 5px">
             <img class="img-responsive zoom" src="{!! asset('images/book_images/'.$book->id.'/front.jpg') !!}" alt="hello">
         </div>
-        <script type='text/javascript'>
-            $('.zoo-item').ZooMove();
-        </script>
+        
         <div class="col-md-9">
             <h3>
                 <a href="{{url('/books/'.$book->id.'')}}">{{ $book->title }}</a>
@@ -151,11 +148,24 @@
             </p>
             <p class="description">توضیحات: {{$book->description}}</p>
             <a class="btn btn-primary" href="{{url('/books/'.$book->id.'')}}">مشاهده اطلاعات کتاب &nbsp<i class="fas fa-chevron-circle-left"></i></a>
+            @if ($book->availability_id == 1)
+                <a style="float:left" class="btn disabled btn-success"> کتاب در دسترس است.&nbsp</a>
+            @else
+            @if ($book->availability_id == 2)
+                <a style="float:left" class="btn disabled btn-danger"> کتاب در دسترس نیست.&nbsp</a>
+            @else
+            @if ($book->availability_id == 3)
+                <a style="float:left" class="btn disabled btn-warning"> کتاب در دست امانت است.&nbsp</a>
+                @else
+            @if ($book->availability_id == 4)
+                <a style="float:left" class="btn disabled btn-danger"> کتاب رزرو شده است.&nbsp</a>
+            @endif
+            @endif
+            @endif
+            @endif
+
         </div>
     </div>
-
-    <!-- Pager -->
-
     @endforeach
     @endforeach
 

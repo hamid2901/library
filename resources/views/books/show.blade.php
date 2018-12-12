@@ -108,27 +108,45 @@
     <img class="zoom" src="{!! asset('images/book_images/'.$book->id.'/front.jpg') !!}" alt="hello">
     <img class="zoom" src="{!! asset('images/book_images/'.$book->id.'/back.jpg') !!}" alt="hello">
     <div style="float:left" class="row">
+
+        @if($book->availability_id == 1)
         @if(Auth::check())
+        @if(Cart::session(Auth::user()->id)->get($book->id) != null)
+        @else
+        <form action="/factor/{{$book->id}}/addToCart" method="POST">
+            {{ csrf_field() }}
+            <button id="" value='{!! Auth::user()->id !!}' name="factor" style="" class="btn btn-primary">اضافه کردن به
+                سبد رزرو&nbsp<i class="fas fa-cart-plus text-light"></i></button>
+        </form>
+        @endif
+        @else
+        <a class="btn btn-primary">اضافه کردن به سبد رزرو&nbsp<i class="fas fa-plus-square"></i></a>
+        <span>&nbsp برای رزرو باید عضو سایت باشید.</span>
+        @endif
+        @else
+        @if($book->availability_id == 2)
+        <a class="btn btn-danger disabled">کتاب خارج از دسترس است. &nbsp</a>
+        @else
+        @if($book->availability_id == 3)
+        <a class="btn btn-danger disabled">کتاب در دست امانت است&nbsp</a>
+
+        @else
+        @if($book->availability_id == 4)
         @if(Cart::session(Auth::user()->id)->get($book->id) != null)
         <form action="/factor/{{$book->id}}/removeFromCart" method="POST">
             {{ csrf_field() }}
 
             <button id="" value='{!! Auth::user()->id !!}' name="factor" style="" class="btn btn-danger">حذف کردن از
-                سبد رزرو&nbsp<i class="fas fa-cart-plus text-light"></i></button>
+                سبد رزرو&nbsp<i class="far fa-trash-alt"></i></button>
         </form>
         @else
-        <form action="/factor/{{$book->id}}/addToCart" method="POST">
-            {{ csrf_field() }}
-
-            <button id="" value='{!! Auth::user()->id !!}' name="factor" style="" class="btn btn-primary">اضافه کردن به
-                سبد رزرو&nbsp<i class="fas fa-cart-plus text-light"></i></button>
-        </form>
+        <a class="btn btn-warning disabled">کتاب رزرو شده است.&nbsp</a>
+        @endif
+        @endif
+        @endif
+        @endif
         @endif
 
-        @else
-        <a class="btn btn-primary">اضافه کردن به سبد رزرو&nbsp<i class="fas fa-plus-square"></i></a>
-        <span>&nbsp برای رزرو کتاب باید عضو سایت باشید.</span>
-        @endif
     </div>
     <!-- Author -->
     <p class="lead">
@@ -201,7 +219,7 @@
     <div class="well">
         @include('layouts.errors')
         <!-- Comment -->
-        @if(1)
+        @if(Auth::check())
         <h4>ارسال کامنت :</h4>
         <hr>
         <form role="form" action='/books/{{$book->id}}/comment/{{ Auth::id() }}' method="post">
@@ -225,8 +243,10 @@
     @foreach($comments as $comment)
     <div class="media">
         <div class="media-body">
-            <h4 class="media-heading">{{ $comment->user->first_name }}&nbsp{{ $comment->user->last_name }}
-                <small>ارسال شده در تاریخ {{ jdate($comment->created_at)->format('%B %d، %Y') }}</small>
+            <h4 class="media-heading"><img class="" style="float:left; width:60px; height: 60px; padding-left: 15px"
+                    src={{asset('images/users_images/'.$comment->user->image_name.'')}} alt="بدون عکس"> {{
+                $comment->user->first_name }}&nbsp{{ $comment->user->last_name }}
+                <small>ارسال شده در {{ jdate($comment->created_at)->format('%d %B %Y') }}</small>
             </h4>
             {{ $comment->content }}
         </div>
