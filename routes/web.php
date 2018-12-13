@@ -110,11 +110,9 @@ Route::middleware(['admin'])->group(function () {
 });
 
 /* Auto-generated profile routes */
-Route::middleware(['admin'])->group(function () {
-    Route::get('/admin/profile',                                'Admin\ProfileController@editProfile');
-    Route::post('/admin/profile',                               'Admin\ProfileController@updateProfile');
-    Route::get('/admin/password',                               'Admin\ProfileController@editPassword');
-    Route::post('/admin/password',                              'Admin\ProfileController@updatePassword');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile',                                'Admin\ProfileController@editProfile');
+    Route::post('/profile/{id}',                               'Admin\ProfileController@updateProfile');
 });
 
 

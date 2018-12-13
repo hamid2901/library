@@ -72,7 +72,6 @@
         </div>
 
         <div class="custom-file mt-3">
-            {{Form::label('user_photo', 'تغییر عکس یا افزودن',['class' => 'custom-file-label'])}}
             {{Form::file('user_photo',['class' => 'custom-file-input'])}}
         </div>
 

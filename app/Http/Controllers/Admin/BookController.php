@@ -149,6 +149,8 @@ class BookController extends Controller
         $publishers = Publisher::all();
         $categories = Category::all();
         $comments = BookComment::with(['user', 'book'])->where('book_id', $id)->get();
+
+        // dd($comments->user()->first_name);
         return view('books.show')->with(['books'=> $book , 'publishers'=>$publishers, 'categories'=> $categories, 'comments'=>$comments]);
      }
 

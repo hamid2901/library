@@ -4,7 +4,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-
+use App\User;
+use App\Models\Factor;
+use \Illuminate\Http\Response;
+use App\Models\UserStatus;
+use App\Models\UserRole;
+use App\Models\UserGender;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 class ProfileController extends Controller
 {
     public $user;
@@ -37,8 +45,20 @@ class ProfileController extends Controller
     {
         $this->setUser($request);
 
-        return view('admin.profile.edit-profile', [
+        $user = $this->user;
+        $factors = User::with('factors.books')->where('id', $user->id)->get();
+
+        $newsComments = User::with('newsComments.news')->where('id', $user->id)->get();
+        
+        $bookComments = User::with('bookComments.book')->where('id', $user->id)->get();
+
+        
+
+        return view('profile.index', [
             'user' => $this->user,
+            'userNews'=> $bookComments,
+            'userBooks'=> $newsComments,
+            'factors'=> $factors,
         ]);
     }
 
@@ -48,67 +68,33 @@ class ProfileController extends Controller
      * @param        \Illuminate\Http\Request  $request
      * @return    \Illuminate\Http\Response|array
      */
-    public function updateProfile(Request $request)
+    public function updateProfile(Request $request, $id)
     {
-        $this->setUser($request);
-        $user = $this->user;
+        $user = User::find($id);
 
-        // Validate the request
-        $this->validate($request, [
-            'email' => ['sometimes', 'email', Rule::unique('users', 'email')->ignore($this->user->getKey(), $this->user->getKeyName()), 'string'],
-            'email_verified_at' => ['nullable', 'date'],
-            'image_name' => ['nullable', 'string'],
-            'role_id' => ['sometimes', 'integer'],
-            'status_id' => ['sometimes', 'integer'],
-            'confirm' => ['sometimes', 'integer'],
-            'first_name' => ['nullable', 'string'],
-            'last_name' => ['nullable', 'string'],
-            'phone' => ['nullable', 'string'],
-            'profession' => ['nullable', 'string'],
-            'university' => ['nullable', 'string'],
-            'birthdate' => ['nullable', 'string'],
-            'sex' => ['sometimes', 'integer'],
-            'city' => ['nullable', 'string'],
-            'street' => ['nullable', 'string'],
-            'plate' => ['nullable', 'integer'],
-            'alley' => ['nullable', 'string'],
-            'postal_code' => ['nullable', 'string'],
-            'language' => ['sometimes', 'string'],
-            
-        ]);
-
-        // Sanitize input
-        $sanitized = $request->only([
-            'email',
-            'email_verified_at',
-            'image_name',
-            'role_id',
-            'status_id',
-            'confirm',
-            'first_name',
-            'last_name',
-            'phone',
-            'profession',
-            'university',
-            'birthdate',
-            'sex',
-            'city',
-            'street',
-            'plate',
-            'alley',
-            'postal_code',
-            'language',
-            
-        ]);
-
-        // Update changed values User
-        $this->user->update($sanitized);
-
-        if ($request->ajax()) {
-            return ['redirect' => url('admin/profile'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+        if($request->user_photo != null){
+            if(File::exists(public_path('images/users_images/'.$user->image_name.''))) {
+                File::delete(public_path('images/users_images/'.$user->image_name.''));
+            }
+            $photoName = time().'.'.$request->user_photo->getClientOriginalExtension();
+            $request->user_photo->move(public_path('images/users_images/'), $photoName);
+            $user->image_name = $photoName;
         }
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->phone = $request->input('phone');
+        $user->profession = $request->input('profession');
+        $user->university = $request->input('university');
+        if($request->input('birthdate') != null)
+        $user->birthdate = $request->input('birthdate');
+        $user->city = $request->input('city');
+        $user->street = $request->input('street');
+        $user->alley = $request->input('alley');
+        $user->plate = $request->input('plate');
+        $user->updated_at = Carbon::now();
 
-        return redirect('admin/profile');
+        $user->save();
+        return redirect()->back();
     }
 
     /**
