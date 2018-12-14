@@ -19,21 +19,25 @@ class FactorController extends Controller
 
         $user = $request->input('factor');
         $factorUser = User::with('factors')->find($user);
+
         $theFactor = $factorUser->factors;
-        echo $theFactor;
-        // dd($theFactor);
+
+        $lastFactor = null;
+
         if(!$theFactor->isEmpty()){
+        foreach($theFactor as $theFact){
+            if($theFact->borrow_status == 0)
+                $lastFactor = $theFact;
+        }
 
-        
-
-        $factor = $theFactor[0];
-
-        if($factor->borrow_status == 0  ){
-
+        // dd($lastFactor);
+        if($lastFactor != null){
+        if($lastFactor->borrow_status == 0){
             //اگر کتاب رزرو کرده باشد دیگر نمی تواند  کتابی به سبد خرید اضافه کند... نیاز است تا پیغامی را به کار بر نیز نمایش دهد
-            return redirect()->back();
+            return redirect()->back()->withErrors(['شما در حال حاضر کتاب رزرو کرده اید. نمی توانید کتاب دیگری را رزرو کنید.']);
 
-        }else{
+        }else{            
+
             $user = $request->input('factor');
 
             //چک میکنه که بیشتر از 2 تا کتاب نتونه یکبار رزرو کنه
@@ -52,7 +56,7 @@ class FactorController extends Controller
             }
             else{
             //اگه 2تا کتاب رزرو کرده برش میگردونه به همون صفحه فقط باید یه پیغامی رو بهش برگردونه. روش کار میکنیم.
-                return redirect()->back();
+                return redirect()->back()->withErrors(['شما بیشتر از دو کتاب هم زمان نمی توانید رزرو کنید.']);
         }}}else{
             $user = $request->input('factor');
 
@@ -69,8 +73,31 @@ class FactorController extends Controller
                 $theBook = Book::find($book)->update(['availability_id'=>4]);
 
                 return redirect()->back();
-        }
+        }else{
+            //اگه 2تا کتاب رزرو کرده برش میگردونه به همون صفحه فقط باید یه پیغامی رو بهش برگردونه. روش کار میکنیم.
+                return redirect()->back()->withErrors(['شما بیشتر از دو کتاب هم زمان نمی توانید رزرو کنید.']);
+        }}}else{
 
+            $user = $request->input('factor');
+
+            //چک میکنه که بیشتر از 2 تا کتاب نتونه یکبار رزرو کنه
+            if(\Cart::session($user)->getTotalQuantity() < 2){
+
+                //برای اطمینان اگه نیاز شد کل سبد خریدش حذف بشه
+                // \Cart::session($user)->clear();
+
+                //اضافه کردن کتب به سبد رزرو
+                \Cart::session($user)->add($book, 'Book', 0, 1, array());
+
+                //درصورتی که کتاب به سبد رزرو اضافه شد وضعیت کتاب از در دسترس به رزروشده تغییر می یابد.
+                $theBook = Book::find($book)->update(['availability_id'=>4]);
+
+                return redirect()->back();
+        }
+        else{
+            //اگه 2تا کتاب رزرو کرده برش میگردونه به همون صفحه فقط باید یه پیغامی رو بهش برگردونه. روش کار میکنیم.
+                return redirect()->back()->withErrors(['شما بیشتر از دو کتاب هم زمان نمی توانید رزرو کنید.']);
+        }
     }
 }
 
@@ -89,8 +116,8 @@ class FactorController extends Controller
 
     public function yourCart(Request $request){
 
-
-        $user = $request->input('user_id');
+        // dd($request->user());
+        $user = $request->user()->id;
         $array = array();
         $books = \Cart::session($user)->getContent();
         

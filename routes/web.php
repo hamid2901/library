@@ -129,6 +129,7 @@ Route::get('/news/{news}',                                 'Admin\NewsController
 Route::post('/news',                                       'Admin\NewsController@searchByText');
 Route::post('/news/comment',                               'Admin\NewsController@storeComment');
 Route::post('/news/{news}/comment/{user}',                 'Admin\NewsController@storeComment');
+Route::post('/news/deleteComment',                 'Admin\NewsController@deleteComment');
 
 //Route for Books
 Route::get('/books',                                       'Admin\BookController@indexBooks');
@@ -138,6 +139,7 @@ Route::get('/books/publisher/{publisherName}',             'Admin\BookController
 Route::post('/books',                                      'Admin\BookController@searchByText');
 Route::post('/books/comment',                              'Admin\BookController@storeComment');
 Route::post('/books/{book}/comment/{user}',                 'Admin\BookController@storeComment');
+Route::post('/books/deleteComment',                 'Admin\BookController@deleteComment');
 
 //Route for Articles
 Route::get('/articles',                                    'Admin\ArticleController@indexArticles');
@@ -147,8 +149,7 @@ Route::post('/articles',                                   'Admin\ArticleControl
 Route::get('/articles/{article}/downloading','Admin\ArticleController@getDownload');
 
 //Route for Contact Us
-Route::get('/contact',                                     'ContactUsController@indexBooks');
-Route::post('/contact',                                    'ContactUsController@sendMessage');
+Route::post('/contact',                                    'ContactUsController@store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -156,7 +157,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Routes for factor
 Route::middleware(['auth'])->group(function () {
 
-    Route::post('/factor/cart',                                'Admin\FactorController@yourCart');
+    Route::get('/factor/cart',                                'Admin\FactorController@yourCart');
     Route::post('/factor/{book}/addToCart',                    'Admin\FactorController@addToCart');
     Route::post('/factor/{book}/removeFromCart',               'Admin\FactorController@removeFromCart');
     Route::post('/factor/reserved',                            'Admin\FactorController@reservedBooks');

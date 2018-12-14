@@ -46,15 +46,47 @@
                         </ul>
                         <div class="row text-center">
                             <div class="col-md-4 p-2">
-                                <h4 class="mb-1 line-height-5">2</h4>
+                                <h4 class="mb-1 line-height-5">
+                                    <?php $i = 0; $j = 0; $k = 0; ?>
+                                    @foreach ($userFactors as $userFactor)
+                                    @foreach ($userFactor->factors as $factor)
+                                    @if ($factor->borrow_status == 0)
+                                    <?php $i++ ?>
+                                    @endif
+                                    @endforeach
+                                    @endforeach
+                                    {{$i}}
+                                </h4>
                                 <small class="mb-0 font-weight-bold">رزروها</small>
                             </div>
                             <div class="col-md-4 p-2">
-                                <h4 class="mb-1 line-height-5">21</h4>
+                                <h4 class="mb-1 line-height-5">
+                                    @foreach ($userFactors as $userFactor)
+                                    @foreach ($userFactor->factors as $factor)
+                                    @if ($factor->borrow_status == 1)
+                                    <?php $j++ ?>
+                                    @endif
+                                    @endforeach
+                                    @endforeach
+                                    {{$j}}
+                                </h4>
                                 <small class="mb-0 font-weight-bold">امانات</small>
                             </div>
                             <div class="col-md-4 p-2">
-                                <h4 class="mb-1 line-height-5">23</h4>
+                                <h4 class="mb-1 line-height-5">
+                                    @foreach ($userNews as $userNew)
+                                    @foreach ($userNew->newsComments as $comments)
+                                    <?php $k++ ?>
+                                    @endforeach
+                                    @endforeach
+
+                                    @foreach ($userBooks as $userBook)
+                                    @foreach ($userBook->BookComments as $comments)
+                                    <?php $k++ ?>
+                                    @endforeach
+                                    @endforeach
+                                    {{$k}}
+                                </h4>
                                 <small class="mb-0 font-weight-bold">کامنت ها</small>
                             </div>
                         </div>
@@ -85,6 +117,14 @@
                                     class="icon-envelope-open"></i> <span class="hidden-xs">پیام ها و کامنت ها</span></a>
                         </li>
                         <li class="nav-item">
+                            <a href="javascript:void();" data-target="#reserved" data-toggle="pill" class="nav-link"><i
+                                    class="icon-note"></i> <span class="hidden-xs">لیست رزرو شده ها</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void();" data-target="#borrowed" data-toggle="pill" class="nav-link"><i
+                                    class="icon-note"></i> <span class="hidden-xs">لیست امانات</span></a>
+                        </li>
+                        <li class="nav-item">
                             <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i
                                     class="icon-note"></i> <span class="hidden-xs">ویرایش</span></a>
                         </li>
@@ -94,11 +134,11 @@
                             <h5 class="mb-3">پروفایل کاربر</h5>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h6>درباره</h6>
+                                    <h4>درباره</h4>
                                     <p>
                                         {{Auth::user()->profession}}
                                     </p>
-                                    <h6>علاقه مندی ها</h6>
+                                    <h4>علاقه مندی ها</h4>
                                     <p>
                                         مطالعه، بازی های کامپیوتری، شنا، فوتبال و پینگ پنگ
                                     </p>
@@ -111,7 +151,16 @@
                                     <a href="javascript:void();" class="badge badge-dark badge-pill">ورزشی</a>
                                     <hr>
                                     <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 بازدید کتاب</span>
-                                    <span class="badge badge-success"><i class="fas fa-fist-raised"></i> 21 امانت</span>
+                                    <span class="badge badge-success"><i class="fas fa-fist-raised"></i>
+                                        <?php $j = 0 ?>
+                                        @foreach($userFactors as $userFactor)
+                                        @foreach ($userFactor->factors as $factor)
+                                        @if ($factor->borrow_status == 1)
+                                        <?php $j++ ?>
+                                        @endif
+                                        @endforeach
+                                        @endforeach
+                                        {{$j}} امانت</span>
                                     <span class="badge badge-primary"><i class="fas fa-clock"></i> 0 تاخیر</span>
                                 </div>
                                 <div class="col-md-12">
@@ -119,26 +168,28 @@
                                         فعالیت های اخیر</h5>
                                     <table class="table table-hover table-striped">
                                         <tbody>
+                                            {{-- {{dd($factors)}} --}}
+                                            @foreach ($userFactors as $userFactor)
+                                            @foreach ($userFactor->factors as $factor)
+                                            @foreach ($factor->books as $book)
                                             <tr>
+                                                @if ($factor->borrow_status == 1)
                                                 <td>
-                                                    <strong>رزرو کتاب شماره یک</strong>
+                                                    <a href="{{url('/books/'.$book->id.'')}}"><span class="float-right font-weight-bold"></span>
+                                                        امانت گرفتن کتاب {{$book->title}}<br>تاریخ&nbsp{{jDate($factor->created_at)->format('%d
+                                                        %B %Y')}}</a>
                                                 </td>
-                                            </tr>
-                                            <tr>
+                                                @else
                                                 <td>
-                                                    <strong>رزرو کتاب شماره دو</strong>
+                                                    <a href="{{url('/books/'.$book->id.'')}}"><span class="float-right font-weight-bold"></span>
+                                                        رزرو کتاب {{$book->title}}<br>تاریخ&nbsp{{jDate($factor->created_at)->format('%d
+                                                        %B %Y')}}</a>
                                                 </td>
+                                                @endif
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <strong>امانت گرفتن کتاب شماره سه</strong>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <strong>امانت گرفتن کتاب شماره چهار</strong>
-                                                </td>
-                                            </tr>
+                                            @endforeach
+                                            @endforeach
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -163,7 +214,18 @@
                                         {{-- {{dd($comments)}} --}}
                                         <td>
                                             <a href="{{url('/news/'.$comments->news_id.'')}}"><span class="float-right font-weight-bold"></span>
-                                                {{$comments->content}}<br>ارسال شده در تاریخ&nbsp{{jDate($comments->created_at)->format('%d %B %Y')}}</a>
+                                                {{$comments->content}}<br>ارسال شده در
+                                                تاریخ&nbsp{{jDate($comments->created_at)->format('%d %B %Y')}}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{url('/news/deleteComment')}}" onclick="event.preventDefault();
+                                                document.getElementById('deleteNewsComment{{$comments->id}}-form').submit();">
+                                                <i style="color: red;" class="fas fa-trash-alt"></i>{{$comments->id}}</a>
+                                            <form id="deleteNewsComment{{$comments->id}}-form" action="{{url('/news/deleteComment')}}"
+                                                method="POST" style="display: none;">
+                                                @csrf
+                                                <input type="text" value="{{$comments->id}}" name="comment" style="display: none;">
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -173,15 +235,135 @@
                                     <tr>
                                         {{-- {{dd($comments)}} --}}
                                         <td>
-                                                <a href="{{url('/books/'.$comments->book_id.'')}}"><span class="float-right font-weight-bold"></span>
-                                                    {{$comments->content}}<br>ارسال شده در تاریخ&nbsp{{jDate($comments->created_at)->format('%d %B %Y')}}</a>
-                                            </td>
+                                            <a href="{{url('/books/'.$comments->book_id.'')}}"><span class="float-right font-weight-bold"></span>
+                                                {{$comments->content}}<br>ارسال شده در
+                                                تاریخ&nbsp{{jDate($comments->created_at)->format('%d %B %Y')}}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{url('/books/deleteComment')}}" onclick="event.preventDefault();
+                                                        document.getElementById('deleteBookComment{{$comments->id}}-form').submit();">
+                                                <i style="color: red;" class="fas fa-trash-alt"></i>{{$comments->id}}</a>
+                                            <form id="deleteBookComment{{$comments->id}}-form" action="{{url('/books/deleteComment')}}"
+                                                method="POST" style="display: none;">
+                                                @csrf
+                                                <input type="text" value="{{$comments->id}}" name="comment" style="display: none;">
+                                            </form>
+                                        </td>
                                     </tr>
                                     @endforeach
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
+
+                        <div class="tab-pane" id="reserved">
+                            <div class="alert alert-info alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <div class="alert-icon">
+                                    <i class="icon-info"></i>
+                                </div>
+                                <div class="alert-message">
+                                    <span><strong>توجه!&nbsp</strong>آقای دهقانی خوب هستید شما؟؟ لیست کتاب های رزرو شده
+                                        است اینجا</span>
+                                </div>
+                            </div>
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>عنوان کتاب</th>
+                                        <th>شابک کتاب</th>
+                                        <th>تاریخ رزرو</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($factorUser->factors as $factor)
+                                    @foreach ($factor->books as $book)
+                                    @if ($factor->borrow_status == 0)
+                                    <tr>
+                                        <td>
+                                            <a href="{{url('/books/'.$book->id.'')}}">
+                                                {{$book->title}} </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{url('/books/'.$book->id.'')}}">
+                                                {{$book->isbn}} </a>
+                                        </td>
+                                        <td>
+                                            {{jDate($factor->reserve_date)->format('%d %B %y')}}
+                                        </td>
+                                    </tr>
+                                    @endif
+                                    @endforeach
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" id="borrowed">
+                            <div class="alert alert-info alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <div class="alert-icon">
+                                    <i class="icon-info"></i>
+                                </div>
+                                <div class="alert-message">
+                                    <span><strong>توجه!&nbsp</strong>آقای دهقانی خوب هستید شما؟؟ لیست کتاب های امانت
+                                        گرفته شده توسط شما است
+                                        است اینجا</span>
+                                </div>
+                            </div>
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>عنوان کتاب</th>
+                                        <th>شابک کتاب</th>
+                                        <th>تاریخ رزرو</th>
+                                        <th>تاریخ امانت</th>
+                                        <th>مهلت امانت</th>
+                                        <th>تاریخ بازگشت</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($factorUser->factors as $factor)
+                                    @foreach ($factor->books as $book)
+                                    @if ($factor->borrow_status == 1)
+                                    <tr>
+                                        <td>
+                                            <a href="{{url('/books/'.$book->id.'')}}">
+                                                {{$book->title}} </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{url('/books/'.$book->id.'')}}">
+                                                {{$book->isbn}} </a>
+                                        </td>
+                                        <td>
+                                            {{jDate($factor->reserve_date)->format('%d %B %y')}}
+                                        </td>
+                                        <td>
+                                            {{jDate($factor->borrow_date)->format('%d %B %y')}}
+                                        </td>
+                                        <td>
+                                            {{jdate(strtotime($factor->duration,
+                                            strtotime($factor->borrow_date)))->format(' %d %B %y')}}
+                                        </td>
+                                        <td>
+
+                                            @if($factor->return_date != null)
+                                            <a href="{{url('/books/'.$book->id.'')}}">
+                                                {{
+                                                jDate($factor->return_date)->format('%d %B %y')
+                                                }}</a>
+                                            @else
+                                            پس داده نشده
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endif
+                                    @endforeach
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
                         <div class="tab-pane" id="edit">
                             <form method="post" action="/profile/{{Auth::user()->id}}" enctype="multipart/form-data">
                                 @csrf
@@ -217,7 +399,7 @@
                                             id="validationDefault04" placeholder="تاریخ تولد">
                                     </div>
                                     <div class="col-lg-3">
-                                        <input type="date" class="form-control" value="{{$user->birthdate}}" id="validationDefault04"
+                                        <input type="date" class="form-control" value="{{$user->birthdate}}" id="validationDefault05"
                                             placeholder="تاریخ تولد" name="birthdate">
                                     </div>
 
@@ -281,7 +463,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 @endsection

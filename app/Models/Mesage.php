@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $create_at
  * @property User $user
  */
-class Message extends Model
+class Mesage extends Model
 {
     protected $fillable = [
         "user_id",

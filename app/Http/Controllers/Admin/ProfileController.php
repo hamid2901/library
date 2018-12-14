@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use App\User;
 use App\Models\Factor;
+use App\Models\Book;
+
 use \Illuminate\Http\Response;
 use App\Models\UserStatus;
 use App\Models\UserRole;
@@ -52,16 +54,42 @@ class ProfileController extends Controller
         
         $bookComments = User::with('bookComments.book')->where('id', $user->id)->get();
 
-        
+        $factorUser = User::with('factors.books')->find($user->id);
+        $theFactor = $factorUser->factors;
+        $reservedArray = array();
+        $borrowedArray = array();
+        foreach($theFactor as $factor)
+            if($factor->borrow_status == 0){
 
+                $books = $factor->books;       
+                $factorArray = $factor;
+
+            foreach($books as $book){
+                $reservedArray[] = $book['id'];
+            }}
+        $reservedBooks = Book::with(['categories','bookFormat', 'publisher', 'authors'])->find($reservedArray);
+
+        foreach($theFactor as $factor)
+        if($factor->borrow_status == 1){
+
+            $books = $factor->books;       
+            $factorArray = $factor;
+
+        foreach($books as $book){
+            $borrowedArray[] = $book['id'];
+        }}
+        $borrowedBooks = Book::with(['categories','bookFormat', 'publisher', 'authors'])->find($borrowedArray);
         return view('profile.index', [
             'user' => $this->user,
             'userNews'=> $bookComments,
             'userBooks'=> $newsComments,
-            'factors'=> $factors,
+            'userFactors'=> $factors,
+            'borrowedBooks'=> $borrowedBooks,
+            'reservedBooks'=> $reservedBooks,
+            'factorUser'=> $factorUser
         ]);
+    
     }
-
     /**
      * Update the specified resource in storage.
      *

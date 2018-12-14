@@ -71,9 +71,9 @@
                 $(this).removeClass('transition');
             });
         });
-        $(document).ready(function () {
-            $('#table_id').DataTable();
-        });
+        // $(document).ready(function () {
+        //     $('#table_id').DataTable();
+        // });
         
     </script>
 

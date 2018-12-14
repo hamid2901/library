@@ -15,6 +15,13 @@ use Carbon\Carbon;
 
 class BookController extends Controller
 {
+    protected function setUser($request) {
+        if (empty($request->user())) {
+            abort(404, 'User not found');
+        }
+
+        $this->user = $request->user();
+    }
 
     // return books to the admin panel
     public function index(){
@@ -159,11 +166,26 @@ class BookController extends Controller
         // dd($user);
         $comment = new BookComment();
         $comment->content = $request->input('body');
+        $comment->created_at = Carbon::now();
         $comment->user_id = $user;
         $comment->book_id = $book;
         $comment->save();
 
         
+        return redirect()->back();
+    }
+
+    public function deleteComment(Request $request)
+    {
+        $this->setUser($request);
+
+        $user = $this->user;
+
+        $comment = BookComment::find($request->comment);
+
+        // dd($comment);
+        $comment->delete();
+
         return redirect()->back();
     }
     
