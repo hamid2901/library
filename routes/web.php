@@ -12,7 +12,7 @@
 */
 
 /* Auto-generated admin routes */
-Route::middleware([])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.dashboard');
     });
@@ -38,19 +38,21 @@ Route::middleware([])->group(function () {
 
 });
 /* Auto-generated admin routes */
-Route::middleware(['admin'])->group(function () {
+Route::middleware([])->group(function () {
     Route::get('/admin/articles',                               'Admin\ArticleController@index');
     Route::get('/admin/articles/create',                        'Admin\ArticleController@create');
     Route::post('/admin/articles',                              'Admin\ArticleController@store');
     Route::get('/admin/articles/{article}/edit',                'Admin\ArticleController@edit')->name('admin/articles/edit');
     Route::post('/admin/articles/{article}',                    'Admin\ArticleController@update')->name('admin/articles/update');
-    Route::delete('/admin/articles/{article}',                  'Admin\ArticleController@destroy')->name('admin/articles/destroy');
+    Route::get('/admin/articles/{article}/delete',              'Admin\ArticleController@destroy')->name('admin/articles/delete');
+    Route::get('/admin/articles/{article}/confirm',            'Admin\ArticleController@confirmArticle');
+ 
 });
 
 
 
 /* Auto-generated admin routes */
-Route::middleware(['auth'])->group(function () {
+Route::middleware([])->group(function () {
     Route::get('/admin/factors',                                'Admin\FactorController@index');
     Route::get('/admin/factors/create',                         'Admin\FactorController@create');
     Route::post('/admin/factors',                               'Admin\FactorController@store');
