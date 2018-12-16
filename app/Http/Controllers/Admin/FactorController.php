@@ -15,6 +15,19 @@ use App\ValueObjects\Cart\ItemObject;
 class FactorController extends Controller
 {
 
+    public function index(){
+
+        $factors = Factor::with('users')->paginate(5);
+        dd($factors);
+        return view('admin.factor.index')->with(['factors'=> $factors]);
+    }
+
+
+    public function destroy($id){
+        $factor = Factor::find($id);
+        $factor->delete();
+        return redirect()->back();
+    }
     public function addToCart(Request $request, $book){
 
         $user = $request->input('factor');
@@ -248,16 +261,5 @@ class FactorController extends Controller
         return redirect('/books');
     }
 
-    public function index(){
-        $factors = User::with('users')->paginate(5);
-
-        return view('admin.factor.index')->with(['factor'=> $factors, 'user'=> $users]);
-    }
-
-
-    public function destroy($id){
-        $factor = Factor::find($id);
-        $factor->delete();
-        return redirect()->back();
-    }
+   
 }

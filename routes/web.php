@@ -58,7 +58,7 @@ Route::middleware([])->group(function () {
     Route::post('/admin/factors',                               'Admin\FactorController@store');
     Route::get('/admin/factors/{factor}/edit',                  'Admin\FactorController@edit')->name('admin/factors/edit');
     Route::post('/admin/factors/{factor}',                      'Admin\FactorController@update')->name('admin/factors/update');
-    Route::delete('/admin/factors/{factor}',                    'Admin\FactorController@destroy')->name('admin/factors/destroy');
+    Route::get('/admin/factors/{factor}/delete',                'Admin\FactorController@destroy')->name('admin/factors/delete');
 });
 
 /* Auto-generated admin routes */

@@ -3,146 +3,156 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \Illuminate\Http\Response;
-use App\Http\Requests\Admin\Article\IndexArticle;
-use App\Http\Requests\Admin\Article\StoreArticle;
-use App\Http\Requests\Admin\Article\UpdateArticle;
-use App\Http\Requests\Admin\Article\DestroyArticle;
-use Brackets\AdminListing\Facades\AdminListing;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\File;
+use App\Models\AuthorRole;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Author;
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  IndexArticle $request
-     * @return Response|array
-     */
-    public function index(IndexArticle $request)
-    {
-        // create and AdminListing instance for a specific model and
-        $data = AdminListing::create(Article::class)->processRequestAndGet(
-            // pass the request with params
-            $request,
+ // return books to the admin panel
+ public function index(){
 
-            // set columns to query
-            ['id', 'title', 'publish_date', 'article_filename', 'confirm'],
+    $articles = Article::with(['categories', 'authors'])
+                    ->paginate(5);
 
-            // set columns to searchIn
-            ['id', 'title', 'publish_date', 'description', 'article_filename', 'created_at', 'updated_at']
-        );
+    return view('admin.article.index')->with(['articles'=> $articles]);
 
-        if ($request->ajax()) {
-            return ['data' => $data];
-        }
+}
 
-        return view('admin.article.index', ['data' => $data]);
+// create the form to add book
+public function create()
+{
+    $category    = Category   ::all();
+    $authorRole  = AuthorRole ::all();
+    $author      = Author     ::all();
 
+    return view('admin.article.create')->with([
+                                            'categories' => $category,
+                                            'authorRoles'=> $authorRole,
+                                            'authors'    => $author]);
+}
+
+ // create the form to edit book
+ public function edit($id)
+ {
+    $article = Article::with([
+                        'categories',
+                        'authors'
+                        ])->find($id);
+    
+    $currentAuthor = [];
+    foreach($article->authors as $author){
+        $currentAuthor[] = $author->last_name;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        $this->authorize('admin.article.create');
-
-        return view('admin.article.create');
+    $currentCategory = [];
+    foreach($article->categories as $category){
+        $currentCategory[] = $category->type;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  StoreArticle $request
-     * @return Response|array
-     */
-    public function store(StoreArticle $request)
-    {
-        // Sanitize input
-        $sanitized = $request->validated();
+    $category   = Category   ::all();
+    $authorRole = AuthorRole ::all();
+    $author     = Author     ::all();
 
-        // Store the Article
-        $article = Article::create($sanitized);
+    return view('admin.article.edit')->with(['article'    => $article, 
+                                        'categories'      => $category,
+                                        'authorRoles'     => $authorRole,
+                                        'authors'         => $author,
+                                        'currentAuthor'   => $currentAuthor,
+                                        'currentCategory' => $currentCategory]);
+ }
 
-        if ($request->ajax()) {
-            return ['redirect' => url('admin/articles'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
-        }
 
-        return redirect('admin/articles');
+// store book
+public function store(Request $request)
+{
+
+    $fileName = $request->input('title') . ".pdf";
+
+    Input::file('article_file')->move(public_path().'/images/article_images', $fileName);
+  
+    $book = Article::create([
+                'title'           => $request->input('title'),
+                'description'     => $request->input('description'),
+                'publish_date'    => $request->input('publish_date'),
+                'article_filename'=> $fileName,
+            ]); 
+    $book->categories()->attach($request->input('category'));
+    $book->authors()->attach($request->input('author'));
+
+    return redirect()->back();
+}
+
+
+// to edit and update book
+public function update(Request $request, $id = null)
+{        
+    $article = Article::find($id);
+
+    $oldfileName = $article->article_filename;
+    $newfileName = $request->input('title') .".pdf";
+    $filePass = public_path().'/images/article_images';
+
+    if(file_exists($filePass."/".$oldfileName)) {
+        
+        File::delete($filePass . "/" . $oldfileName);
+    
+    }
+    
+    Input::file('article_file')->move($filePass , $newfileName);
+    
+
+    $article->title            = $request->input('title');
+    $article->description      = $request->input('description');
+    $article->publish_date     = Carbon  ::parse($request->input('publish_date'));
+    $article->updated_at       = Carbon  ::now();
+    $article->article_filename = $newfileName;
+
+    $article->categories()->sync($request->input('category'));
+    $article->authors()->sync($request->input('author'));
+
+    $article->save();
+    return redirect()->back();
+}
+
+
+public function destroy($id)
+{
+    $article = Article::find($id);
+
+    $fileName = $article->article_filename;
+    $filePass = public_path().'/article_images';
+
+    if(file_exists($filePass . $fileName)) { 
+        
+        File::delete($filePass . "/" . $fileName);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  Article $article
-     * @return Response
-     */
-    public function show(Article $article)
+    $article->delete();
+    return redirect()->back();
+}
+
+//this is for confirming articles//
+public function confirmArticle($id)
     {
-        $this->authorize('admin.article.show', $article);
 
-        // TODO your code goes here
-    }
+        $article = Article::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  Article $article
-     * @return Response
-     */
-    public function edit(Article $article)
-    {
-        $this->authorize('admin.article.edit', $article);
+            if($article->confirm == 0){
+                $article->confirm = 1;
+            }else{
+                $article->confirm = 0;
+            }
 
-        return view('admin.article.edit', [
-            'article' => $article,
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UpdateArticle $request
-     * @param  Article $article
-     * @return Response|array
-     */
-    public function update(UpdateArticle $request, Article $article)
-    {
-        // Sanitize input
-        $sanitized = $request->validated();
-
-        // Update changed values Article
-        $article->update($sanitized);
-
-        if ($request->ajax()) {
-            return ['redirect' => url('admin/articles'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
-        }
-
-        return redirect('admin/articles');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  DestroyArticle $request
-     * @param  Article $article
-     * @return Response|bool
-     */
-    public function destroy(DestroyArticle $request, Article $article)
-    {
-        $article->delete();
-
-        if ($request->ajax()) {
-            return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
-        }
-
+        $article->save();
         return redirect()->back();
     }
+
 
     public function indexArticles()
     {

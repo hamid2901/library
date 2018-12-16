@@ -40,7 +40,7 @@
                   @endforeach
                </td>
               
-                <td class="">{{$book->bookFormat->format}}</td>
+                <td class="">{{$book->bookformat->format}}</td>
                 <td class="">{{$book->price}}</td>
                
                 <td class=""><a href="/admin/books/{{$book->id}}/edit"><i class="fas fa-edit"></i></a></td>

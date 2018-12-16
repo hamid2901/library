@@ -1,7 +1,8 @@
-@extends('layouts.admin') @section('form') <div class="container">
+@extends('layouts.admin')
+ @section('form') 
+ <div class="container">
     <h2 class="pt-5">ویرایش کاربر</h2>
-    <p><img class="row zoom d-block" style="float:left; width:100px; height: 100px" src={{asset('images/users_images/'.$user->image_name.'')}}
-            alt=""></p>
+    <p><img class="row zoom d-block" style="float:left; width:100px; height: 100px" src={{asset('images/users_images/'.$user->image_name.'')}} alt=""></p>
     <script type='text/javascript'>
         $('.zoo-item').ZooMove();
     </script>
@@ -9,20 +10,23 @@
         @csrf
 
         <div class="form-row">
-            <div class="col-md-4 mb-3"><label for="validationDefault01">نام</label><input type="text" class="form-control"
-                    id="validationDefault01" placeholder="نام" value="{{$user->first_name}}" name="first_name"></div>
-            <div class="col-md-4 mb-3"><label for="validationDefault02">نام خانوادگی</label><input type="text" class="form-control"
-                    id="validationDefault02" placeholder="نام خانوادگی" value="{{$user->last_name}}" name="last_name"></div>
-            <div class="col-md-4 mb-3"><label for="validationDefault03">ایمیل</label><input type="email" class="form-control"
-                    id="validationDefault03" placeholder="ایمیل" value="{{$user->email}}" name="email"></div>
+            <div class="col-md-4 mb-3">
+                <label for="validationDefault01">نام</label>
+                <input type="text" class="form-control" id="validationDefault01" placeholder="نام" value="{{$user->first_name}}" name="first_name"></div>
+            <div class="col-md-4 mb-3">
+                <label for="validationDefault02">نام خانوادگی</label>
+                <input type="text" class="form-control" id="validationDefault02" placeholder="نام خانوادگی" value="{{$user->last_name}}" name="last_name"></div>
+            <div class="col-md-4 mb-3">
+                <label for="validationDefault03">ایمیل</label>
+                <input type="email" class="form-control" id="validationDefault03" placeholder="ایمیل" value="{{$user->email}}" name="email">
+            </div>
         </div>
         <div class="form-row">
             <div class="col-md-1 mb-3"><label for="validationDefault01">وضعیت</label>
                 <select name="status" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     @foreach($userStatus as $status)
-                    <option value="{{$status->id}}" @if ($user->status_id === $status->id)
-                        selected
-                        @endif >{{$status->status}}</option>
+                    <option value="{{$status->id}}" @if ($user->status_id === $status->id) selected @endif >{{$status->status}}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -31,7 +35,8 @@
                     @foreach($userRole as $role)
                     <option value="{{$role->id}}" @if ($user->role_id === $role->id)
                         selected
-                        @endif >{{$role->role}}</option>
+                        @endif >{{$role->role}}
+                    </option>
                     @endforeach
                 </select>
             </div>
