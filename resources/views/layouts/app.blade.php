@@ -8,18 +8,28 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('سامانه کتابخانه', 'سامانه کتابخانه') }}</title>
 
     <!-- Styles -->
+    <link href="{!! asset('css/fontiran.css') !!}" rel="stylesheet">
+
+
+    <!--  Bootstrap-RTL -->
+    <link href="{!! asset('css/bootstrap-rtl.min.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/profile.css') !!}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('صفحه اصلی', 'صفحه اصلی') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,11 +42,11 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav mr-auto">
                         <!-- Authentication Links -->
                         @if(!Auth::check())
-                            <li><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
-                            <li><a class="nav-link" href="{{ url('/register') }}">Register</a></li>
+                            <li><a class="nav-link" href="{{ url('/login') }}">ورود</a></li>
+                            <li><a class="nav-link" href="{{ url('/register') }}">ثبت نام</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,12 +71,14 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/register.js') }}"></script>
+
 </body>
 </html>

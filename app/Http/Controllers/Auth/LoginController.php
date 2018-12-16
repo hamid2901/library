@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,7 +49,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
 
             // Authentication passed...
-            return redirect()->intended('/');
+            return redirect()->intended('/books');
         }
     }
 }
