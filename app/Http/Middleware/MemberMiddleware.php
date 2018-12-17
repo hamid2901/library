@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class MemberMiddleware
 {
@@ -15,6 +17,14 @@ class MemberMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+
+        $user = Auth::guard('web')->user();
+        $admin = Auth::guard('admin')->user();
+        if (@$admin->role_id == 2 || @$user->role_id == 2 )
+        {
+            // dd(Auth::user()->role_id);
+            return $next($request);
+        }
+        return redirect('/');
     }
 }

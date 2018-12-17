@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminMiddleware
 {
@@ -15,10 +17,13 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->type != ‘admin’)
+        $user = Auth::guard('web')->user();
+        $admin = Auth::guard('admin')->user();
+        if (@$admin->role_id == 1 || @$user->role_id == 1 )
         {
-        return new Response(view('unauthorized')->with('role', 'ADMIN'));
+            // dd(Auth::user()->role_id);
+            return $next($request);
         }
-        return $next($request);
+        return redirect('/'); 
     }
 }

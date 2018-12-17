@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatables;
 
 
 /**
@@ -44,6 +46,7 @@ use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 class User extends Model implements Authenticatable
 {
     use AuthenticableTrait;
+    use Notifiable;
 
     /**
      * @var array
@@ -114,5 +117,18 @@ class User extends Model implements Authenticatable
     public function factors()
     {
         return $this->belongsToMany('App\Models\Factor', 'book_factor_user');
+    }
+
+    public function is($roleName)
+    {
+        foreach ($this->userRole()->get() as $role)
+        {
+            if ($role->role == $roleName)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
