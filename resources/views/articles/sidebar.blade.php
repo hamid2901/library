@@ -6,6 +6,27 @@
                 </li>
                 <li><a href="{{url('/login')}}"><i class="fas fa-sign-in-alt"></i>&nbspورود</a>
                 </li>
+                @else 
+                @if (Auth::user()->role_id == 1)
+                <li>
+                        <p>
+                            <img class="row zoom d-block" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/'.Auth::user()->image_name.'')}}
+                                alt="بدون عکس">
+                        </p>
+                    </li>
+                    <li>سلام&nbsp{{ Auth::user()->first_name }}&nbsp{{ Auth::user()->last_name }}&nbspعزیز</li>
+                    <li>شما به عنوان مدیر وارد شده اید.</li>
+
+                    <li><a href="{{ route('admin.dashboard') }}"><i class="fas fa-user-circle"></i>&nbspداشبورد مدیر </a>
+                    </li>
+                    <li><a href="{{ url('logout/') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i
+                                class="fas fa-sign-out-alt"></i>&nbspخروج از حساب مدیریت</a>
+        
+                        <form id="logout-form" action="{{ url('logout/') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
                 @else
                 <li>
                     <p>
@@ -43,6 +64,7 @@
                         @csrf
                     </form>
                 </li>
+                @endif
                 @endif
             </ul>
         </div>
