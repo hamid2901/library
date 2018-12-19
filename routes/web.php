@@ -25,7 +25,7 @@ Route::group([ 'namespace' => 'Admin' ,'middleware'=>'admin', 'prefix' => 'admin
     Route::get( '/books',                                  'BookController@index');
     Route::get( '/books/create',                           'BookController@create');
     Route::post('/books',                                  'BookController@store');
-    Route::get( '/books/{book}/edit',                      'BookController@edit')->name('admin/books/edit');
+    Route::get( '/books/{book}/edit',                      'BookController@edit')->name('admin.books.edit');
     Route::post('/books/{book}',                           'BookController@update')->name('admin/books/update');
     Route::get( '/books/{book}/delete',                    'BookController@destroy');
 
@@ -37,12 +37,13 @@ Route::group([ 'namespace' => 'Admin' ,'middleware'=>'admin', 'prefix' => 'admin
     Route::get( '/articles/{article}/delete',              'ArticleController@destroy')->name('admin/articles/delete');
     Route::get( '/articles/{article}/confirm',             'ArticleController@confirmArticle');
    
-    Route::get( '/factors',                                'FactorController@index');
-    Route::get( '/factors/create',                         'FactorController@create');
-    Route::post('/factors',                                'FactorController@store');
-    Route::get( '/factors/{factor}/edit',                  'FactorController@edit')->name('admin/factors/edit');
-    Route::post('/factors/{factor}',                       'FactorController@update')->name('admin/factors/update');
-    Route::get( '/factors/{factor}/delete',                'FactorController@destroy')->name('admin/factors/delete');
+    Route::get('/factors',                                'Admin\FactorController@index');
+    // Route::get('/admin/factors/create',                         'Admin\FactorController@create');
+    // Route::post('/admin/factors',                               'Admin\FactorController@store');
+    Route::post('/factors/{factor}',                         'FactorController@update')->name('admin/factors/update');
+    Route::post('/factors/{factor}/receipt',                 'FactorController@factorReceipt');
+    Route::get(' /factors/{factor}/detail',                  'FactorController@factorDetail');
+    Route::get(' /factors/{factor}/delete',                  'FactorController@destroy')->name('admin/factors/delete');
 
     Route::get(   '/messages',                               'MessageController@index');
     Route::get(   '/messages/create',                        'MessageController@create');
