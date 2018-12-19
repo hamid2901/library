@@ -62,7 +62,6 @@ class RegisterController extends Controller
             'alley' => ['required', 'string', 'max:50'],
             'plate' => ['required', 'numeric','min:1' ,'max:9999'],
             'postal_code' => ['numeric', 'max:9999999999'],
-
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
