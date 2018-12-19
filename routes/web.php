@@ -37,7 +37,7 @@ Route::group([ 'namespace' => 'Admin' ,'middleware'=>'admin', 'prefix' => 'admin
     Route::get( '/articles/{article}/delete',              'ArticleController@destroy')->name('admin/articles/delete');
     Route::get( '/articles/{article}/confirm',             'ArticleController@confirmArticle');
    
-    Route::get('/factors',                                'Admin\FactorController@index');
+    Route::get('/factors',                                  'FactorController@index');
     // Route::get('/admin/factors/create',                         'Admin\FactorController@create');
     // Route::post('/admin/factors',                               'Admin\FactorController@store');
     Route::post('/factors/{factor}',                         'FactorController@update')->name('admin/factors/update');
