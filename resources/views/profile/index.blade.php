@@ -393,15 +393,23 @@
                                         <input class="form-control" name="phone" type="text" value="{{Auth::user()->phone}}"
                                             placeholder="موبایل">
                                     </div>
-                                    <label class="col-lg-1 col-form-label form-control-label">تاریخ تولد</label>
+                                    {{-- <label class="col-lg-1 col-form-label form-control-label">تاریخ تولد</label>
                                     <div class="col-lg-2">
                                         <input type="text" class="form-control" disabled value="{{jDate($user->birthdate)->format('Y-m-d')}}"
                                             id="validationDefault04" placeholder="تاریخ تولد">
+                                    </div> --}}
+
+                                    <div class="col-lg-6">
+                                        <label for="date3" class="col-md-6 col-form-label text-md-right">{{ __('تاریخ
+                                            تولد') }}</label>
+                                        <input class="col-md-6 form-control" placeholder="تاریخ تولد" name="birthdate" type="text" id="date3" value="{{$user->birthdate}}"
+                                            class="pdate form-control col-md-11">
                                     </div>
-                                    <div class="col-lg-3">
+
+                                    {{-- <div class="col-lg-3">
                                         <input type="date" class="form-control" value="{{$user->birthdate}}" id="validationDefault05"
                                             placeholder="تاریخ تولد" name="birthdate">
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                                 <div class="form-group row">

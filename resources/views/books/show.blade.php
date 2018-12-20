@@ -13,8 +13,8 @@
     <div class="lead"> عنوان کتاب: {{$book->title}}</div>
 
     <!-- Title -->
-    <img class="zoom" src="{!! asset('images/book_images/'.$book->id.'/front.jpg') !!}" alt="hello">
-    <img class="zoom" src="{!! asset('images/book_images/'.$book->id.'/back.jpg') !!}" alt="hello">
+    <img class="zoom" src="{!! asset('images/book_images/front/'.$book->image_dir.'') !!}" alt="hello">
+    <img class="zoom" src="{!! asset('images/book_images/back/'.$book->image_dir.'') !!}" alt="hello">
     <div style="float:left" class="row">
 
         @if($book->availability_id == 1)
@@ -148,8 +148,15 @@
     @foreach($comments as $comment)
     <div class="media">
         <div class="media-body">
-            <h4 class="media-heading"><img class="" style="float:left; width:60px; height: 60px; padding-left: 15px"
-                    src={{asset('images/users_images/'.$comment->user->image_name.'')}} alt="بدون عکس"> {{
+            <h4 class="media-heading">
+                @if ($comment->user->image_name != null)
+                <img class="" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/'.$comment->user->image_name.'')}}
+                    alt="بدون عکس">
+                @else
+                <img class="" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/default.jpg')}}
+                    alt="بدون عکس">
+                @endif
+                {{
                 $comment->user->first_name }}&nbsp{{ $comment->user->last_name }}
                 {{-- {{dd(jdate($comment->created_at)->format('%d %B %Y'))}} --}}
                 <small>ارسال شده در {{ jdate($comment->created_at)->format('%d %B %Y') }}</small>

@@ -124,7 +124,7 @@
     @foreach( $books as $book )
     <div style="margin-bottom:10px" class="col-md-12 bg-light card">
         <div class="col-md-3" style="padding: 5px">
-            <img class="img-responsive zoom" src="{!! asset('images/book_images/'.$book->id.'/front.jpg') !!}" alt="hello">
+            <img class="img-responsive zoom" src="{!! asset('images/book_images/front/'.$book->image_dir.'') !!}" alt="hello">
         </div>
         
         <div class="col-md-9">
@@ -197,18 +197,18 @@
 
     <!-- First Blog Post -->
     @foreach( $news as $new )
-    {{-- {{dd($new)}} --}}
+    {{-- {{dd($news)}} --}}
     <div style="margin-bottom:10px" class="col-md-12 bg-light card">
         <h2>
             عنوان: <a href="{{url('/news/'.$new->id.'')}}">{{ $new->title }}</a>
         </h2>
         <p class="lead">
-            {{-- ارسال شده توسط {{$new->user->first_name}}{{$new->user->last_name}} --}}
+            ارسال شده توسط {{$new->user->first_name}}{{$new->user->last_name}}
         </p>
         <p><i class="far fa-clock"></i>&nbsp;</span>&nbspارسال شده در تاریخ {{ jdate($new->created_at)->format(' %d %B،
             %Y') }}</p>
         <hr>
-        <img class="img-responsive" src="{!! asset('images/news_images/'.$new->id.'/first.jpg') !!}" alt="hello">
+        <img class="img-responsive" src="{!! asset('images/news_images/first/'.$new->image_dir.'.jpg') !!}" alt="hello">
         <hr>
         <p class="description">توضیحات: {!! $new->content !!}</p>
         <a class="btn btn-primary" href="{{url('/news/'.$new->id.'')}}">ادامه مطلب &nbsp<i class="fas fa-chevron-circle-left"></i></a>
@@ -229,7 +229,7 @@
     @foreach( $articles as $article )
     <div style="margin-bottom:10px" class="col-md-12 bg-light card">
         <div class="col-md-3" style="padding: 5px">
-            <img class="img-responsive zoom" src="{!! asset('images/article_images/'.$article->id.'/front.jpg') !!}"
+            <img class="img-responsive zoom" src="{!! asset('images/article_images/images/'.$article->article_filename.'.jpg') !!}"
                 alt="hello">
         </div>
         <script type='text/javascript'>

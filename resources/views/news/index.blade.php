@@ -24,7 +24,7 @@
             %B،
             %Y') }}</p>
         <hr>
-        <img class="img-responsive" src="{!! asset('images/news_images/'.$new->id.'/first.jpg') !!}" alt="hello">
+        <img class="img-responsive" src="{!! asset('images/news_images/first/'.$new->image_dir.'.jpg') !!}" alt="hello">
         <hr>
         <p class="description">توضیحات: {!! $new->content !!}</p>
         <a class="btn btn-primary" href="{{url('/news/'.$new->id.'')}}">ادامه مطلب &nbsp<i class="fas fa-chevron-circle-left"></i></a>

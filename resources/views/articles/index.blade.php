@@ -14,7 +14,7 @@
     @foreach( $articles as $article )
     <div style="margin-bottom:10px" class="col-md-12 bg-light card">
         <div class="col-md-3" style="padding: 5px">
-            <img class="img-responsive zoom" src="{!! asset('images/article_images/'.$article->id.'/front.jpg') !!}"
+                <img class="img-responsive zoom" src="{!! asset('images/article_images/images/'.$article->article_filename.'.jpg') !!}"
                 alt="hello">
         </div>
         <script type='text/javascript'>

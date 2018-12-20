@@ -189,7 +189,7 @@ public function confirmArticle($id)
         $articles = Article::with(['categories', 'authors'])->where('id', $id)->get();
         foreach($articles as $article){
         //PDF file is stored under project/public/download/info.pdf
-        $file= public_path('images/article_images/'.$article->id.'.pdf');
+        $file= public_path('images/article_images/files/'.$article->article_filename.'.pdf');
         $headers = array(
                   'Content-Type: application/octet-stream',
                 );

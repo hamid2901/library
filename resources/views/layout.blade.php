@@ -27,7 +27,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
+    <link rel="stylesheet" href="{!! asset('css/persian-cal/kamadatepicker.css') !!}">
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="{!! asset('css/persian-cal/kamadatepicker.js') !!}"></script>
 </head>
 
 <body>
@@ -74,10 +76,38 @@
         // $(document).ready(function () {
         //     $('#table_id').DataTable();
         // });
-        
+    </script>
+    <script>
+        kamaDatepicker('date3', {
+            nextButtonIcon: "timeir_next.png",
+            previousButtonIcon: "timeir_prev.png",
+            forceFarsiDigits: true,
+            markToday: true,
+            markHolidays: true,
+            highlightSelectedDay: true,
+            sync: true
+        });
+
+        // for testing sync functionallity
+        $("#date2").val("1311/10/01");
     </script>
 
-
 </body>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+            '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
 
 </html>

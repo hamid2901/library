@@ -12,12 +12,11 @@
     <!-- Title -->
     <h1>{{ $new->title }}</h1>
 
-    <img class="zoom" src={!! asset('images/news_images/'.$new->id.'/first.jpg') !!} alt="">
-    <img class="zoom" src={!! asset('images/news_images/'.$new->id.'/second.jpg') !!} alt="">
-    <img class="zoom" src={!! asset('images/news_images/'.$new->id.'/third.png') !!} alt="">
+    <img style="height:200px; width: 300px" class="zoom" src="{!! asset('images/news_images/first/'.$new->image_dir.'.jpg') !!}" alt="hello">
+    <img style="height:200px; width: 300px" class="zoom" src="{!! asset('images/news_images/second/'.$new->image_dir.'.jpg') !!}" alt="hello">
     <!-- Author -->
     <p class="lead">
-        ارسال شده توسط <a href="index.php"></a>
+        ارسال شده توسط {{$new->user->last_name}}&nbsp;{{$new->user->first_name}}
     </p>
 
     <hr>
@@ -26,8 +25,6 @@
     <p><span class="glyphicon glyphicon-time"></span> ارسال شده در تاریخ {{ jdate($new->created_at)->format('%B
         %d،%Y')
         }}</p>
-
-    <hr>
 
     <!-- Preview Image -->
     <script type='text/javascript'>
@@ -66,13 +63,23 @@
 
     @foreach($comments as $comment)
     <div class="media">
-        <div class="media-body">
-            <h4 class="media-heading">{{ $comment->user->first_name }}&nbsp{{ $comment->user->last_name }}
-                <small>ارسال شده در  {{ jdate($comment->created_at)->format('%B %d، %Y') }}</small>
-            </h4>
-            {{ $comment->content }}
+            <div class="media-body">
+                <h4 class="media-heading">
+                    @if ($comment->user->image_name != null)
+                    <img class="" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/'.$comment->user->image_name.'')}}
+                        alt="بدون عکس">
+                    @else
+                    <img class="" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/default.jpg')}}
+                        alt="بدون عکس">
+                    @endif
+                    {{
+                    $comment->user->first_name }}&nbsp{{ $comment->user->last_name }}
+                    {{-- {{dd(jdate($comment->created_at)->format('%d %B %Y'))}} --}}
+                    <small>ارسال شده در {{ jdate($comment->created_at)->format('%d %B %Y') }}</small>
+                </h4>
+                {{ $comment->content }}
+            </div>
         </div>
-    </div>
     @endforeach
 </div>
 @endforeach

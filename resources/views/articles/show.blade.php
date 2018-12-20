@@ -18,8 +18,8 @@
     <div class="lead"> عنوان مقاله: {{$article->title}}</div>
 
     <!-- Title -->
-    <img class="zoom" src="{!! asset('images/article_images/'.$article->id.'/front.jpg') !!}" alt="hello">
-    <img class="zoom" src="{!! asset('images/article_images/'.$article->id.'/back.jpg') !!}" alt="hello">
+    <img class="img-responsive zoom" src="{!! asset('images/article_images/images/'.$article->article_filename.'.jpg') !!}"
+    alt="hello">
 
     <!-- Author -->
     <p class="lead">

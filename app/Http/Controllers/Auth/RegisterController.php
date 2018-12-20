@@ -48,14 +48,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        dd($data);
+        // dd($data);
         return Validator::make($data, [
             'name' => ['string', 'max:30'],
             'last_name' => ['string', 'max:30'],
             'sex' => ['required'],
-            'birthdate' => ['date', 'max:30'],
+            'birthdate' => ['string', 'max:30'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'string', 'max:11'],
+            'phone' => ['required', 'string', 'min:11',  'max:11' ,'regex:/^[0][9][0-3][0-9]{8,8}$/'],
             'profession' => ['string', 'max:50'],
             'university' => ['string', 'max:50'],
             'city' => ['required', 'string', 'max:50'],
@@ -91,7 +91,7 @@ class RegisterController extends Controller
             'alley' => $data['alley'],
             'plate' => $data['plate'],
             'postal_code' => $data['postal_code'],
-            'role_id' => 1,
+            'role_id' => 2,
             'status_id' => 1,
             'confirm' => 0,
             'postal_code' => $data['postal_code'],

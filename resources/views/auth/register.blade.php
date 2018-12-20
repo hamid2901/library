@@ -45,16 +45,16 @@
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="last_name" class="col-md-12 col-form-label text-md-right">{{ __('تاریخ تولد') }}</label>
-                        <input placeholder="تاریخ تولد" type="text" name="birthdate" id="pcal1" value="{{ old('birthdate') }}"
-                            class="pdate form-control col-md-11"><br>
-                    </div>
-                    <div class="form-group col-md-6">
 
                         <div class="">
                             <label for="date3" class="col-md-12 col-form-label text-md-right">{{ __('تاریخ تولد') }}</label>
                             <input placeholder="تاریخ تولد" name="birthdate" type="text" id="date3" value="{{ old('birthdate') }}"
                                 class="pdate form-control col-md-11">
+                                @if ($errors->has('birthdate'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('birthdate') }}</strong>
+                        </span>
+                        @endif
                         </div>
                     </div>
 
