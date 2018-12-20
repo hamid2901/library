@@ -13,3 +13,4 @@
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/admin/admin-panel.css') }}">
         
         <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
+

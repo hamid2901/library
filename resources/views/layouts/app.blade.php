@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +24,11 @@
         crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{!! asset('css/persian-cal/kamadatepicker.css') !!}">
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="{!! asset('css/persian-cal/kamadatepicker.js') !!}"></script>
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
@@ -31,7 +36,8 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('صفحه اصلی', 'صفحه اصلی') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -45,26 +51,26 @@
                     <ul class="navbar-nav mr-auto">
                         <!-- Authentication Links -->
                         @if(!Auth::check())
-                            <li><a class="nav-link" href="{{ url('/login') }}">ورود</a></li>
-                            <li><a class="nav-link" href="{{ url('/register') }}">ثبت نام</a></li>
+                        <li><a class="nav-link" href="{{ url('/login') }}">ورود</a></li>
+                        <li><a class="nav-link" href="{{ url('/register') }}">ثبت نام</a></li>
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Logout
                                 </a>
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('/logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                         @endif
                     </ul>
                 </div>
@@ -79,6 +85,36 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/register.js') }}"></script>
+    <script>
+        kamaDatepicker('date3', {
+            nextButtonIcon: "timeir_next.png",
+            previousButtonIcon: "timeir_prev.png",
+            forceFarsiDigits: true,
+            markToday: true,
+            markHolidays: true,
+            highlightSelectedDay: true,
+            sync: true
+        });
 
+        // for testing sync functionallity
+        $("#date2").val("1311/10/01");
+    </script>
 </body>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+            '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
 </html>

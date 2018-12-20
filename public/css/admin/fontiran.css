@@ -1,10 +1,17 @@
-﻿@font-face {
-	font-family: BYekan;
-	font-style: normal;
-	font-weight: normal;
-	src: url('..../fonts/BYekan.eot');
-	src: url('../../fonts/BYekan.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-		 url('../../fonts/BYekan.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
-		 url('../../fonts/BYekan.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('../../fonts/BYekan.ttf') format('truetype');
+﻿
+@font-face {
+    font-family: 'BYekan';
+    src: url('../fonts/BYekan-webfont.eot');
+    font-weight: normal;
+    font-style: normal;
 }
+
+@font-face {
+    font-family: 'BYekan';
+    src: url('../fonts/BYekan-webfont.eot') format('eot'),
+         url('../fonts/BYekan-webfont.woff') format('woff'),
+         url('../fonts/BYekan-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
