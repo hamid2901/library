@@ -16,18 +16,86 @@ class FactorController extends Controller
 {
 
     public function index(){
-
+            
+        $now = Carbon::now();
         $factors = Factor::with('users')->paginate(5);
-        dd($factors);
-        return view('admin.factor.index')->with(['factors'=> $factors]);
+        $delays = array();
+
+        // add delay time(in minutes) for each factor 
+        foreach($factors as $factor){
+            $duration = Carbon::parse($factor->duration);
+            $delays[$factor->id] = $duration->diffInDays($now);
+        }
+
+        return view('admin.factor.index')->with(['factors'=> $factors,
+                                                'delays'  => $delays]);
     }
 
 
-    public function destroy($id){
-        $factor = Factor::find($id);
-        $factor->delete();
-        return redirect()->back();
+ 
+// to update factor
+public function update(Request $request, $id = null)
+{        
+    $factor = Factor::with('books')->find($id);
+    $factor->borrow_date = Carbon::now();
+
+    $borrowDuration = $request->input('duration');
+    switch($borrowDuration){
+        case 1:
+        $factor->duration = Carbon::now()->addWeek(1);
+        break;
+        case 2:
+        $factor->duration = Carbon::now()->addWeek(2);
+        break;
+        case 3:
+        $factor->duration = Carbon::now()->addMonth();
+        break;
     }
+    $factor->borrow_status = 1;
+    $factor->save();
+
+     // change the book availability 
+    foreach($factor->books as $book){
+        $book->availability_id = 3;
+    }
+
+    return redirect()->back();
+}
+
+
+// whene user give the book back to the library // 
+public function factorReceipt(Request $request, $id = null)
+{        
+    $factor = Factor::with('books')->find($id);
+
+    $factor->return_date = Carbon::now();
+    $factor->borrow_status = 2;
+   
+    $factor->save();
+
+    // change the book availability 
+    foreach($factor->books as $book){
+        $book->availability_id = 1;
+    }
+
+    return redirect()->back();
+}
+
+public function factorDetail($id){
+   
+    $factor = Factor::with(['users', 'books'])->find($id);
+    
+    return view('admin.factor.factordetail')->with(['factor'=> $factor]);
+
+}
+
+
+public function destroy($id){
+    $factor = Factor::find($id);
+    $factor->delete();
+    return redirect()->back();
+}
+
     public function addToCart(Request $request, $book){
 
         $user = $request->input('factor');

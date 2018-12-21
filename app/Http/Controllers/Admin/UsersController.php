@@ -42,6 +42,7 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
+       
         $photoName = time().'.'.$request->user_photo->getClientOriginalExtension();
         $request->user_photo->move(public_path('images/users_images/'), $photoName);
         User::create([

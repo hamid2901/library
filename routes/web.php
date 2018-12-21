@@ -13,21 +13,21 @@
 Auth::routes();
 
 Route::group([ 'namespace' => 'Admin' ,'middleware'=>'admin', 'prefix' => 'admin'], function() {
-    Route::get('/',                                       'AdminController@index')->name('admin.dashboard');
-    Route::get('/users',                                  'UsersController@index');
-    Route::get('/users/create',                           'UsersController@create');
-    Route::post('/users',                                 'UsersController@store');
-    Route::get('/users/{user}/edit',                      'UsersController@edit')->name('admin/users/edit');
-    Route::post('/users/{user}',                          'UsersController@update')->name('admin/users/update');
-    Route::get('/users/{user}/delete',                    'UsersController@delete')->name('admin/users/delete');
-    Route::post('/users/{user}/status',                   'UsersController@changeStatus');
+    Route::get('/',                                'AdminController@index')->name('admin.dashboard');
+    Route::get('/users',                           'UsersController@index')->name('admin.users');
+    Route::get('/users/create',                    'UsersController@create')->name('admin.users.create');
+    Route::post('/users',                          'UsersController@store')->name('admin.users.store');
+    Route::get('/users/{user}/edit',               'UsersController@edit')->name('admin.users.edit');
+    Route::post('/users/{user}',                   'UsersController@update')->name('admin.users.update');
+    Route::get('/users/{user}/delete',             'UsersController@delete')->name('admin.users.delete');
+    Route::post('/users/{user}/status',            'UsersController@changeStatus')->name('admin.users.status');
 
-    Route::get( '/books',                                  'BookController@index');
-    Route::get( '/books/create',                           'BookController@create');
-    Route::post('/books',                                  'BookController@store');
-    Route::get( '/books/{book}/edit',                      'BookController@edit')->name('admin.books.edit');
-    Route::post('/books/{book}',                           'BookController@update')->name('admin/books/update');
-    Route::get( '/books/{book}/delete',                    'BookController@destroy');
+    Route::get( '/books',                           'BookController@index')->name('admin.books');
+    Route::get( '/books/create',                    'BookController@create')->name('admin.books.create');
+    Route::post('/books',                           'BookController@store')->name('admin.books.store');
+    Route::get( '/books/{book}/edit',               'BookController@edit')->name('admin.books.edit');
+    Route::post('/books/{book}',                    'BookController@update')->name('admin.books.update');
+    Route::get( '/books/{book}/delete',             'BookController@destroy')->name('admin.books.delete');
 
     Route::get( '/articles',                               'ArticleController@index');
     Route::get( '/articles/create',                        'ArticleController@create');

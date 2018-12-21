@@ -1,6 +1,7 @@
 body {
     background: #fafafa;
     font-family: BYekan !important;
+    overflow: hidden;
 
 }
 p {
@@ -19,13 +20,9 @@ a, a:hover, a:focus {
     height: 100vh;
     overflow: hidden;
 }
-.rightside{
-    direction: ltr;
-    /* height:100vh; */
-}
 #sidebar {
     /* don't forget to add all the previously mentioned styles here too */
-    background: rgb(64, 64, 65);
+    background: rgb(220, 223, 222);
     color: #fff;
     transition: all 0.3s;
     height:100vh;
@@ -41,8 +38,16 @@ a, a:hover, a:focus {
     padding: 4px;
 }
 #sidebar ul.components {
-    text-align: center;
     padding:0 0 20px 0;
+}
+#sidebar ul.components li {
+    margin: 5px;
+}
+#sidebar ul.components li span{
+    margin: 0 10px;
+}
+#sidebar ul.components i{
+    padding: 0 5px 0 0;
 }
 #sidebar ul p {
    text-align: center;
@@ -68,16 +73,37 @@ a, a:hover, a:focus {
     color: #fff;
     background: #6d7fcc;
 }
+::-webkit-scrollbar {
+    transform:scaleX(1);
+    width:10px ;
+  }
+  
+  /* Track */
+
+::-webkit-scrollbar-track {
+    background: rgb(199, 198, 198); 
+    border-radius: 5px;
+  }
+  
+  /* Handle */
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: gray; 
+  }
+  
+  /* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(83, 80, 80); 
+  }
 header{
     height: 50px;
 }
 .navbar{
     height: 100%;
-    background-color: rgb(64, 64, 65);
+    background-color: rgb(110, 110, 223);
 }
-.navbar-inner{
-    display: flex;
- }
  .navbar a{
      padding: 20px;
  }
@@ -90,9 +116,6 @@ header{
     font-size: 18px;
     color:white;
 }
-.navbar ul{
-    justify-self:start;
-}
 .navbar ul li{
     font-weight: bold;
     font-size: 18px;
@@ -100,13 +123,27 @@ header{
     color:white;
 }
 .content{
-    background-color: rgb(228, 221, 221);
+    background-color: white;
     max-height: 93%;
     min-height: 93%;
     overflow: hidden;
 }
+.form{
+    background-color:#eeeeee;
+    margin-top:20px;
+    box-shadow: 0px 0px 10px 0px rgb(162, 162, 255);
+}
 .container .content {
     overflow-y: auto;
+}
+
+/* forms */
+.form-row {
+    justify-content: flex-end;
+    padding: 0 50px;
+}
+.create-btn{
+    margin: 20px auto!important;
 }
 
 /* switches */
@@ -114,7 +151,7 @@ header{
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
+    height: 19px;
   }
   
   .switch input { 
@@ -138,10 +175,10 @@ header{
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
+    height: 15px;
     width: 26px;
-    left: 4px;
-    bottom: 4px;
+    left: 2px;
+    bottom: 2px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
