@@ -1,372 +1,423 @@
 @font-face {
-  font-family: IRANSans;
-  font-style: normal;
-  font-weight: bold;
-  src: url('../fonts/iranSans/eot/IRANSansWeb_Bold.eot');
-  src: url('../fonts/iranSans/eot/IRANSansWeb_Bold.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-       url('../fonts/iranSans/woff2/IRANSansWeb_Bold.woff2') format('woff2'),  /* Chrome36+, Opera24+*/
-       url('../fonts/iranSans/woff/IRANSansWeb_Bold.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-       url('../fonts/iranSans/ttf/IRANSansWeb_Bold.ttf') format('truetype');
-}
-@font-face {
-  font-family: IRANSans;
-  font-style: normal;
-  font-weight: 500;
-  src: url('../fonts/iranSans/eot/IRANSansWeb_Medium.eot');
-  src: url('../fonts/iranSans/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-       url('../fonts/iranSans/woff2/IRANSansWeb_Medium.woff2') format('woff2'),  /* Chrome36+, Opera24+*/
-       url('../fonts/iranSans/woff/IRANSansWeb_Medium.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-       url('../fonts/iranSans/ttf/IRANSansWeb_Medium.ttf') format('truetype');
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/iranSans/eot/IRANSansWeb_Bold.eot');
+    src: url('../fonts/iranSans/eot/IRANSansWeb_Bold.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iranSans/woff2/IRANSansWeb_Bold.woff2') format('woff2'),
+        /* Chrome36+, Opera24+*/
+        url('../fonts/iranSans/woff/IRANSansWeb_Bold.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iranSans/ttf/IRANSansWeb_Bold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: IRANSans;
-  font-style: normal;
-  font-weight: 300;
-  src: url('../fonts/iranSans/eot/IRANSansWeb_Light.eot');
-  src: url('../fonts/iranSans/eot/IRANSansWeb_Light.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-       url('../fonts/iranSans/woff2/IRANSansWeb_Light.woff2') format('woff2'),  /* Chrome36+, Opera24+*/
-       url('../fonts/iranSans/woff/IRANSansWeb_Light.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-       url('../fonts/iranSans/ttf/IRANSansWeb_Light.ttf') format('truetype');
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/iranSans/eot/IRANSansWeb_Medium.eot');
+    src: url('../fonts/iranSans/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iranSans/woff2/IRANSansWeb_Medium.woff2') format('woff2'),
+        /* Chrome36+, Opera24+*/
+        url('../fonts/iranSans/woff/IRANSansWeb_Medium.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iranSans/ttf/IRANSansWeb_Medium.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: IRANSans;
-  font-style: normal;
-  font-weight: 200;
-  src: url('../fonts/iranSans/eot/IRANSansWeb_UltraLight.eot');
-  src: url('../fonts/iranSans/eot/IRANSansWeb_UltraLight.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-       url('../fonts/iranSans/woff2/IRANSansWeb_UltraLight.woff2') format('woff2'),  /* Chrome36+, Opera24+*/
-       url('../fonts/iranSans/woff/IRANSansWeb_UltraLight.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-       url('../fonts/iranSans/ttf/IRANSansWeb_UltraLight.ttf') format('truetype');
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/iranSans/eot/IRANSansWeb_Light.eot');
+    src: url('../fonts/iranSans/eot/IRANSansWeb_Light.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iranSans/woff2/IRANSansWeb_Light.woff2') format('woff2'),
+        /* Chrome36+, Opera24+*/
+        url('../fonts/iranSans/woff/IRANSansWeb_Light.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iranSans/ttf/IRANSansWeb_Light.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: IRANSans;
-  font-style: normal;
-  font-weight: normal;
-  src: url('../fonts/iranSans/eot/IRANSansWeb.eot');
-  src: url('../fonts/iranSans/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-       url('../fonts/iranSans/woff2/IRANSansWeb.woff2') format('woff2'),  /* Chrome36+, Opera24+*/
-       url('../fonts/iranSans/woff/IRANSansWeb.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-       url('../fonts/iranSans/ttf/IRANSansWeb.ttf') format('truetype');
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 200;
+    src: url('../fonts/iranSans/eot/IRANSansWeb_UltraLight.eot');
+    src: url('../fonts/iranSans/eot/IRANSansWeb_UltraLight.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iranSans/woff2/IRANSansWeb_UltraLight.woff2') format('woff2'),
+        /* Chrome36+, Opera24+*/
+        url('../fonts/iranSans/woff/IRANSansWeb_UltraLight.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iranSans/ttf/IRANSansWeb_UltraLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/iranSans/eot/IRANSansWeb.eot');
+    src: url('../fonts/iranSans/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iranSans/woff2/IRANSansWeb.woff2') format('woff2'),
+        /* Chrome36+, Opera24+*/
+        url('../fonts/iranSans/woff/IRANSansWeb.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iranSans/ttf/IRANSansWeb.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: bold;
+    src:
+        url('../fonts/iranSans/ttf/IRANSansWeb(FaNum)_Bold.woff2') format('woff2'),
+        url('../fonts/iranSans/ttf/IRANSansWeb(FaNum)_Bold.woff') format('woff'),
+        url('../fonts/iranSans/ttf/IRANSansWeb(FaNum)_Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 300;
+    src:
+        url('../fonts/iranSans/ttf/IRANSansWeb(FaNum)_Light.woff2') format('woff2'),
+        url('../fonts/iranSans/ttf/IRANSansWeb(FaNum)_Light.woff') format('woff'),
+        url('../fonts/iranSans/ttf/IRANSansWeb(FaNum)_Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: normal;
+    src:
+        url('../fonts/iranSans/ttf/IRANSansWeb(FaNum).ttf') format('truetype');
 }
 
 body {
-  background-color: #fcfcfc;
-  font-family: 'IRANSans', sans-serif !important;
+    background-color: #fcfcfc;
+    font-family: 'IRANSans', sans-serif !important;
 }
-.bg-light{
-  background-color: rgb(255, 255, 255)
+
+.bg-light {
+    background-color: rgb(255, 255, 255)
 }
+
 /* .bg-light:hover{
   background-color: rgb(226, 226, 226)
 } */
-.card{
-  z-index: 0;
-  border: 1px solid rgb(230, 230, 230);
+.card {
+    z-index: 0;
+    border: 1px solid rgb(230, 230, 230);
 
-  padding: 25px;
-  margin: 10px 0;
-  border-radius: 2px;
-  box-shadow: 0px 0px 15px 0px rgb(223, 217, 217)
+    padding: 25px;
+    margin: 10px 0;
+    border-radius: 2px;
+    box-shadow: 0px 0px 15px 0px rgb(223, 217, 217)
 }
 
-a{
-  text-decoration: none
+a {
+    text-decoration: none
 }
-a:hover{
-  text-decoration: none
+
+a:hover {
+    text-decoration: none
 }
+
 img.zoom {
-  width: 200px;
-  height: 270px;
-  transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  -ms-transition: all .2s ease-in-out;
-  z-index: 3;
+    width: 200px;
+    height: 270px;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    z-index: 3;
 }
 
 .transition {
-  -webkit-transform: scale(1.2); 
-  -moz-transform: scale(1.2);
-  -o-transform: scale(1.2);
-  transform: scale(1.2);
-}
-.description{
-  display: block; /* or inline-block */
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  overflow: hidden;
-  max-height: 3.6em;
-  line-height: 1.8em;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
-*{
-  margin: 0;
-  padding: 0;
+.description {
+    display: block;
+    /* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 3.6em;
+    line-height: 1.8em;
 }
 
-body{
-  box-sizing: border-box;
-}
-.wrapper{
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	width: 400px;
-	margin: 50vh auto 0;
-	-ms-flex-wrap: wrap;
-	    flex-wrap: wrap;
-	-webkit-transform: translateY(-50%);
-	        transform: translateY(-50%);
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.switch_box{
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	max-width: 100px;
-	min-width: 100px;
-	height: 50x;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-	-webkit-box-flex: 1;
-	    -ms-flex: 1;
-	        flex: 1;
+body {
+    box-sizing: border-box;
+}
+
+.wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 400px;
+    margin: 50vh auto 0;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.switch_box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 100px;
+    min-width: 100px;
+    height: 50x;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
 }
 
 /* Switch 1 Specific Styles Start */
 
-.box_1{
-	background: #eee;
+.box_1 {
+    background: #eee;
 }
 
-input[type="checkbox"].switch_1{
-	font-size: 30px;
-	-webkit-appearance: none;
-	   -moz-appearance: none;
-	        appearance: none;
-	width: 3.5em;
-	height: 1.5em;
-	background: #ddd;
-	border-radius: 3em;
-	position: relative;
-	cursor: pointer;
-	outline: none;
-	-webkit-transition: all .2s ease-in-out;
-	transition: all .2s ease-in-out;
-  }
-  
-  input[type="checkbox"].switch_1:checked{
-	background: #0ebeff;
-  }
-  
-  input[type="checkbox"].switch_1:after{
-	position: absolute;
-	content: "";
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 50%;
-	background: #fff;
-	-webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);
-	        box-shadow: 0 0 .25em rgba(0,0,0,.3);
-	-webkit-transform: scale(.7);
-	        transform: scale(.7);
-	left: 0;
-	-webkit-transition: all .2s ease-in-out;
-	transition: all .2s ease-in-out;
-  }
-  
-  input[type="checkbox"].switch_1:checked:after{
-	left: calc(100% - 1.5em);
-  }
-	
+input[type="checkbox"].switch_1 {
+    font-size: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 3.5em;
+    height: 1.5em;
+    background: #ddd;
+    border-radius: 3em;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+input[type="checkbox"].switch_1:checked {
+    background: #0ebeff;
+}
+
+input[type="checkbox"].switch_1:after {
+    position: absolute;
+    content: "";
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #fff;
+    -webkit-box-shadow: 0 0 .25em rgba(0, 0, 0, .3);
+    box-shadow: 0 0 .25em rgba(0, 0, 0, .3);
+    -webkit-transform: scale(.7);
+    transform: scale(.7);
+    left: 0;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+input[type="checkbox"].switch_1:checked:after {
+    left: calc(100% - 1.5em);
+}
+
 /* Switch 1 Specific Style End */
 
 
 /* Switch 2 Specific Style Start */
 
-.box_2{
-	background: #666;
+.box_2 {
+    background: #666;
 }
 
-input[type="checkbox"].switch_2{
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  width: 100px;
-  height: 8px;
-  background: #444;
-  border-radius: 5px;
-  position: relative;
-  outline: 0;
-  cursor: pointer;
+input[type="checkbox"].switch_2 {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 8px;
+    background: #444;
+    border-radius: 5px;
+    position: relative;
+    outline: 0;
+    cursor: pointer;
 }
 
 input[type="checkbox"].switch_2:before,
-input[type="checkbox"].switch_2:after{
-  position: absolute;
-  content: "";
-  -webkit-transition: all .25s;
-  transition: all .25s;
+input[type="checkbox"].switch_2:after {
+    position: absolute;
+    content: "";
+    -webkit-transition: all .25s;
+    transition: all .25s;
 }
 
-input[type="checkbox"].switch_2:before{
-  width: 40px;
-  height: 40px;
-  background: #ccc;
-  border: 5px solid #666;
-  border-radius: 50%;
-  top: 50%;
-  left: 0;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+input[type="checkbox"].switch_2:before {
+    width: 40px;
+    height: 40px;
+    background: #ccc;
+    border: 5px solid #666;
+    border-radius: 50%;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
-input[type="checkbox"].switch_2:after{
-  width: 30px;
-  height: 30px;
-  background: #666;
-  border-radius: 50%;
-  top: 50%;
-  left: 10px;
-  -webkit-transform: scale(1) translateY(-50%);
-          transform: scale(1) translateY(-50%);
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
+input[type="checkbox"].switch_2:after {
+    width: 30px;
+    height: 30px;
+    background: #666;
+    border-radius: 50%;
+    top: 50%;
+    left: 10px;
+    -webkit-transform: scale(1) translateY(-50%);
+    transform: scale(1) translateY(-50%);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
 }
 
-input[type="checkbox"].switch_2:checked:before{
-  left: calc(100% - 35px);
+input[type="checkbox"].switch_2:checked:before {
+    left: calc(100% - 35px);
 }
 
-input[type="checkbox"].switch_2:checked:after{
-  left: 75px;
-  -webkit-transform: scale(0);
-          transform: scale(0);
+input[type="checkbox"].switch_2:checked:after {
+    left: 75px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
 }
 
 /* Switch 2 Specific Style End */
 
-	
+
 /* Switch 3 Specific Style Start */
 
-.box_3{
-	background: #19232b;
+.box_3 {
+    background: #19232b;
 }
 
-.toggle_switch{
-  width: 100px;
-  height: 45px;
-  position: relative;
+.toggle_switch {
+    width: 100px;
+    height: 45px;
+    position: relative;
 }
 
-input[type="checkbox"].switch_3{
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  outline: 0;
-  z-index: 1;
+input[type="checkbox"].switch_3 {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    outline: 0;
+    z-index: 1;
 }
 
-svg.checkbox .outer-ring{
-  stroke-dasharray: 375;
-  stroke-dashoffset: 375;
-  -webkit-animation: resetRing .35s ease-in-out forwards;
-          animation: resetRing .35s ease-in-out forwards;
+svg.checkbox .outer-ring {
+    stroke-dasharray: 375;
+    stroke-dashoffset: 375;
+    -webkit-animation: resetRing .35s ease-in-out forwards;
+    animation: resetRing .35s ease-in-out forwards;
 }
 
-input[type="checkbox"].switch_3:checked + svg.checkbox .outer-ring{
-  -webkit-animation: animateRing .35s ease-in-out forwards;
-          animation: animateRing .35s ease-in-out forwards;
+input[type="checkbox"].switch_3:checked+svg.checkbox .outer-ring {
+    -webkit-animation: animateRing .35s ease-in-out forwards;
+    animation: animateRing .35s ease-in-out forwards;
 }
 
-input[type="checkbox"].switch_3:checked + svg.checkbox .is_checked{
-  opacity: 1;
-  -webkit-transform: translateX(0) rotate(0deg);
-          transform: translateX(0) rotate(0deg);
+input[type="checkbox"].switch_3:checked+svg.checkbox .is_checked {
+    opacity: 1;
+    -webkit-transform: translateX(0) rotate(0deg);
+    transform: translateX(0) rotate(0deg);
 }
 
-input[type="checkbox"].switch_3:checked + svg.checkbox .is_unchecked{
-  opacity: 0;
-  -webkit-transform: translateX(-200%) rotate(180deg);
-          transform: translateX(-200%) rotate(180deg);
+input[type="checkbox"].switch_3:checked+svg.checkbox .is_unchecked {
+    opacity: 0;
+    -webkit-transform: translateX(-200%) rotate(180deg);
+    transform: translateX(-200%) rotate(180deg);
 }
 
 
-svg.checkbox{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+svg.checkbox {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-svg.checkbox .is_checked{
-  opacity: 0;
-  fill: yellow;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
-  -webkit-transform: translateX(200%) rotate(45deg);
-          transform: translateX(200%) rotate(45deg);
-  -webkit-transition: all .35s;
-  transition: all .35s;
+svg.checkbox .is_checked {
+    opacity: 0;
+    fill: yellow;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: translateX(200%) rotate(45deg);
+    transform: translateX(200%) rotate(45deg);
+    -webkit-transition: all .35s;
+    transition: all .35s;
 }
 
-svg.checkbox .is_unchecked{
-  opacity: 1;
-  fill: #fff;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
-  -webkit-transform: translateX(0) rotate(0deg);
-          transform: translateX(0) rotate(0deg);
-  -webkit-transition: all .35s;
-  transition: all .35s;
+svg.checkbox .is_unchecked {
+    opacity: 1;
+    fill: #fff;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: translateX(0) rotate(0deg);
+    transform: translateX(0) rotate(0deg);
+    -webkit-transition: all .35s;
+    transition: all .35s;
 }
 
-@-webkit-keyframes animateRing{
-  to{
-    stroke-dashoffset: 0;
-    stroke: #b0aa28;
-  }
+@-webkit-keyframes animateRing {
+    to {
+        stroke-dashoffset: 0;
+        stroke: #b0aa28;
+    }
 }
 
-@keyframes animateRing{
-  to{
-    stroke-dashoffset: 0;
-    stroke: #b0aa28;
-  }
+@keyframes animateRing {
+    to {
+        stroke-dashoffset: 0;
+        stroke: #b0aa28;
+    }
 }
 
-@-webkit-keyframes resetRing{
-  to{
-    stroke-dashoffset: 0;
-    stroke: #233043;
-  }
+@-webkit-keyframes resetRing {
+    to {
+        stroke-dashoffset: 0;
+        stroke: #233043;
+    }
 }
 
-@keyframes resetRing{
-  to{
-    stroke-dashoffset: 0;
-    stroke: #233043;
-  }
+@keyframes resetRing {
+    to {
+        stroke-dashoffset: 0;
+        stroke: #233043;
+    }
 }
 
 /* Switch 3 Specific Style End */
@@ -374,140 +425,144 @@ svg.checkbox .is_unchecked{
 
 /* Switch 4 Specific Style Start */
 
-.box_4{
-	background: #eee;
+.box_4 {
+    background: #eee;
 }
 
-.input_wrapper{
-  width: 80px;
-  height: 40px;
-  position: relative;
-  cursor: pointer;
+.input_wrapper {
+    width: 80px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
 }
 
-.input_wrapper input[type="checkbox"]{
-  width: 80px;
-  height: 40px;
-  cursor: pointer;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background: #315e7f;
-  border-radius: 2px;
-  position: relative;
-  outline: 0;
-  -webkit-transition: all .2s;
-  transition: all .2s;
+.input_wrapper input[type="checkbox"] {
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #315e7f;
+    border-radius: 2px;
+    position: relative;
+    outline: 0;
+    -webkit-transition: all .2s;
+    transition: all .2s;
 }
 
-.input_wrapper input[type="checkbox"]:after{
-  position: absolute;
-  content: "";
-  top: 3px;
-  left: 3px;
-  width: 34px;
-  height: 34px;
-  background: #dfeaec;
-  z-index: 2;
-  border-radius: 2px;
-  -webkit-transition: all .35s;
-  transition: all .35s;
+.input_wrapper input[type="checkbox"]:after {
+    position: absolute;
+    content: "";
+    top: 3px;
+    left: 3px;
+    width: 34px;
+    height: 34px;
+    background: #dfeaec;
+    z-index: 2;
+    border-radius: 2px;
+    -webkit-transition: all .35s;
+    transition: all .35s;
 }
 
-.input_wrapper svg{
-  position: absolute;
-  top: 50%;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
-  fill: #fff;
-  -webkit-transition: all .35s;
-  transition: all .35s;
-  z-index: 1;
+.input_wrapper svg {
+    position: absolute;
+    top: 50%;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    fill: #fff;
+    -webkit-transition: all .35s;
+    transition: all .35s;
+    z-index: 1;
 }
 
-.input_wrapper .is_checked{
-  width: 18px;
-  left: 18%;
-  -webkit-transform: translateX(190%) translateY(-30%) scale(0);
-          transform: translateX(190%) translateY(-30%) scale(0);
+.input_wrapper .is_checked {
+    width: 18px;
+    left: 18%;
+    -webkit-transform: translateX(190%) translateY(-30%) scale(0);
+    transform: translateX(190%) translateY(-30%) scale(0);
 }
 
-.input_wrapper .is_unchecked{
-  width: 15px;
-  right: 10%;
-  -webkit-transform: translateX(0) translateY(-30%) scale(1);
-          transform: translateX(0) translateY(-30%) scale(1);
+.input_wrapper .is_unchecked {
+    width: 15px;
+    right: 10%;
+    -webkit-transform: translateX(0) translateY(-30%) scale(1);
+    transform: translateX(0) translateY(-30%) scale(1);
 }
 
 /* Checked State */
-.input_wrapper input[type="checkbox"]:checked{
-  background: #23da87;
+.input_wrapper input[type="checkbox"]:checked {
+    background: #23da87;
 }
 
-.input_wrapper input[type="checkbox"]:checked:after{
-  left: calc(100% - 37px);
+.input_wrapper input[type="checkbox"]:checked:after {
+    left: calc(100% - 37px);
 }
 
-.input_wrapper input[type="checkbox"]:checked + .is_checked{
-  -webkit-transform: translateX(0) translateY(-30%) scale(1);
-          transform: translateX(0) translateY(-30%) scale(1);
+.input_wrapper input[type="checkbox"]:checked+.is_checked {
+    -webkit-transform: translateX(0) translateY(-30%) scale(1);
+    transform: translateX(0) translateY(-30%) scale(1);
 }
 
-.input_wrapper input[type="checkbox"]:checked ~ .is_unchecked{
-  -webkit-transform: translateX(-190%) translateY(-30%) scale(0);
-          transform: translateX(-190%) translateY(-30%) scale(0);
+.input_wrapper input[type="checkbox"]:checked~.is_unchecked {
+    -webkit-transform: translateX(-190%) translateY(-30%) scale(0);
+    transform: translateX(-190%) translateY(-30%) scale(0);
 }
 
-.well{
-  background-color: #ffffff
+.well {
+    background-color: #ffffff
 }
 
-.rounding{
+.rounding {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    padding: 2px  !important;
+    padding: 2px !important;
     background: #fff;
     -webkit-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
     -ms-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
 }
-.success{
-  background-color: #e5fdf2
-}
-.danger{
-  background-color: #fde5e5
-}
-.warning{
-  background-color: #fbfde5
+
+.success {
+    background-color: #e5fdf2
 }
 
-.btn{
-  border-radius: 0 !important
+.danger {
+    background-color: #fde5e5
 }
 
-.panel{
+.warning {
+    background-color: #fbfde5
+}
+
+.btn {
+    border-radius: 0 !important
+}
+
+.panel {
     margin-bottom: 21px;
     background-color: #fff;
     border: 1px solid transparent;
     border-radius: 4px;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
-.panel-default{
-  border-color: #ecf0f1;
+.panel-default {
+    border-color: #ecf0f1;
 }
 
-.img-circle{
-  max-width: 25px;
-  max-height: 25px;
-  border-radius: 50%;
+.img-circle {
+    max-width: 25px;
+    max-height: 25px;
+    border-radius: 50%;
 }
-.panel-heading{
-  padding: 10px 15px;
-  border-bottom: 1px solid transparent;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
 }

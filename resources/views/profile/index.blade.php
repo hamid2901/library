@@ -473,4 +473,15 @@
         </div>
     </div>
 </div>
+<script>
+        kamaDatepicker('date3', {
+            nextButtonIcon: "../css/persian-cal/timeir_next.png",
+            previousButtonIcon: "../css/persian-cal/timeir_prev.png",
+            forceFarsiDigits: true,
+            markToday: true,
+            markHolidays: true,
+            highlightSelectedDay: true,
+            sync: true
+        });
+    </script>
 @endsection

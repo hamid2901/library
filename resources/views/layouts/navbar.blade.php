@@ -131,7 +131,7 @@
                                         <span class="input-group-addon">
                                             <i aria-hidden="true" class="far fa-envelope fa-fw"></i>
                                         </span>
-                                        <input name="email" class="form-control" placeholder="Email address" type="email">
+                                        <input name="email" class="form-control" placeholder="ایمیل" type="email">
                                     </div>
                                 </div>
                             </div>

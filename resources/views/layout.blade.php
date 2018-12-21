@@ -80,17 +80,7 @@
     {{-- <script type='text/javascript'>
         $('.zoo-item').ZooMove();
     </script> --}}
-    <script>
-        kamaDatepicker('date3', {
-            nextButtonIcon: "../css/persian-cal/timeir_next.png",
-            previousButtonIcon: "../css/persian-cal/timeir_prev.png",
-            forceFarsiDigits: true,
-            markToday: true,
-            markHolidays: true,
-            highlightSelectedDay: true,
-            sync: true
-        });
-    </script>
+    
 </body>
 <script type="text/javascript">
     var _gaq = _gaq || [];
