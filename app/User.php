@@ -53,6 +53,11 @@ class User extends Model implements Authenticatable
      */
     protected $fillable = ['role_id', 'status_id', 'sex', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at', 'deleted_at', 'image_name', 'confirm', 'first_name', 'last_name', 'phone', 'profession', 'university', 'birthdate', 'city', 'street', 'plate', 'alley', 'postal_code'];
 
+    protected $table = "users";
+    public $primarykey = "id";
+
+    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

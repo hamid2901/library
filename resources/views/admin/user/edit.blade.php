@@ -142,41 +142,10 @@
 
 
 @section('pageSpecificScripts')
+
 <script src="{!! asset('js/admin-panel.js') !!}"></script>
+
 @stop
  
  
  
- @section('form') 
- <div class="container">
-    <h2 class="pt-5">ویرایش کاربر</h2>
-    <p><img class="row zoom rounding d-block" style="float:left; width:100px; height: 100px" src={{asset('images/users_images/'.$user->image_name.'')}} alt=""></p>
-    <script type='text/javascript'>
-        $('.zoo-item').ZooMove();
-    </script>
-    <form class="pt-4 d-block row" method="post" action="/admin/users/{{$user->id}}" enctype="multipart/form-data">
-        @csrf
-
-        
-        <div class="form-row">
-        
-
-          
-            <div class="col-md-2 mb-3"><label for="validationDefault04">ویرایش تاریخ تولد</label><input type="date"
-                    class="form-control" value="{{$user->birthdate}}" id="validationDefault04" placeholder="تاریخ تولد"
-                    name="birthdate"></div>
-        </div>
-        <div class="form-row">
-          
-            
-          
-           
-        </div>
-
-        <div class="custom-file mt-3">
-            {{Form::file('user_photo',['class' => 'custom-file-input'])}}
-        </div>
-
-        <input class="btn btn-warning mt-4" value="اعمال ویرایش" type="submit">
-    </form>
-</div>@stop

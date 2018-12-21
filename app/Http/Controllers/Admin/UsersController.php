@@ -13,22 +13,45 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Freshbitsweb\Laratables\Laratables;
 
 class UsersController extends Controller
 {
-    // public function index(){
-    //     $users = User::with(['userGender', 'userRole', 'userStatus'])->where('id', 1)->get();
-    //     return view('admin.user.index')->with('users', $users);
-    // }
+   
     public function index()
     {
         $users = User::with(['userGender', 'userRole', 'userStatus'])->paginate(5);
+        dd($users->laratablesRowData());
         $userStatus = UserStatus::all();
         $userRole = UserRole::all();
         $userGender = UserGender::all();
 
         return view('admin.user.index')->with(['users'=> $users, 'userStatus'=> $userStatus, 'userGender'=>$userGender, 'userRole'=>$userRole]);
+    }
+
+    
+/**
+ * Returns the data attribute for url to the edit page of the user.
+ *
+ * @return array
+ */
+public function laratablesRowData()
+{
+    return [
+        'edit-url' => route('admin.users.edit', ['users' => $this->id]),
+    ];
+}
+
+    public function tableusers(){
+
+        
+        $users = User::with(['userGender', 'userRole', 'userStatus']);
+
+        return Laratables::recordsOf(User::class, function($query)
+        {
+            return $query->with('userRole','userStatus');
+        });
+
     }
 
     public function create()

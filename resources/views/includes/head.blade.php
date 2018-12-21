@@ -15,7 +15,6 @@
         
         <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
 
-        
 
         <!-- bootstrap 4.x is supported. You can also use the bootstrap css 3.3.x versions -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
@@ -42,6 +41,12 @@
         <!-- optionally if you need a theme like font awesome theme you can include it as mentioned below -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/themes/fa/theme.js"></script>
         <!-- optionally if you need translation for your language then include  locale file as mentioned below -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/js/locales/(lang).js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/js/locales/(lang).js"></script> -->
 
 
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  
+       
+
+        

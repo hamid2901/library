@@ -15,6 +15,7 @@ Auth::routes();
 Route::group([ 'namespace' => 'Admin' ,'middleware'=>'admin', 'prefix' => 'admin'], function() {
     Route::get('/',                                'AdminController@index')->name('admin.dashboard');
     Route::get('/users',                           'UsersController@index')->name('admin.users');
+    Route::get('/users/tableusers',                'UsersController@tableusers')->name('admin.tableusers');
     Route::get('/users/create',                    'UsersController@create')->name('admin.users.create');
     Route::post('/users',                          'UsersController@store')->name('admin.users.store');
     Route::get('/users/{user}/edit',               'UsersController@edit')->name('admin.users.edit');

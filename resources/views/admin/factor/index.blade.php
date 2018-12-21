@@ -24,7 +24,7 @@
             <tr>
                 <th scope="row" class="">{{$factor->id}}</th>
             
-                <td class="">{{$factor->users->last_name}}</td>
+                <td class="">{{$factor->users[0]->last_name}}</td>
                 <td class="">{{$factor->reserve_date}}</td>
                 <td class="">{{$factor->borrow_date}}</td>
                 <td class="">{{$factor->duraiton}}</td>

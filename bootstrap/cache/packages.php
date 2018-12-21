@@ -24,6 +24,13 @@
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     ),
   ),
+  'freshbitsweb/laratables' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Freshbitsweb\\Laratables\\LaratablesServiceProvider',
+    ),
+  ),
   'krlove/eloquent-model-generator' => 
   array (
     'providers' => 
@@ -31,11 +38,25 @@
       0 => 'Krlove\\EloquentModelGenerator\\Provider\\GeneratorServiceProvider',
     ),
   ),
+  'laravel/nexmo-notification-channel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Illuminate\\Notifications\\NexmoChannelServiceProvider',
+    ),
+  ),
   'laravel/scout' => 
   array (
     'providers' => 
     array (
       0 => 'Laravel\\Scout\\ScoutServiceProvider',
+    ),
+  ),
+  'laravel/slack-notification-channel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Illuminate\\Notifications\\SlackChannelServiceProvider',
     ),
   ),
   'laravel/tinker' => 
