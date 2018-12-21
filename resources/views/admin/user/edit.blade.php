@@ -2,7 +2,7 @@
  @section('form') 
  <div class="container">
     <h2 class="pt-5">ویرایش کاربر</h2>
-    <p><img class="row zoom d-block" style="float:left; width:100px; height: 100px" src={{asset('images/users_images/'.$user->image_name.'')}} alt=""></p>
+    <p><img class="row zoom rounding d-block" style="float:left; width:100px; height: 100px" src={{asset('images/users_images/'.$user->image_name.'')}} alt=""></p>
     <script type='text/javascript'>
         $('.zoo-item').ZooMove();
     </script>

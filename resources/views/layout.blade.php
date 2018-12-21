@@ -13,6 +13,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="{!! asset('css/fontiran.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
+
     <link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">
 
 
@@ -21,7 +23,7 @@
 
     <!--  Bootstrap-RTL -->
     <link href="{!! asset('css/bootstrap-rtl.min.css') !!}" rel="stylesheet">
-    <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
+    
     <link href="{!! asset('css/profile.css') !!}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
@@ -53,8 +55,8 @@
 
     </div>
     <!-- /.container -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
@@ -62,9 +64,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     @yield('scripts')
     @include('layouts.footer-script')
-    <script type='text/javascript'>
-        $('.zoo-item').ZooMove();
-    </script>
+
     <script>
         $(document).ready(function () {
             $('.zoom').hover(function () {
@@ -77,21 +77,20 @@
         //     $('#table_id').DataTable();
         // });
     </script>
+    {{-- <script type='text/javascript'>
+        $('.zoo-item').ZooMove();
+    </script> --}}
     <script>
         kamaDatepicker('date3', {
-            nextButtonIcon: "timeir_next.png",
-            previousButtonIcon: "timeir_prev.png",
+            nextButtonIcon: "../css/persian-cal/timeir_next.png",
+            previousButtonIcon: "../css/persian-cal/timeir_prev.png",
             forceFarsiDigits: true,
             markToday: true,
             markHolidays: true,
             highlightSelectedDay: true,
             sync: true
         });
-
-        // for testing sync functionallity
-        $("#date2").val("1311/10/01");
     </script>
-
 </body>
 <script type="text/javascript">
     var _gaq = _gaq || [];

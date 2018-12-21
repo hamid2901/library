@@ -87,17 +87,14 @@
     <script src="{{ asset('js/register.js') }}"></script>
     <script>
         kamaDatepicker('date3', {
-            nextButtonIcon: "timeir_next.png",
-            previousButtonIcon: "timeir_prev.png",
+            nextButtonIcon: "../css/persian-cal/timeir_next.png",
+            previousButtonIcon: "../css/persian-cal/timeir_prev.png",
             forceFarsiDigits: true,
             markToday: true,
             markHolidays: true,
             highlightSelectedDay: true,
             sync: true
         });
-
-        // for testing sync functionallity
-        $("#date2").val("1311/10/01");
     </script>
 </body>
 <script type="text/javascript">

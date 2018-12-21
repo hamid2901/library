@@ -14,8 +14,9 @@
 
     <div style="margin-bottom:5px" class="col-md-12 bg-light card">
         <div class="col-md-3" style="padding: 5px">
-                <img class="img-responsive zoom" src="{!! asset('images/article_images/images/'.$article->article_filename.'.jpg') !!}"
+            <img class="img-responsive zoom" src="{!! asset('images/article_images/images/'.$article->article_filename.'.jpg') !!}"
                 alt="hello">
+        </div>
         <script type='text/javascript'>
             $('.zoo-item').ZooMove();
         </script>
@@ -58,26 +59,26 @@
                 @endforeach
             </p>
             <p class="description">توضیحات: {{$article->description}}</p>
-            <a class="btn btn-primary" href="{{url('/articles/'.$article->id.'')}}">مشاهده اطلاعات مقاله و دانلود&nbsp<i
-                    class="fas fa-chevron-circle-left"></i></a>
+            <a class="btn btn-primary" href="{{url('/articles/'.$article->id.'')}}">مشاهده اطلاعات مقاله و
+                دانلود&nbsp<i class="fas fa-chevron-circle-left"></i></a>
         </div>
     </div>
 
-    <!-- Pager -->
+<!-- Pager -->
 
-    @endforeach
-    @endforeach
+@endforeach
+@endforeach
 
-    <div style="text-align:center;">
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li>
-                    {{-- {{$article->links()}} --}}
-                </li>
-                </li>
-            </ul>
-        </nav>
-    </div>
+<div style="text-align:center;">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li>
+                {{-- {{$article->links()}} --}}
+            </li>
+            </li>
+        </ul>
+    </nav>
+</div>
 
 </div>
 

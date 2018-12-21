@@ -55,7 +55,7 @@
                 @if (Auth::user()->role_id == 1)
                 <li>
                         <p>
-                            <img class="row zoom d-block" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/'.Auth::user()->image_name.'')}}
+                            <img class="row zoom rounding d-block" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/'.Auth::user()->image_name.'')}}
                                 alt="بدون عکس">
                         </p>
                     </li>
@@ -75,7 +75,7 @@
                 @else
                 <li>
                     <p>
-                        <img class="row zoom d-block" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/'.Auth::user()->image_name.'')}}
+                        <img class="row zoom rounding d-block" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/'.Auth::user()->image_name.'')}}
                             alt="بدون عکس">
                     </p>
                 </li>

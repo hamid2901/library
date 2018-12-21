@@ -146,21 +146,21 @@
     <hr>
     <!-- Posted Comments -->
     @foreach($comments as $comment)
-    <div class="media">
-        <div class="media-body">
-            <h4 class="media-heading">
+    <div class="media panel panel-default">
+        <div class="panel-heading">
                 @if ($comment->user->image_name != null)
-                <img class="" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/'.$comment->user->image_name.'')}}
+                <img class="img-circle" src={{asset('images/users_images/'.$comment->user->image_name.'')}}
                     alt="بدون عکس">
                 @else
-                <img class="" style="float:left; width:60px; height: 60px; padding-left: 15px" src={{asset('images/users_images/default.jpg')}}
+                <img class="img-circle" src={{asset('images/users_images/default.jpg')}}
                     alt="بدون عکس">
                 @endif
                 {{
-                $comment->user->first_name }}&nbsp{{ $comment->user->last_name }}
-                {{-- {{dd(jdate($comment->created_at)->format('%d %B %Y'))}} --}}
-                <small>ارسال شده در {{ jdate($comment->created_at)->format('%d %B %Y') }}</small>
-            </h4>
+                    $comment->user->first_name }}&nbsp{{ $comment->user->last_name }}
+                    {{-- {{dd(jdate($comment->created_at)->format('%d %B %Y'))}} --}}
+                    <small>ارسال شده در {{ jdate($comment->created_at)->format('%d %B %Y') }}</small>
+        </div>
+        <div class="media-body panel-body">
             {{ $comment->content }}
         </div>
     </div>
