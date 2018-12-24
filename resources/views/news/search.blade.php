@@ -16,9 +16,6 @@
         <div class="col-md-3" style="padding: 5px">
             <img class="img-responsive" src="{!! asset('images/news_images/first/'.$new->image_dir.'.jpg') !!}" alt="hello">
         </div>
-        <script type='text/javascript'>
-            $('.zoo-item').ZooMove();
-        </script>
         <div class="col-md-9">
             <h3>
                 <a href="{{url('/books/'.$book->id.'')}}">{{ $book->title }}</a>

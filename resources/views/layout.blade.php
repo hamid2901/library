@@ -77,10 +77,6 @@
         //     $('#table_id').DataTable();
         // });
     </script>
-    {{-- <script type='text/javascript'>
-        $('.zoo-item').ZooMove();
-    </script> --}}
-    
 </body>
 <script type="text/javascript">
     var _gaq = _gaq || [];

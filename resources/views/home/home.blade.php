@@ -232,9 +232,7 @@
             <img class="img-responsive zoom" src="{!! asset('images/article_images/images/'.$article->article_filename.'.jpg') !!}"
                 alt="hello">
         </div>
-        <script type='text/javascript'>
-            $('.zoo-item').ZooMove();
-        </script>
+    
         <div class="col-md-9">
             <h3>
                 <a href="{{url('/articles/'.$article->id.'')}}">{{ $article->title }}</a>

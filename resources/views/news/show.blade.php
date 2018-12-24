@@ -26,10 +26,6 @@
         %d،%Y')
         }}</p>
 
-    <!-- Preview Image -->
-    <script type='text/javascript'>
-        $('.zoo-item').ZooMove();
-    </script>
     <hr>
 
     <!-- Post Content -->

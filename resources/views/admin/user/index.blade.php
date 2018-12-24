@@ -8,34 +8,8 @@
     <div class="row col-12">
         <a href="/admin/users/create" class="badge badge-primary p-3 m-2">ایجاد کاربر</a>
     </div>
-    <!-- class="table table-bordered"  -->
-    <table class="display table-primary" id="users_table" data-order='[[ 1, "asc" ]]'>
-    <thead>
-            <tr>
-                <th>نام</th>
-                <th>نام خانوادگی</th>
-                <th>ایمیل</th>
-                <th>تلفن</th>
-                <th>نقش</th>
-                <th>وضعیت</th>
-                <th>وضعیت</th>
-              
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>نام</th>
-                <th>نام خانوادگی</th>
-                <th>ایمیل</th>
-                <th>تلفن</th>
-                <th>نقش</th>
-                <th>وضعیت</th>
-                <th>وضعیت</th>
-        
-            </tr>
-        </tfoot>
-    </table>
-        <!-- <thead >
+    <table class="table table-bordered" id="users_table">
+     <thead >
             <tr>
                 <th class="">شناسه</th>
                 <th class="">نام</th>
@@ -83,9 +57,9 @@
             </tr>
             @endforeach
 
-        </tbody> -->
+        </tbody>
     </table>
-    <!-- <div style="text-align:center;">
+    <div style="text-align:center;">
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li>
@@ -93,30 +67,12 @@
                 </li>
             </ul>
         </nav>
-    </div> -->
+    </div>
 </div>
 <!-- Pager -->
 
 @stop
 
 @section('pageSpecificScripts')
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('#users_table').DataTable({
-    serverSide: true,
-    ajax: "{{ route('admin.tableusers') }}",
-    columns: [
-        // { name: 'id' },
-        { name: 'first_name' },
-        { name: 'last_name' },
-        { name: 'email' },
-        { name: 'phone' },
-        { name: 'userRole.role', orderable: false ,searchable: false},
-        { name: 'userStatus.status', orderable: false, searchable: false }
-        { name: 'edit_url', orderable: false, searchable: false }
-    ],
-});
-} );
-</script>
+   
 @stop

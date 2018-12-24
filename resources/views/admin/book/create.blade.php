@@ -1,94 +1,129 @@
 @extends('layouts.admin')
+@section('pageSpecificStyles')
+<style src="{!! asset('css/admin/selection.css') !!}"></style>
+@stop
 
 @section('form')
     
- <div class="container">
-    <h2 class="pt-5">افزودن کتاب</h2>
-    <form class="pt-4 d-block row" method="post" action="/admin/books" enctype="multipart/form-data">
+ <div class="container m-auto col-10 form">
+    <h2 class="pt-5"><i class="fas fa-book p-3"></i>افزودن کتاب</h2>
+    <form class="d-block row d-flex pb-5" method="post" action="/admin/books" enctype="multipart/form-data">
         @csrf
+        <div class="col-6">
+            <div class="form-row">
+                <div class="col-12 mb-3">
+                    <label for="validationDefault01">نام کتاب</label>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="نام کتاب" name="title">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12 mb-3">
+                    <label for="validationDefault01">شابک</label>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="شابک" name="isbn">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12 mb-3">
+                    <label for="validationDefault02">نویسنده</label>
+                    <div class="col-12 float-r ml-5">
+                        <select>
+                            @foreach($authors as $author)
+                            <option>
+                                <input type="checkbox" class="mr-2"  name="author[]" value="{{$author->id}}">
+                                <label for="{{$author->id}}">{{$author->last_name,$author->first_name}}</label>
+                            <option>    
+                            @endforeach 
+                        </select>   
+                    </div>
+                </div>
+            </div>
+<!--           
+                <option value="cheese">Cheese</option>
+                <option value="tomatoes">Tomatoes</option>
+                <option value="mozarella">Mozzarella</option>
+                </div>
+                
+                <div class="col-md-6">
+                <option value="mushrooms">Mushrooms</option>
+                <option value="pepperoni">Pepperoni</option>
+                <option value="onions">Onions</option>
+                </div> -->
+                    
+               
+            <div class="form-row">
+                <div class="col-12 mb-3">
+                    <label for="validationDefault02">ژانر</label>
+                    <div class="col-12 float-r ml-5">
+                        @foreach($categories as $category)
+                            <label for="{{$category->id}}">{{$category->type}}</label>
+                            <input type="checkbox" class="ml-2" name="category[]" value="{{$category->id}}">
+                        @endforeach    
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12 mb-3">
+                    <label for="validationDefault02">ناشر</label>
+                    <select name="publisher" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        @foreach($publishers as $publisher)
+                        <option value="{{$publisher->id}}">{{$publisher->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12 mb-3">
+                    <label for="validationDefault01">وضعیت</label>
+                    <select name="status" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        @foreach($bookAvailabilities as $bookAvailability)
+                        <option value="{{$bookAvailability->id}}">{{$bookAvailability->status}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12 mb-3">
+                    <label for="validationDefault02">تعداد جلد</label>
+                    <input type="int" class="form-control" id="validationDefault02" placeholder="تعداد جلد" name="cover">
+                </div>
+            </div>
+            <div class="form-row d-flex flex-row-reverse">
+                <div class="col-4 mb-3"><label for="validationDefault01">قطع</label>
+                    <select name="format" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        @foreach($bookFormats as $bookFormat)
+                        <option value="{{$bookFormat->id}}">{{$bookFormat->format}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="validationDefault02">صفحات</label>
+                    <input type="int" class="form-control" id="validationDefault02" placeholder="صفحات" name="pages">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="validationDefault02">وزن</label>
+                    <input type="int" class="form-control" id="validationDefault02" placeholder="وزن" name="weight">
+                </div>
+            </div>
+        </div>
 
-        <div class="form-row d-flex justify-content-around">
-            <div class="col-md-4 mb-3 mr-2">
-                <label for="validationDefault01">نام کتاب</label>
-                <input type="text" class="form-control" id="validationDefault01" placeholder="نام کتاب" name="title">
-            </div>
-            <div class="col-md-2 mb-3">
-                <label for="validationDefault01">شابک</label>
-                <input type="text" class="form-control" id="validationDefault01" placeholder="شابک" name="isbn">
-            </div>
-            <div class="col-md-2 mb-3">
-                <label for="validationDefault03">نویسنده یا مترجم</label>
-                <select name="role" class="custom-select" id="inlineFormCustomSelect">
-                    @foreach($authorRoles as $authorRole)
-                        <option value="{{$authorRole->id}}">{{$authorRole->role}}</option>
-                    @endforeach    
-                </select>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-10 mb-3">
-                <label for="validationDefault02">نویسنده</label>
-                <div class="col-12 float-r ml-5">
-                    @foreach($authors as $author)
-                        <input type="checkbox" class="mr-2"  name="author[]" value="{{$author->id}}">
-                        <label for="{{$author->id}}">{{$author->last_name,$author->first_name}}</label>
-                    @endforeach    
+        <div class="col-6">
+            <div class="form-row">
+                <div class="col-12 mb-3 ">
+                    <label for="validationDefault02">قیمت</label>
+                    <input type="int" class="form-control" id="validationDefault02" placeholder="قیمت" name="price">
                 </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-10 mb-3">
-                <label for="validationDefault02">ژانر</label>
-                <div class="col-12 float-r ml-5">
-                    @foreach($categories as $category)
-                        <label for="{{$category->id}}">{{$category->type}}</label>
-                        <input type="checkbox" class="ml-2" name="category[]" value="{{$category->id}}">
-                    @endforeach    
+            <div class="form-row">
+                <div class="col-12 mb-3">
+                    <label for="date3" class="col-form-label">تاریخ انتشار</label>
+                    <input placeholder="تاریخ انتشار" name="issue_date" type="text" id="date3" value="{{ old('issue_date') }}"
+                        class="pdate form-control col-12 ">
+                        @if ($errors->has('issue_date'))
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('issue_date') }}</strong>
+                        </span>
+                        @endif
                 </div>
-            </div>
-        </div>
-        <div class="form-row d-flex justify-content-around">
-            <div class="col-md-4 mb-3">
-                <label for="validationDefault02">ناشر</label>
-                <select name="publisher" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                    @foreach($publishers as $publisher)
-                    <option value="{{$publisher->id}}">{{$publisher->name}}</option>
-                    @endforeach
-                </select>
-            </div>
-           
-            <div class="col-md-2 mb-3">
-                <label for="validationDefault01">وضعیت</label>
-                <select name="status" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                    @foreach($bookAvailabilities as $bookAvailability)
-                    <option value="{{$bookAvailability->id}}">{{$bookAvailability->status}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-2 mb-3 mr-2">
-                <label for="validationDefault02">تعداد جلد</label>
-                <input type="int" class="form-control" id="validationDefault02" placeholder="تعداد جلد" name="cover">
-            </div>
-        </div>
-        <div class="form-row d-flex justify-content-around">
-            <div class="col-md-1 mb-3 ml-2"><label for="validationDefault01">قطع</label>
-                <select name="format" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                    @foreach($bookFormats as $bookFormat)
-                    <option value="{{$bookFormat->id}}">{{$bookFormat->format}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-2 mb-3">
-                <label for="validationDefault02">صفحات</label>
-                <input type="int" class="form-control" id="validationDefault02" placeholder="صفحات" name="pages">
-            </div>
-            <div class="col-md-2 mb-3">
-                <label for="validationDefault02">وزن</label>
-                <input type="int" class="form-control" id="validationDefault02" placeholder="وزن" name="weight">
-            </div>
-            <div class="col-md-2 mb-3 ">
-                <label for="validationDefault02">قیمت</label>
-                <input type="int" class="form-control" id="validationDefault02" placeholder="قیمت" name="price">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="validationDefault04">تاریخ انتشار</label>
@@ -130,7 +165,8 @@
 @stop
 
 
+
 @section('pageSpecificScripts')
-    <!-- flot charts scripts-->
-    <script src="{{ asset('js/file_input.js')}}"></script>
+<script src="{!! asset('js/admin-panel.js') !!}"></script>
+<script src="{!! asset('js/selection.js') !!}"></script>
 @stop
