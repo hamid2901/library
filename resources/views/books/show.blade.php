@@ -18,7 +18,7 @@
     <div style="float:left" class="row">
 
         @if($book->availability_id == 1)
-        @if(Auth::check())
+        @if(Auth::check()) 
         @if(Cart::session(Auth::user()->id)->get($book->id) != null)
         @else
         <form action="/factor/{{$book->id}}/addToCart" method="POST">
@@ -40,6 +40,7 @@
 
         @else
         @if($book->availability_id == 4)
+        @if(Auth::check()) 
         @if(Cart::session(Auth::user()->id)->get($book->id) != null)
         <form action="/factor/{{$book->id}}/removeFromCart" method="POST">
             {{ csrf_field() }}
@@ -47,6 +48,10 @@
             <button id="" value='{!! Auth::user()->id !!}' name="factor" style="" class="btn btn-danger">حذف کردن از
                 سبد رزرو&nbsp<i class="far fa-trash-alt"></i></button>
         </form>
+        @else
+        <a class="btn btn-warning disabled">کتاب رزرو شده است.&nbsp</a>
+        @endif
+
         @else
         <a class="btn btn-warning disabled">کتاب رزرو شده است.&nbsp</a>
         @endif

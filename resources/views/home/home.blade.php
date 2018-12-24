@@ -134,7 +134,7 @@
             <p class="lead" style="font-size: 15px !important">
                 دسته بندی کتاب:
                 @foreach( $book->categories as $book->category )
-                <a href="{{url('/books/'.$book->id.'')}}">{{$book->category->type}}</a>@if(! $loop->last )
+                <a href="{{url('/books/category/'.$book->category->type.'')}}">{{$book->category->type}}</a>@if(! $loop->last )
                 ،
                 @endif
                 @endforeach
